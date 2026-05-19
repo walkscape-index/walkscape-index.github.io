@@ -17,10 +17,13 @@
   "player-stats": [
     "tools"
   ],
-  "gear-optimizer": [
+  "ws-gear-tool": [
     "gears"
   ],
   "auto-gear-app": [
+    "gears"
+  ],
+  "gear-optimizer": [
     "gears"
   ],
   "arky-activity-sheet": [

@@ -16,16 +16,16 @@
     "description": "Welcome to the WalkScape Portal!",
     "ogImage": "https://portal.walkscape.app/icons/android-icon-192x192.png"
   },
+  "interactive-map": {
+    "slug": "interactive-map",
+    "title": "WalkScape Interactive Map",
+    "description": "Walkscape Interactive Map. Explore the in-game map. View game locations and historic maps"
+  },
   "database-hub": {
     "slug": "database-hub",
     "title": "WalkScape Database | WSDB",
     "description": "WalkScape Database - Game database and tools for WalkScape",
     "ogImage": "https://walkscapedb.com/logo.jpg"
-  },
-  "interactive-map": {
-    "slug": "interactive-map",
-    "title": "WalkScape Interactive Map",
-    "description": "Walkscape Interactive Map. Explore the in-game map. View game locations and historic maps"
   },
   "player-stats": {
     "slug": "player-stats",
@@ -36,6 +36,43 @@
   "gear-optimizer": {
     "slug": "gear-optimizer",
     "title": "Walkscape Optimizer"
+  },
+  "arky-activity-sheet": {
+    "slug": "arky-activity-sheet",
+    "title": "Arky's Activity Sheet (v.0.93) (+645) - Google Sheets",
+    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyIyRl1PNLOW5vj3Toohv6E-N9Pyfh3zNf-Qz-o_UwknvkiFL8TxIg2My3dTliGisUM8lrbMEVSQxi41yuYQl5gl3PcRA1l-y9QS-tjQlhVit6BmKTLM=w1200-h630-p"
+  },
+  "bank-value-calculator": {
+    "slug": "bank-value-calculator",
+    "title": "Bonez565's Bank Value Calculator V0.5 - Google Sheets",
+    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyLLOqp2uUH-xpkXL0cSzKsh_9bLgIF_8jDbfbPkn2u4hPmXtafgsfswhnzBuPCW4piC9_CGiqvk_Yi8UFZuclt3k_pKCrqubzHmdYfOFFfR5NdC4Z1G=w1200-h630-p"
+  },
+  "ecto-farming-sheet": {
+    "slug": "ecto-farming-sheet",
+    "title": "Ecto Farming - Google Sheets",
+    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyKUc8bvKIK2fm1yiC0TPZLDfDttO6PY1lAGiwJmckoShExpI_A3GX7tcGzIYmoWHVXIXyrEfpX4ipPunAn8dxKhg1iPU_MHkxv4qXPGsnXmQ5TRJ6lC=w1200-h630-p"
+  },
+  "fala-progress-sheet": {
+    "slug": "fala-progress-sheet",
+    "title": "Fala's Walkscape Progress Tracker v0.4 - Google Sheets",
+    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyLAryzBA1imvcerNmvSjaPHMuCR0qx-N9C__zYG5GF01BAEDfB7hgOFuPuKH3nxFBrarZETFuBPSpNE1p_3UZqbxjmGuxGz0RlpymyGw3c8wpSNzkVT=w1200-h630-p"
+  },
+  "skill-locations-sheet": {
+    "slug": "skill-locations-sheet",
+    "title": "Walkscape Skill Guide - Google Sheets",
+    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyLW0V8wRmGJB_2etJksrY0TtAT4pPsgaD1qyIzPFngPFqVuKqWZ_o5PCcvfv57NharCFZSvyzL45s2aMx5Eop2SqivOhr0_Pmk7j6RsmHhgwGd3mQK7=w1200-h630-p"
+  },
+  "coha-cofa-sequence": {
+    "slug": "coha-cofa-sequence",
+    "title": "Notion",
+    "description": "A collaborative AI workspace, built on your company context. Build and orchestrate agents right alongside your team's projects, meetings, and connected apps.",
+    "ogImage": "https://www.notion.so/images/meta/default.png"
+  },
+  "hunting-tailoring-guide": {
+    "slug": "hunting-tailoring-guide",
+    "title": "Walkscape \"Collector's\" Edition - Hunting & Tailoring Update - Google Docs",
+    "description": "Hunting & Tailoring Update TL;DR; Two whole new skills, and along with it a handful of new achievements/collectibles as well as a ton of new items to hunt down! A few things have been shuffled around, especially in GDTE to prioritize early crafting of the highly versatile Tailoring equipment.  Th...",
+    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyKpNLafwzArxwC5KlCoc40ehWkkXufpMShx-olnyF5nptYBvM5x1VgolxpLdoleQQCU0KZlMXk-2kPFEYfnwWKjJXF5JeSNcuCA2Q4Ym3AnD07bIKwl=w1200-h630-p"
   },
   "discord-server": {
     "slug": "discord-server",
@@ -59,46 +96,13 @@
     "description": "WalkScape is a game inspired by good ol' RuneScape. But this game has one major trick up its sleeve: you don't play actively, but instead gain progress by wa...",
     "ogImage": "https://yt3.googleusercontent.com/Aoev7J0yuMMY8KE7_MFRSSRe1B2Ha2xZUIfFspXmQxMfrB0zTSGXrC1KBIqmmXAWokJQECxkjVI=s900-c-k-c0x00ffffff-no-rj"
   },
-  "coha-cofa-sequence": {
-    "slug": "coha-cofa-sequence",
-    "title": "Notion",
-    "description": "A collaborative AI workspace, built on your company context. Build and orchestrate agents right alongside your team's projects, meetings, and connected apps.",
-    "ogImage": "https://www.notion.so/images/meta/default.png"
-  },
-  "fala-progress-sheet": {
-    "slug": "fala-progress-sheet",
-    "title": "Fala's Walkscape Progress Tracker v0.4 - Google Sheets",
-    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyLAryzBA1imvcerNmvSjaPHMuCR0qx-N9C__zYG5GF01BAEDfB7hgOFuPuKH3nxFBrarZETFuBPSpNE1p_3UZqbxjmGuxGz0RlpymyGw3c8wpSNzkVT=w1200-h630-p"
-  },
-  "bank-value-calculator": {
-    "slug": "bank-value-calculator",
-    "title": "Bonez565's Bank Value Calculator V0.5 - Google Sheets",
-    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyLLOqp2uUH-xpkXL0cSzKsh_9bLgIF_8jDbfbPkn2u4hPmXtafgsfswhnzBuPCW4piC9_CGiqvk_Yi8UFZuclt3k_pKCrqubzHmdYfOFFfR5NdC4Z1G=w1200-h630-p"
-  },
-  "skill-locations-sheet": {
-    "slug": "skill-locations-sheet",
-    "title": "Walkscape Skill Guide - Google Sheets",
-    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyLW0V8wRmGJB_2etJksrY0TtAT4pPsgaD1qyIzPFngPFqVuKqWZ_o5PCcvfv57NharCFZSvyzL45s2aMx5Eop2SqivOhr0_Pmk7j6RsmHhgwGd3mQK7=w1200-h630-p"
-  },
-  "ecto-farming-sheet": {
-    "slug": "ecto-farming-sheet",
-    "title": "Ecto Farming - Google Sheets",
-    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyKUc8bvKIK2fm1yiC0TPZLDfDttO6PY1lAGiwJmckoShExpI_A3GX7tcGzIYmoWHVXIXyrEfpX4ipPunAn8dxKhg1iPU_MHkxv4qXPGsnXmQ5TRJ6lC=w1200-h630-p"
-  },
   "drop-checklist": {
     "slug": "drop-checklist",
     "title": "Unique Item Drop Check List - Blank - Google Sheets",
     "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyJr7aq03_VnsNS2im7uVNb_ugwgS9VfW8sEECsBbxYzZIijR_gCLWSGwQfey9pkks3iRapWzEFqc8nvxRsleV_XHXmYgCA6gGJCJAFDTItv6aBoJhSG=w1200-h630-p"
   },
-  "hunting-tailoring-guide": {
-    "slug": "hunting-tailoring-guide",
-    "title": "Walkscape \"Collector's\" Edition - Hunting & Tailoring Update - Google Docs",
-    "description": "Hunting & Tailoring Update TL;DR; Two whole new skills, and along with it a handful of new achievements/collectibles as well as a ton of new items to hunt down! A few things have been shuffled around, especially in GDTE to prioritize early crafting of the highly versatile Tailoring equipment.  Th...",
-    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyKpNLafwzArxwC5KlCoc40ehWkkXufpMShx-olnyF5nptYBvM5x1VgolxpLdoleQQCU0KZlMXk-2kPFEYfnwWKjJXF5JeSNcuCA2Q4Ym3AnD07bIKwl=w1200-h630-p"
-  },
-  "arky-activity-sheet": {
-    "slug": "arky-activity-sheet",
-    "title": "Arky's Activity Sheet (v.0.93) (+645) - Google Sheets",
-    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyIyRl1PNLOW5vj3Toohv6E-N9Pyfh3zNf-Qz-o_UwknvkiFL8TxIg2My3dTliGisUM8lrbMEVSQxi41yuYQl5gl3PcRA1l-y9QS-tjQlhVit6BmKTLM=w1200-h630-p"
+  "ws-gear-tool": {
+    "slug": "ws-gear-tool",
+    "title": "Walkscape Gear Tool"
   }
 }

@@ -65,12 +65,12 @@
       "category": "gears",
       "content": [
         {
-          "title": "Gear Optimizer",
-          "body": "Equipment planner to optimize gear for skilling.",
+          "title": "Walkscape Gear Tool",
+          "body": "Optimize your activity loadouts and track your progress",
           "tag": "Community / Tool",
-          "url": "https://walkscape.flamesandvoltiply.com/?ref=walkscape-index.github.io",
+          "url": "https://gear.walkscape.app/?ref=walkscape-index.github.io",
           "date-added": "2026-05-18",
-          "slug": "gear-optimizer"
+          "slug": "ws-gear-tool"
         },
         {
           "title": "WS Gear Optimizer",
@@ -79,6 +79,14 @@
           "url": "https://ws-auto-gear.streamlit.app/?ref=walkscape-index.github.io",
           "date-added": "2026-05-18",
           "slug": "auto-gear-app"
+        },
+        {
+          "title": "WS Optimizer",
+          "body": "Mobile friendly gear set optimizer for activities, recipes, and traveling.",
+          "tag": "Community / Tool",
+          "url": "https://walkscape.flamesandvoltiply.com/?ref=walkscape-index.github.io",
+          "date-added": "2026-05-18",
+          "slug": "gear-optimizer"
         }
       ]
     },
