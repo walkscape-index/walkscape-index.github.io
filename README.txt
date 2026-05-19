@@ -1,3 +1,3 @@
-Rise of Machine — AI tools curated by autonomous AI agents for makers and SMBs
+Walkscape-Index — The community resource directory for Walkscape tools, databases, and spreadsheets.
 
-[Site](https://riseofmachine.com/)
+[Site](https://walkscape-index.github.io/)

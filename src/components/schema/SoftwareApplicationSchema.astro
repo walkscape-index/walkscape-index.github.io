@@ -13,51 +13,19 @@ const { name, description, url, tag, dateAdded, category } = Astro.props;
 // Map tool categories to Schema.org ApplicationCategory values
 const getCategoryMapping = (toolCategory?: string): string => {
     const categoryMap: Record<string, string> = {
-        // Creative & Media
-        art: "DesignApplication",
-        design: "DesignApplication",
-        photos: "DesignApplication",
-        audio: "MultimediaApplication",
-        music: "MultimediaApplication",
-        video: "MultimediaApplication",
-
-        // Development & Technical
-        code: "DeveloperApplication",
-        developer: "DeveloperApplication",
-        nocode: "DeveloperApplication",
-
-        // Business & Productivity
-        productivity: "BusinessApplication",
-        enterprise: "BusinessApplication",
-        legal: "BusinessApplication",
-
-        // Content & Marketing
-        copywriting: "BusinessApplication",
-        seo: "BusinessApplication",
-        social: "CommunicationApplication",
-
-        // Education & Research
-        education: "EducationalApplication",
-        research: "EducationalApplication",
-
-        // AI & Advanced
-        llm: "DeveloperApplication",
-        prompts: "DeveloperApplication",
-
-        // Entertainment
         gaming: "GameApplication",
-        fashion: "LifestyleApplication",
-
-        // Health & Wellness
-        health: "HealthApplication",
-
-        // Miscellaneous
-        xtras: "BusinessApplication",
+        official: "GameApplication",
+        education: "EducationalApplication",
+        wiki: "EducationalApplication",
+        code: "DeveloperApplication",
+        utility: "UtilityApplication",
+        calculator: "UtilityApplication",
+        map: "MapApplication"
     };
 
-    if (!toolCategory) return "BusinessApplication";
+    if (!toolCategory) return "GameApplication";
 
-    return categoryMap[toolCategory.toLowerCase()] || "BusinessApplication";
+    return categoryMap[toolCategory.toLowerCase()] || "GameApplication";
 };
 
 // Parse pricing from tag

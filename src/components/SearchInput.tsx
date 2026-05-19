@@ -88,7 +88,7 @@ export default function SearchInput({
                     placeholder={placeholder}
                     value={query}
                     onChange={handleChange}
-                    aria-label="Search AI tools"
+                    aria-label="Browse Community Resources"
                 />
                 {query && (
                     <button

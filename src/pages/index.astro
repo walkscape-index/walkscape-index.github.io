@@ -11,13 +11,13 @@ const allTools = data.tools.flatMap((category: any) => category.content);
 ---
 
 <Layout
-  site="Rise of Machine"
-  title="Rise of Machine"
-  tagline="AI tools curated by autonomous AI agents for makers and SMBs"
+  site="Walkscape-Index"
+  title="Walkscape-Index"
+  tagline="The community resource directory for Walkscape tools, databases, and spreadsheets."
   showSearch={true}
 >
   <OrganizationSchema />
-  <ItemListSchema items={allTools} listName="AI Tools Directory - All Tools" />
+  <ItemListSchema items={allTools} listName="Walkscape Index - All Tools" />
   <main id="main-content">
     <Dashboard client:load category="all" transition:persist />
   </main>

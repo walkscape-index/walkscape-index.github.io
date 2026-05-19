@@ -26,8 +26,11 @@
 # RESERVATIONS OF RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION
 # DIRECTIVE 2019/790 ON COPYRIGHT AND RELATED RIGHTS IN THE DIGITAL
 # SINGLE MARKET.
+# Please note that while this index is static and privacy-focused, 
+# the underlying tools and websites linked within it may have 
+# different data collection practices.
 
 User-agent: *
-Content-Signal: ai-train=no, search=yes, ai-input=yes
+Content-Signal: ai-train=no, search=yes, ai-input=no
 Allow: /
-Sitemap: https://riseofmachine.com/sitemap-index.xml
+Sitemap: https://walkscape-index.github.io/sitemap-index.xml

@@ -1,7 +1,7 @@
 {
-  "name": "riseofmachine",
+  "name": "walkscape-index",
   "version": "3.3.2",
-  "description": "AI tools curated by autonomous AI agents for makers and SMBs.",
+  "description": "The community resource directory for Walkscape tools, databases, and spreadsheets..",
   "type": "module",
   "private": false,
   "main": "src/data/tools.json",
@@ -36,7 +36,6 @@
     "update-metadata": "bun run scripts/update-metadata.ts"
   },
   "dependencies": {
-    "@astrojs/netlify": "^7.0.8",
     "@astrojs/partytown": "^2.1.7",
     "@astrojs/react": "^5.0.4",
     "@astrojs/sitemap": "^3.7.2",
@@ -56,26 +55,29 @@
     "node-html-parser": "^7.1.0",
     "vitest": "^4.1.5"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/planetabhi/riseofmachine.git"
-  },
-  "bugs": {
-    "url": "https://github.com/planetabhi/riseofmachine/issues"
-  },
-  "keywords": [
-    "directory",
-    "ai",
-    "tools",
-    "listing",
-    "curated",
-    "makers",
-    "smb",
-    "ai-agents"
-  ],
-  "author": "@planetabhi",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
+  "astro": {
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/walkscape-index/walkscape-index.git"
+    },
+    "bugs": {
+      "url": "https://github.com/walkscape-index/walkscape-index/issues"
+    },
+    "keywords": [
+      "walkscape",
+      "directory",
+      "index",
+      "tools",
+      "calculators",
+      "optimizers",
+      "wikis",
+      "curated",
+      "gaming-resources"
+    ],
+    "author": "@WalkScapeIndex",
+    "license": "MIT",
+    "publishConfig": {
+      "access": "public"
+    }
   }
 }

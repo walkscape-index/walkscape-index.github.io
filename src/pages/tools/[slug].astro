@@ -69,7 +69,7 @@ const formatDate = (dateStr: string) => {
 
 const domain = extractDomain(tool.url || "");
 const formattedDate = formatDate(tool["date-added"]);
-const canonicalUrl = `https://riseofmachine.com/tools/${tool.slug}`;
+const canonicalUrl = `https://walkscape-index.github.io/tools/${tool.slug}`;
 const faviconUrl = `/favicons/${slug}.png`;
 const fallbackPath = category === "all" ? "/" : `/${category}`;
 
@@ -83,13 +83,13 @@ const seoTitle = meta.title || tool.title;
 const seoDescription = meta.description || tool.body;
 const seoOgImage = faviconUrl;
 const seoOgType = "website";
-const seoOgSiteName = "Rise of Machine";
+const seoOgSiteName = "Walkscape-Index";
 
 const encodedShareText = encodeURIComponent(
   `Check out ${tool.title} - ${tool.body}`,
 );
 const encodedCanonicalUrl = encodeURIComponent(canonicalUrl);
-const xShareUrl = `https://x.com/intent/post?text=${encodedShareText}&url=${encodedCanonicalUrl}&via=planetabhi`;
+const xShareUrl = `https://x.com/intent/post?text=${encodedShareText}&url=${encodedCanonicalUrl}&via=WalkscapeIndex`;
 const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedCanonicalUrl}`;
 const redditShareUrl = `https://www.reddit.com/submit?url=${encodedCanonicalUrl}&title=${encodedShareText}`;
 
@@ -99,14 +99,14 @@ const relatedTools = otherTools.sort(() => Math.random() - 0.5).slice(0, 4);
 
 const categoryTitle = category.charAt(0).toUpperCase() + category.slice(1);
 const breadcrumbs = [
-  { name: "Home", url: "https://riseofmachine.com" },
-  { name: categoryTitle, url: `https://riseofmachine.com/${category}` },
+  { name: "Home", url: "https://walkscape-index.github.io" },
+  { name: categoryTitle, url: `https://walkscape-index.github.io/${category}` },
   { name: tool.title },
 ];
 ---
 
 <Layout
-  site={`Rise of Machine - ${tool.title}`}
+  site={`Walkscape-Index - ${tool.title}`}
   title={tool.title}
   tagline={tool.body}
   pageTitle={seoTitle}
@@ -230,6 +230,17 @@ const breadcrumbs = [
                     rel="noopener noreferrer"
                     class="btn-primary"
                   >
+                    {/* External Link SVG Icon */}
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+               viewBox="0 0 512 512" 
+              width="16" 
+              height="16" 
+              fill="currentColor" 
+              class="btn-icon"
+            >
+              <path d="M320 0a32 32 0 1 0 0 64h83L201 265a32 32 0 0 0 46 46l201-202v83a32 32 0 1 0 64 0V32c0-18-14-32-32-32zM80 96c-44 0-80 36-80 80v256c0 44 36 80 80 80h256c44 0 80-36 80-80v-80a32 32 0 1 0-64 0v80q-1 15-16 16H80q-15-1-16-16V176q1-15 16-16h80a32 32 0 1 0 0-64z"/>
+                </svg>
                     Visit {tool.title}
                   </a>
                 ) : (
@@ -475,6 +486,7 @@ const breadcrumbs = [
       position: relative;
       padding: var(--spacing-09);
       background-color: var(--background);
+      border-radius: var(--spacing-02);
       box-shadow: var(--dialog-strong);
       content-visibility: auto;
       contain-intrinsic-size: 8.5rem;
@@ -494,6 +506,7 @@ const breadcrumbs = [
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: var(--spacing-02);
     }
 
     .tool-detail-close-btn:hover {
@@ -681,6 +694,7 @@ const breadcrumbs = [
       text-align: center;
       font-size: var(--desktop-body);
       line-height: var(--lh-desktop-body);
+      border-radius: var(--spacing-02);
     }
 
     .btn-primary:hover {
@@ -845,18 +859,20 @@ const breadcrumbs = [
 
     .category-badge {
       display: inline-block;
-      padding: var(--spacing-01) var(--spacing-03);
-      background-color: var(--background-selected);
-      color: var(--content-secondary);
+      padding: calc(var(--spacing-01) - 1px) calc(var(--spacing-03) - 1px);
+      background-color: var(--background-secondary);
+      border: 1px solid var(--border-muted);
+      color: var(--content-primary);
       font-size: var(--desktop-caption);
       line-height: var(--lh-desktop-caption);
       text-decoration: none;
-      border-radius: var(--spacing-00);
+      border-radius: var(--spacing-02);
     }
 
     .category-badge:hover {
       background-color: var(--accent);
-      color: var(--background);
+      color: var(--background-high-contrast);
+      border-color: var(--accent);
     }
 
     .meta-separator {
@@ -892,11 +908,20 @@ const breadcrumbs = [
       padding: var(--spacing-03);
       background-color: var(--background-secondary);
       text-decoration: none;
-      border-radius: var(--spacing-00);
+      border-radius: var(--spacing-02);
     }
 
     .related-card:hover {
-      background-color: var(--background-selected);
+      background-color: var(--accent);
+    }
+    
+    .related-card:hover .related-name {
+      color: var(--background-high-contrast);
+    }
+    
+    .related-card:hover span.tag {
+      background-color: var(--background);
+      border-color: var(--border-strong);
     }
 
     .related-icon {
@@ -918,10 +943,12 @@ const breadcrumbs = [
       background-color: var(--background-selected);
       padding: calc(0.25rem - 1px) calc(0.5rem - 1px);
       display: inline-block;
-      color: var(--content-secondary);
+      color: var(--content-primary);
       font-size: var(--desktop-caption);
       line-height: var(--lh-desktop-caption);
       font-family: var(--body-copy);
+      border: 1px solid var(--border-muted);
+      border-radius: var(--spacing-01);
     }
 
     @media (max-width: 768px) {

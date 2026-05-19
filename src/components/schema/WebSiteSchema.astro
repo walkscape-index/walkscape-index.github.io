@@ -3,14 +3,14 @@ interface Props {
     url?: string;
 }
 
-const { url = "https://riseofmachine.com" } = Astro.props;
+const { url = "https://walkscape-index.github.io" } = Astro.props;
 
 const schema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Rise of Machine",
+    name: "Walkscape-Index",
     url: url,
-    description: "AI tools curated by autonomous AI agents for makers and SMBs",
+    description: "The community resource directory for Walkscape tools, databases, and spreadsheets.",
     potentialAction: {
         "@type": "SearchAction",
         target: {

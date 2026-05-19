@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Interactive Map",
+    "body": "Interactive world map tracking game locations.",
+    "tag": "Community / Map",
+    "url": "https://map.walkscape.app/?ref=walkscape-index.github.io",
+    "date-added": "2026-05-18",
+    "slug": "interactive-map"
+  },
+  {
+    "title": "WalkScape Database | WSDB",
+    "body": "Community database for items and crafting.",
+    "tag": "Utility / Database",
+    "url": "https://walkscapedb.com/?ref=walkscape-index.github.io",
+    "date-added": "2026-05-18",
+    "slug": "database-hub"
+  },
+  {
+    "title": "WalkStats",
+    "body": "WalkScape Player Statistics, Leaderboards & Skill Tracking",
+    "tag": "Community / Dashboard",
+    "url": "https://walkstats.app/?ref=walkscape-index.github.io",
+    "date-added": "2026-05-18",
+    "slug": "player-stats"
+  }
+]

@@ -1,0 +1,208 @@
+---
+import { Image } from "astro:assets";
+
+export interface Props {
+    showLatestFilter?: boolean;
+}
+
+const { showLatestFilter = true } = Astro.props;
+---
+
+<nav class="floating-nav" aria-label="Main">
+    <div class="left-group">
+        <div class="logo">
+            <a href="/" aria-label="home page"
+                ><Image
+                    src="/walkscape-index.svg"
+                    width="32"
+                    height="32"
+                    alt="Walkscape-Index"
+                    aria-hidden="true"
+                    loading="eager"
+                /></a
+            >
+        </div>
+        <button
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="Toggle dark theme"
+            aria-pressed="false"
+        >
+            <span class="theme-emoji" aria-hidden="true"></span>
+        </button>
+    </div>
+    <div class="btn-group">
+        {
+            showLatestFilter && (
+                <button
+                    class="new-filter-toggle"
+                    id="new-filter-toggle"
+                    aria-label="Filter recently added tools"
+                    aria-pressed="false"
+                >
+                    Latest
+                </button>
+            )
+        }
+        <a
+            href="/saved"
+            class="favorites-link"
+            id="favoritesLink"
+            style="display: none;"
+        >
+            <span class="favorites-text">Saved tools</span>
+            <span class="favorites-count" id="favoritesCount"></span>
+        </a>
+        <a
+            href="https://github.com/walkscape-index/walkscape-index/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="submit-btn"><span class="submit-text">Submit ↗</span></a
+        >
+    </div>
+</nav>
+
+<style>
+    .floating-nav {
+        padding: var(--spacing-06) var(--spacing-09);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--background);
+        border-bottom: 1px solid var(--border-muted);
+    }
+    .left-group {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-05);
+    }
+    .btn-group {
+        display: flex;
+        gap: var(--spacing-03);
+        align-items: center;
+    }
+
+    .new-filter-toggle,
+    .favorites-link,
+    .submit-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-02);
+        padding: var(--spacing-02) var(--spacing-05);
+        border: 1px solid var(--border-muted);
+        background-color: var(--background);
+        color: var(--content-secondary);
+        text-decoration: none;
+        cursor: var(--c-pointer);
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        font-size: var(--desktop-body-sm);
+        line-height: var(--lh-desktop-body-sm);
+        border-radius: var(--spacing-02);
+        transition: all 0.2s ease;
+        outline: none;
+    }
+
+    .new-filter-toggle:hover,
+    .favorites-link:hover,
+    .submit-btn:hover {
+        background-color: var(--background-hover);
+        color: var(--accent);
+        border-color: var(--accent);
+    }
+
+    .new-filter-toggle[aria-pressed="true"] {
+        color: var(--accent);
+        border-color: var(--accent);
+    }
+
+    .new-filter-toggle:active,
+    .favorites-link:active,
+    .submit-btn:active {
+        transform: scale(0.97);
+    }
+
+    .new-filter-toggle:focus,
+    .favorites-link:focus,
+    .submit-btn:focus {
+        outline: 1px solid var(--button-primary);
+        outline-offset: 2px;
+    }
+
+    .submit-btn {
+        border-color: var(--accent);
+        color: var(--accent);
+    }
+
+    .submit-btn:hover {
+        background-color: var(--accent);
+        color: var(--background);
+    }
+
+    .theme-toggle {
+        z-index: 999;
+        width: var(--spacing-08);
+        height: var(--spacing-08);
+        background: none;
+        border: 1px solid var(--border-muted);
+        padding: var(--spacing-00);
+        cursor: var(--c-pointer);
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: var(--spacing-02);
+        transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+        background-color: var(--background-hover);
+    }
+
+    .theme-toggle .theme-emoji {
+        font-size: 1.25rem;
+        line-height: 1;
+    }
+
+    .theme-toggle .theme-emoji::after {
+        content: "♨️";
+    }
+
+    :global(html[data-new-ui-theme="dark--cold"]) .theme-toggle .theme-emoji::after {
+        content: "🧊";
+    }
+
+    .theme-toggle:focus {
+        outline: 1px solid var(--button-primary);
+        outline-offset: 2px;
+    }
+
+    .favorites-link svg {
+        flex-shrink: 0;
+    }
+
+    .favorites-count {
+        display: none;
+        margin-left: var(--spacing-01);
+        font-weight: 700;
+    }
+
+    @media (max-width: 48rem) {
+        .favorites-text {
+            display: none;
+        }
+
+        .favorites-count {
+            display: inline;
+        }
+    }
+
+    @media (max-width: 30rem) {
+        .floating-nav {
+            padding: var(--spacing-06) var(--spacing-06);
+        }
+    }
+</style>

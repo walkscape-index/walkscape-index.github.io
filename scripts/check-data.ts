@@ -41,7 +41,7 @@ function validateTool(tool: Tool, source: string) {
         }
         try {
             const url = new URL(tool.url);
-            if (url.searchParams.get('ref') !== 'riseofmachine.com') {
+            if (url.searchParams.get('ref') !== 'walkscape-index.github.io') {
                 issues.missing_ref.push(identifier);
             }
         } catch (e) {
@@ -116,7 +116,7 @@ try {
     }
 
     if (issues.missing_ref.length > 0) {
-        console.log("\n❌ Missing ref parameter (?ref=riseofmachine.com):");
+        console.log("\n❌ Missing ref parameter (?ref=walkscape-index.github.io):");
         issues.missing_ref.forEach(i => console.log(`   - ${i}`));
     }
 

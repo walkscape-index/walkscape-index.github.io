@@ -27,6 +27,7 @@ export default function Card({
         <li className="link-card">
             <a
                 href={linkUrl}
+                aria-label={`View details for ${title}`}
                 onClick={() => {
                     window.dispatchEvent(new CustomEvent('tools:save-state'));
                 }}
@@ -40,7 +41,7 @@ export default function Card({
                             title="Recently added"
                             aria-label="New item"
                         >
-                            🔥
+                            🆕
                         </span>
                     )}
                     <span className="tag">{tag}</span>

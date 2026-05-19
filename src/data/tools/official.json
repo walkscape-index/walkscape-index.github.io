@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Main Website",
+    "body": "Main landing page for game news and updates.",
+    "tag": "Official / Web",
+    "url": "https://walkscape.app/?ref=walkscape-index.github.io",
+    "date-added": "2026-05-18",
+    "slug": "main-website"
+  },
+  {
+    "title": "Official Wiki",
+    "body": "Official wiki for item stats and game data.",
+    "tag": "Official / Database",
+    "url": "https://wiki.walkscape.app/?ref=walkscape-index.github.io",
+    "date-added": "2026-05-18",
+    "slug": "official-wiki"
+  },
+  {
+    "title": "Player Portal",
+    "body": "Account dashboard for beta applications and keys.",
+    "tag": "Official / App",
+    "url": "https://portal.walkscape.app/?ref=walkscape-index.github.io",
+    "date-added": "2026-05-18",
+    "slug": "player-portal"
+  }
+]

@@ -40,8 +40,8 @@ export default function FavoritesView() {
             <section>
                 <EmptyState
                     icon={<BookmarkIcon />}
-                    message="Start saving AI tools by clicking the bookmark icon on any tool card. Your saved tools will appear here for quick access."
-                    actionText="Browse AI Tools"
+                    message="Start bookmarking resources by clicking the save icon on any tool or sheet. Your favorites will appear here for quick access."
+                    actionText="Browse Community Resources"
                     actionHref="/"
                 />
             </section>

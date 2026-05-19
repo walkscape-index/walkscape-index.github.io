@@ -1,18 +1,23 @@
 .link-card {
     list-style: none;
     display: flex;
-    background-color: var(--background);
+    background-color: var(--background-secondary);
     background-position: 100%;
-    border-radius: var(--spacing-00);
+    border-radius: var(--spacing-02);
+    border: 1px solid var(--border-muted);
     height: 8rem;
     position: relative;
     box-shadow: var(--content);
     content-visibility: auto;
     contain-intrinsic-size: 8rem;
-    transition: box-shadow 0.2s ease-out;
+    transition: box-shadow 0.2s ease-out, background-color 0.2s ease-out, border-color 0.2s ease-out;
 }
 
-.link-card>a {
+.link-card>a,
+.link-card>a:visited,
+.link-card>a:hover,
+.link-card>a:active,
+.link-card>a:focus {
     width: 100%;
     text-decoration: none;
     padding: 0.8rem 1.2rem;
@@ -21,13 +26,15 @@
 }
 
 p {
-    color: var(--content-secondary);
+    color: var(--content-primary);
 }
 
 .link-card:is(:hover, :focus-within) {
     background-position: 0;
-    background: var(--background);
+    background-color: var(--background-secondary);
+    border-color: var(--accent);
     box-shadow: var(--dialog);
+    transform: translateY(-2px);
 }
 
 p.distribution {
@@ -36,14 +43,16 @@ p.distribution {
     bottom: var(--spacing-06);
     display: flex;
     gap: var(--spacing-02);
+    border-radius: var(--spacing-02);
 }
 
 span.tag {
     background-color: var(--background-selected);
     padding: calc(0.12rem - 1px) calc(0.24rem - 1px);
-    border-radius: var(--spacing-00);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--spacing-01);
     display: inline-block;
-    color: var(--content-secondary);
+    color: var(--content-primary);
     margin-top: var(--spacing-08);
     font-family: var(--monospace);
     font-size: var(--desktop-caption);
@@ -54,12 +63,18 @@ span.tag {
 span.tag-new {
     background-color: var(--background-selected);
     padding: calc(0.12rem - 1px) calc(0.24rem - 1px);
-    border-radius: var(--spacing-00);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--spacing-01);
     display: inline-block;
     margin-top: var(--spacing-08);
     font-size: var(--desktop-caption);
     line-height: var(--lh-desktop-caption);
     font-family: var(--monospace);
+}
+
+html[data-new-ui-theme="dark--cold"] span.tag,
+html[data-new-ui-theme="dark--cold"] span.tag-new {
+    color: var(--background-high-contrast);
 }
 
 strong {
