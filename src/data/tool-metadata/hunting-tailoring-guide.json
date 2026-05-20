@@ -2,11 +2,13 @@
   "title": "Walkscape \"Collector's\" Edition - Hunting & Tailoring Update - Google Docs",
   "description": "Hunting & Tailoring Update TL;DR; Two whole new skills, and along with it a handful of new achievements/collectibles as well as a ton of new items to hunt down! A few things have been shuffled around, especially in GDTE to prioritize early crafting of the highly versatile Tailoring equipment.  Th...",
   "category": "wiki",
-  "url": "https://docs.google.com/document/d/1vKw5cjuR7MQ3rp1lx-YEbpgTAHyZxb62gwhTo5BVHjU/edit?tab=t.0&ref=walkscape-index.github.io",
+  "url": "https://docs.google.com/document/d/1vKw5cjuR7MQ3rp1lx-YEbpgTAHyZxb62gwhTo5BVHjU/edit?tab=t.0",
   "tags": [
     "Guide",
     "Crafting"
   ],
   "date-added": "2026-05-18",
-  "slug": "hunting-tailoring-guide"
+  "slug": "hunting-tailoring-guide",
+  "github_url": "https://github.com/JConquistador/WalkscapeCollectorsEdition",
+  "open_source": true
 }

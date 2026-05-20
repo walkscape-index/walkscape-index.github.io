@@ -6,7 +6,7 @@
       "Guide",
       "Reference"
     ],
-    "url": "https://www.notion.so/2e3c4ff4c1c081c1b8a0e8aa1dc050e7?v=2e3c4ff4c1c0819ea7f3000c628b62ea&ref=walkscape-index.github.io",
+    "url": "https://www.notion.so/2e3c4ff4c1c081c1b8a0e8aa1dc050e7?v=2e3c4ff4c1c0819ea7f3000c628b62ea",
     "date-added": "2026-05-18",
     "slug": "coha-cofa-sequence"
   },
@@ -17,8 +17,10 @@
       "Guide",
       "Crafting"
     ],
-    "url": "https://docs.google.com/document/d/1vKw5cjuR7MQ3rp1lx-YEbpgTAHyZxb62gwhTo5BVHjU/edit?tab=t.0&ref=walkscape-index.github.io",
+    "url": "https://docs.google.com/document/d/1vKw5cjuR7MQ3rp1lx-YEbpgTAHyZxb62gwhTo5BVHjU/edit?tab=t.0",
     "date-added": "2026-05-18",
-    "slug": "hunting-tailoring-guide"
+    "slug": "hunting-tailoring-guide",
+    "open_source": true,
+    "github_url": "https://github.com/JConquistador/WalkscapeCollectorsEdition"
   }
 ]

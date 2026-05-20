@@ -9,5 +9,15 @@
     "Mobile"
   ],
   "date-added": "2026-05-18",
-  "slug": "gear-optimizer"
+  "slug": "gear-optimizer",
+  "github_url": "https://github.com/flames5123/walkscape-gearset-optimizer",
+  "open_source": true,
+  "links": [
+    {
+      "title": "Discord - @Flames5123",
+      "url": "https://discord.com/users/184237762155642880",
+      "icon": "discord"
+    }
+  ],
+  "author": "Flames5123"
 }

@@ -8,6 +8,7 @@
     ],
     "url": "https://gear.walkscape.app/",
     "date-added": "2026-05-18",
+    "author": "fala",
     "slug": "ws-gear-tool"
   },
   {
@@ -33,6 +34,16 @@
     ],
     "url": "https://walkscape.flamesandvoltiply.com/",
     "date-added": "2026-05-18",
-    "slug": "gear-optimizer"
+    "slug": "gear-optimizer",
+    "open_source": true,
+    "author": "Flames5123",
+    "github_url": "https://github.com/flames5123/walkscape-gearset-optimizer",
+    "links": [
+      {
+        "title": "Discord - @Flames5123",
+        "url": "https://discord.com/users/184237762155642880",
+        "icon": "discord"
+      }
+    ]
   }
 ]

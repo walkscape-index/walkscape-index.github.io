@@ -11,7 +11,13 @@
   "interactive-map": [
     "tools"
   ],
+  "kyoro-networth-calculator": [
+    "tools"
+  ],
   "database-hub": [
+    "tools"
+  ],
+  "wiki-offline": [
     "tools"
   ],
   "player-stats": [
@@ -26,13 +32,13 @@
   "gear-optimizer": [
     "gears"
   ],
+  "walkscape-beginner-guide": [
+    "guides"
+  ],
   "arky-activity-sheet": [
     "sheets"
   ],
-  "bank-value-calculator": [
-    "sheets"
-  ],
-  "drop-checklist": [
+  "bonez565-bank-value-calculator": [
     "sheets"
   ],
   "ecto-farming-sheet": [
@@ -42,6 +48,9 @@
     "sheets"
   ],
   "skill-locations-sheet": [
+    "sheets"
+  ],
+  "unique-item-drop-checklist": [
     "sheets"
   ],
   "coha-cofa-sequence": [

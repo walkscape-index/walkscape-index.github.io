@@ -10,6 +10,17 @@
     "slug": "interactive-map"
   },
   {
+    "title": "Kyoro's  Networth Calculator",
+    "body": "An UI version of Bonez565's Bank Value Calculator",
+    "tags": [
+      "Calculator"
+    ],
+    "url": "https://networth.walkscape.com.br/",
+    "date-added": "2026-05-20",
+    "author": "Kyoro",
+    "slug": "kyoro-networth-calculator"
+  },
+  {
     "title": "WalkScape Database | WSDB",
     "body": "Community database for items and crafting.",
     "tags": [
@@ -20,6 +31,19 @@
     "slug": "database-hub"
   },
   {
+    "title": "WalkScape Wiki Offline (Kiwix)",
+    "body": "Offline access to the WalkScape wiki",
+    "tags": [
+      "Wiki",
+      "Offline",
+      "Mobile"
+    ],
+    "url": "https://github.com/Kyoro93/Walkscape-Wiki-Scrapper",
+    "date-added": "2026-05-20",
+    "slug": "wiki-offline",
+    "author": "Kyoro"
+  },
+  {
     "title": "WalkStats",
     "body": "WalkScape Player Statistics, Leaderboards & Skill Tracking",
     "tags": [
@@ -27,6 +51,7 @@
     ],
     "url": "https://walkstats.app/",
     "date-added": "2026-05-18",
+    "author": "Spillere",
     "slug": "player-stats"
   }
 ]

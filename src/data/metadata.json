@@ -27,25 +27,36 @@
     "description": "WalkScape Database - Game database and tools for WalkScape",
     "ogImage": "https://walkscapedb.com/logo.jpg"
   },
+  "wiki-offline": {
+    "slug": "wiki-offline",
+    "title": "Kiwix - Home",
+    "description": "Kiwix is a nonprofit organisation making free knowledge accessible where the Internet is not. We create and support open technologies that bring the world’s knowledge Offline via our own open-source software dedicated to providing offline access to free educational content, and more…",
+    "ogImage": "https://kiwix.org/wp-content/uploads/2026/02/open-graph_org-image-scaled.jpg"
+  },
   "player-stats": {
     "slug": "player-stats",
     "title": "WalkStats - WalkScape Player Statistics, Leaderboards & Skill Tracking",
     "description": "Community-driven WalkScape statistics. Track player leaderboards, compare skill progress, and monitor step counts in real time.",
     "ogImage": "http://walkstats.app/imgs/og-default.jpg"
   },
+  "ws-gear-tool": {
+    "slug": "ws-gear-tool",
+    "title": "Walkscape Gear Tool"
+  },
   "gear-optimizer": {
     "slug": "gear-optimizer",
     "title": "Walkscape Optimizer"
+  },
+  "walkscape-beginner-guide": {
+    "slug": "walkscape-beginner-guide",
+    "title": "Walkscape Beginner Guide - Google Docs",
+    "description": "Note: This guide is incomplete, and some information will be outdated. Foreword This guide is not meant to be min-maxing incarnate. There will be passages where bringing certain amounts of items (i.e cooked shrimps) will give you a small advantage, but I have omitted mentioning it for simplicity'...",
+    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyL7-QBENZIxVwSJxp9bRihmTHxJ9zoqnc1rqarXUu1iU-YV2Eck__BvDwMwDJ7wom5FjptSiaVwGqo_mJH_7GBy2cIpMLgMU5nyhlxXWFF6JoJeDvQ=w1200-h630-p"
   },
   "arky-activity-sheet": {
     "slug": "arky-activity-sheet",
     "title": "Arky's Activity Sheet (v.0.93) (+645) - Google Sheets",
     "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyIyRl1PNLOW5vj3Toohv6E-N9Pyfh3zNf-Qz-o_UwknvkiFL8TxIg2My3dTliGisUM8lrbMEVSQxi41yuYQl5gl3PcRA1l-y9QS-tjQlhVit6BmKTLM=w1200-h630-p"
-  },
-  "bank-value-calculator": {
-    "slug": "bank-value-calculator",
-    "title": "Bonez565's Bank Value Calculator V0.5 - Google Sheets",
-    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyLLOqp2uUH-xpkXL0cSzKsh_9bLgIF_8jDbfbPkn2u4hPmXtafgsfswhnzBuPCW4piC9_CGiqvk_Yi8UFZuclt3k_pKCrqubzHmdYfOFFfR5NdC4Z1G=w1200-h630-p"
   },
   "ecto-farming-sheet": {
     "slug": "ecto-farming-sheet",
@@ -74,35 +85,18 @@
     "description": "Hunting & Tailoring Update TL;DR; Two whole new skills, and along with it a handful of new achievements/collectibles as well as a ton of new items to hunt down! A few things have been shuffled around, especially in GDTE to prioritize early crafting of the highly versatile Tailoring equipment.  Th...",
     "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyKpNLafwzArxwC5KlCoc40ehWkkXufpMShx-olnyF5nptYBvM5x1VgolxpLdoleQQCU0KZlMXk-2kPFEYfnwWKjJXF5JeSNcuCA2Q4Ym3AnD07bIKwl=w1200-h630-p"
   },
-  "discord-server": {
-    "slug": "discord-server",
-    "title": "WalkScape",
-    "description": "Welcome to WalkScape! It's a mobile game, inspired by RuneScape and other MMORPGs, where you walk to make progress! | 16904 members",
-    "ogImage": "https://cdn.discordapp.com/splashes/1037510064333926402/48da070f20cf6da9313b3ad844390d8d.jpg?size=512"
+  "kyoro-networth-calculator": {
+    "slug": "kyoro-networth-calculator",
+    "title": "Walkscape Player Networth Calculator"
   },
-  "email-newsletter": {
-    "slug": "email-newsletter",
-    "title": "WalkScape | Substack",
-    "description": "WalkScape is a game inspired by good ol' RuneScape. But this game has one major trick up its sleeve: you don't play actively, but instead gain progress by walking. Click to read WalkScape, a Substack publication with thousands of subscribers.",
-    "ogImage": "https://substackcdn.com/image/fetch/$s_!oSal!,f_auto,q_auto:best,fl_progressive:steep/https%3A%2F%2Fwalkscape.substack.com%2Ftwitter%2Fsubscribe-card.jpg%3Fv%3D-1023023241%26version%3D9"
-  },
-  "reddit-community": {
-    "slug": "reddit-community",
-    "title": "Reddit - Please wait for verification"
-  },
-  "youtube-channel": {
-    "slug": "youtube-channel",
-    "title": "WalkScape - YouTube",
-    "description": "WalkScape is a game inspired by good ol' RuneScape. But this game has one major trick up its sleeve: you don't play actively, but instead gain progress by wa...",
-    "ogImage": "https://yt3.googleusercontent.com/Aoev7J0yuMMY8KE7_MFRSSRe1B2Ha2xZUIfFspXmQxMfrB0zTSGXrC1KBIqmmXAWokJQECxkjVI=s900-c-k-c0x00ffffff-no-rj"
-  },
-  "drop-checklist": {
-    "slug": "drop-checklist",
+  "unique-item-drop-checklist": {
+    "slug": "unique-item-drop-checklist",
     "title": "Unique Item Drop Check List - Blank - Google Sheets",
-    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyJr7aq03_VnsNS2im7uVNb_ugwgS9VfW8sEECsBbxYzZIijR_gCLWSGwQfey9pkks3iRapWzEFqc8nvxRsleV_XHXmYgCA6gGJCJAFDTItv6aBoJhSG=w1200-h630-p"
+    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyKiO8l4J_m42cFD6DgHHJ-1m_tp1s1N7xzwOTjymWFzvSdAoy8oz27IfW0L4njwcydNiR6wh4vkqT8NtcpCDAMaMb-YTykc2IAKnb95-cLIjWQbc6XU=w1200-h630-p"
   },
-  "ws-gear-tool": {
-    "slug": "ws-gear-tool",
-    "title": "Walkscape Gear Tool"
+  "bonez565-bank-value-calculator": {
+    "slug": "bonez565-bank-value-calculator",
+    "title": "Bonez565's Bank Value Calculator V0.5 - Google Sheets",
+    "ogImage": "https://lh7-us.googleusercontent.com/docs/AHkbwyIcqpg2sl1lHWDJG5-iwnTI54WaxLT_dtdYH3nl867t4327bc8FhNVd-8HZG_yINsGs8gUnwJ_5reDPl45NXZQSCPsDYN-4uzsN-mN9p-4IFkg6EvBI=w1200-h630-p"
   }
 }
