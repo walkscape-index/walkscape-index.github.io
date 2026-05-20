@@ -17,9 +17,10 @@ interface ToolWithCategory extends Tool {
 const fuseOptions = {
     keys: [
         { name: 'title', weight: 0.4 },
-        { name: 'body', weight: 0.3 },
-        { name: 'category', weight: 0.2 },
-        { name: 'tag', weight: 0.1 }
+        { name: 'body', weight: 0.25 },
+        { name: 'tags', weight: 0.2 },
+        { name: 'tag', weight: 0.1 },
+        { name: 'category', weight: 0.05 },
     ],
     threshold: 0.3,
     includeScore: true,
@@ -192,16 +193,18 @@ export default function CardsContainer({
     return (
         <section>
             <ul role="list" className="link-card-grid">
-                {displayedCards.map(({ url, title, body, tag, 'date-added': dateAdded, slug, category }, i) => (
+                {displayedCards.map(({ url, title, body, tag, tags, 'date-added': dateAdded, slug, category }, i) => (
                     <Card
                         key={`${title}-${i}`}
                         href={url}
                         title={title}
                         body={body}
                         tag={tag}
+                        tags={(tags as string[] | undefined)}
                         dateAdded={dateAdded}
                         slug={slug}
                         category={category}
+                        loading={i < 12 ? 'eager' : 'lazy'}
                     />
                 ))}
             </ul>

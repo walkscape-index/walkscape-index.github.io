@@ -62,6 +62,7 @@ export default function FavoritesView() {
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value as FavoritesSortKey)}
                         className="sort-select"
+                        aria-label="Sort saved tools by"
                     >
                         <option value="nameAsc">Name (A-Z)</option>
                         <option value="nameDesc">Name (Z-A)</option>
@@ -82,6 +83,7 @@ export default function FavoritesView() {
                         dateAdded={dateAdded}
                         slug={slug}
                         category={category}
+                        loading={i < 12 ? 'eager' : 'lazy'}
                     />
                 ))}
             </ul>

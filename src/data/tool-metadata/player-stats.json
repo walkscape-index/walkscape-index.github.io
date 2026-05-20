@@ -2,8 +2,10 @@
   "title": "WalkStats - WalkScape Player Statistics, Leaderboards & Skill Tracking",
   "description": "Community-driven WalkScape statistics. Track player leaderboards, compare skill progress, and monitor step counts in real time.",
   "category": "tools",
-  "url": "https://walkstats.app/?ref=walkscape-index.github.io",
-  "tag": "Community / Dashboard",
+  "url": "https://walkstats.app/",
+  "tags": [
+    "Dashboard"
+  ],
   "date-added": "2026-05-18",
   "slug": "player-stats"
 }

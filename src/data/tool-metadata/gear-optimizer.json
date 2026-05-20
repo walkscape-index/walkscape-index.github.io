@@ -2,8 +2,12 @@
   "title": "Walkscape Optimizer",
   "description": "Mobile friendly gear set optimizer for activities, recipes, and traveling.",
   "category": "gears",
-  "url": "https://walkscape.flamesandvoltiply.com/?ref=walkscape-index.github.io",
-  "tag": "Community / Tool",
+  "url": "https://walkscape.flamesandvoltiply.com/",
+  "tags": [
+    "Tool",
+    "Gear",
+    "Mobile"
+  ],
   "date-added": "2026-05-18",
   "slug": "gear-optimizer"
 }

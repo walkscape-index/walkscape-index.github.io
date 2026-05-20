@@ -2,8 +2,12 @@
   "title": "Walkscape Walkthrough",
   "description": "Official wiki for item stats and game data.",
   "category": "official",
-  "url": "https://wiki.walkscape.app/?ref=walkscape-index.github.io",
-  "tag": "Official / Database",
+  "url": "https://wiki.walkscape.app/",
+  "tags": [
+    "Official",
+    "Database",
+    "Wiki"
+  ],
   "date-added": "2026-05-18",
   "slug": "official-wiki"
 }

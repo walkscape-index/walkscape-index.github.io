@@ -2,8 +2,12 @@
   "title": "Arky's Activity Sheet (v.0.93) (+645) - Google Sheets",
   "description": "Spreadsheet tracking activity actions and mechanics.",
   "category": "sheets",
-  "url": "https://docs.google.com/spreadsheets/d/12-ea9tfZq0VeQaMMy-Zh1i3BF1h3BpJIg1jgWCS3ftk?ref=walkscape-index.github.io",
-  "tag": "Community / Sheet",
+  "url": "https://docs.google.com/spreadsheets/d/12-ea9tfZq0VeQaMMy-Zh1i3BF1h3BpJIg1jgWCS3ftk",
+  "tags": [
+    "Sheet",
+    "Reference"
+  ],
   "date-added": "2026-05-18",
-  "slug": "arky-activity-sheet"
+  "slug": "arky-activity-sheet",
+  "author": "Arky"
 }

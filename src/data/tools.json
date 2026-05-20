@@ -7,24 +7,31 @@
         {
           "title": "Main Website",
           "body": "Main landing page for game news and updates.",
-          "tag": "Official / Web",
-          "url": "https://walkscape.app/?ref=walkscape-index.github.io",
+          "tags": ["Official", "Web"],
+          "url": "https://walkscape.app/",
           "date-added": "2026-05-18",
-          "slug": "main-website"
+          "slug": "main-website",
+          "links": [
+            { "title": "Twitter / X", "url": "https://twitter.com/walkscape", "icon": "twitter" },
+            { "title": "Substack Newsletter", "url": "https://walkscape.substack.com", "icon": "web" },
+            { "title": "r/WalkScape", "url": "https://www.reddit.com/r/WalkScape/", "icon": "reddit" },
+            { "title": "Discord", "url": "https://discord.gg/Kk6VecJFEk", "icon": "discord" },
+            { "title": "YouTube", "url": "https://www.youtube.com/channel/UCJ_Ihr0k2GAGEtFOnG7nDew", "icon": "youtube" }
+          ]
         },
         {
           "title": "Official Wiki",
           "body": "Official wiki for item stats and game data.",
-          "tag": "Official / Database",
-          "url": "https://wiki.walkscape.app/?ref=walkscape-index.github.io",
+          "tags": ["Official", "Database", "Wiki"],
+          "url": "https://wiki.walkscape.app/",
           "date-added": "2026-05-18",
           "slug": "official-wiki"
         },
         {
           "title": "Player Portal",
           "body": "Account dashboard for beta applications and keys.",
-          "tag": "Official / App",
-          "url": "https://portal.walkscape.app/?ref=walkscape-index.github.io",
+          "tags": ["Official", "App"],
+          "url": "https://portal.walkscape.app/",
           "date-added": "2026-05-18",
           "slug": "player-portal"
         }
@@ -37,24 +44,24 @@
         {
           "title": "Interactive Map",
           "body": "Interactive world map tracking game locations.",
-          "tag": "Community / Map",
-          "url": "https://map.walkscape.app/?ref=walkscape-index.github.io",
+          "tags": ["Map"],
+          "url": "https://map.walkscape.app/",
           "date-added": "2026-05-18",
           "slug": "interactive-map"
         },
         {
           "title": "WalkScape Database | WSDB",
           "body": "Community database for items and crafting.",
-          "tag": "Utility / Database",
-          "url": "https://walkscapedb.com/?ref=walkscape-index.github.io",
+          "tags": ["Database"],
+          "url": "https://walkscapedb.com/",
           "date-added": "2026-05-18",
           "slug": "database-hub"
         },
         {
           "title": "WalkStats",
           "body": "WalkScape Player Statistics, Leaderboards & Skill Tracking",
-          "tag": "Community / Dashboard",
-          "url": "https://walkstats.app/?ref=walkscape-index.github.io",
+          "tags": ["Dashboard"],
+          "url": "https://walkstats.app/",
           "date-added": "2026-05-18",
           "slug": "player-stats"
         }
@@ -67,24 +74,26 @@
         {
           "title": "Walkscape Gear Tool",
           "body": "Optimize your activity loadouts and track your progress",
-          "tag": "Community / Tool",
-          "url": "https://gear.walkscape.app/?ref=walkscape-index.github.io",
+          "tags": ["Tool", "Gear"],
+          "url": "https://gear.walkscape.app/",
           "date-added": "2026-05-18",
           "slug": "ws-gear-tool"
         },
         {
-          "title": "WS Gear Optimizer",
+          "title": "WS Gear Optimizer (Auto)",
           "body": "Calculates best gearset using an activity and a target optimization",
-          "tag": "Community / Tool",
-          "url": "https://ws-auto-gear.streamlit.app/?ref=walkscape-index.github.io",
+          "tags": ["Tool", "Gear"],
+          "url": "https://ws-auto-gear.streamlit.app/",
           "date-added": "2026-05-18",
-          "slug": "auto-gear-app"
+          "slug": "auto-gear-app",
+          "open_source": true,
+          "github_url": "https://github.com/KamiTzayig/walkscape_auto_gearset"
         },
         {
           "title": "WS Optimizer",
           "body": "Mobile friendly gear set optimizer for activities, recipes, and traveling.",
-          "tag": "Community / Tool",
-          "url": "https://walkscape.flamesandvoltiply.com/?ref=walkscape-index.github.io",
+          "tags": ["Tool", "Gear", "Mobile"],
+          "url": "https://walkscape.flamesandvoltiply.com/",
           "date-added": "2026-05-18",
           "slug": "gear-optimizer"
         }
@@ -97,15 +106,16 @@
         {
           "title": "Arky Activity Sheet",
           "body": "Spreadsheet tracking activity actions and mechanics.",
-          "tag": "Community / Sheet",
-          "url": "https://docs.google.com/spreadsheets/d/12-ea9tfZq0VeQaMMy-Zh1i3BF1h3BpJIg1jgWCS3ftk?ref=walkscape-index.github.io",
+          "tags": ["Sheet", "Reference"],
+          "url": "https://docs.google.com/spreadsheets/d/12-ea9tfZq0VeQaMMy-Zh1i3BF1h3BpJIg1jgWCS3ftk",
           "date-added": "2026-05-18",
-          "slug": "arky-activity-sheet"
+          "slug": "arky-activity-sheet",
+          "author": "Arky"
         },
         {
           "title": "Bank Value Calculator",
           "body": "Paste your data export to value your bank items.",
-          "tag": "Community / Sheet",
+          "tags": ["Sheet", "Calculator"],
           "url": "https://docs.google.com/spreadsheets/d/1V1cd25onz4nMAMbTwZKNj6hra8iRZt9otk3g3xfDiqQ/edit?usp=sharing&ref=walkscape-index.github.io",
           "date-added": "2026-05-18",
           "slug": "bank-value-calculator"
@@ -113,7 +123,7 @@
         {
           "title": "Drop Checklist",
           "body": "Spreadsheet checklist for collectibles and uniques.",
-          "tag": "Community / Sheet",
+          "tags": ["Sheet", "Checklist"],
           "url": "https://docs.google.com/spreadsheets/d/1UFPwIjPYFOol48GNsKlTRE2Oo4fLZ6PZwDBeQaPB610/edit?usp=sharing&ref=walkscape-index.github.io",
           "date-added": "2026-05-18",
           "slug": "drop-checklist"
@@ -121,7 +131,7 @@
         {
           "title": "Ecto Farming Sheet",
           "body": "Gear set comparisons for ecto gathering grinds.",
-          "tag": "Community / Sheet",
+          "tags": ["Sheet", "Farming"],
           "url": "https://docs.google.com/spreadsheets/d/1tf_Da1iT0cjbVr0AVJsuLMGWNNk-RQp7Cm9cgAFvfGs/edit?usp=sharing&ref=walkscape-index.github.io",
           "date-added": "2026-05-18",
           "slug": "ecto-farming-sheet"
@@ -129,15 +139,16 @@
         {
           "title": "Fala Progress Sheet",
           "body": "Spreadsheet companion to track player skilling.",
-          "tag": "Community / Sheet",
+          "tags": ["Sheet", "Progress"],
           "url": "https://docs.google.com/spreadsheets/d/1PNbqzhgTrf_WvOcSyVtT9St8VJigp6Td1D5ssOh68KI/edit?usp=sharing&ref=walkscape-index.github.io",
           "date-added": "2026-05-18",
-          "slug": "fala-progress-sheet"
+          "slug": "fala-progress-sheet",
+          "author": "Fala"
         },
         {
           "title": "Skill Locations Sheet",
           "body": "List of training spots and step efficiency data.",
-          "tag": "Community / Sheet",
+          "tags": ["Sheet", "Reference"],
           "url": "https://docs.google.com/spreadsheets/d/1wkG2LWNi4VvbMvyf6gCnXa8JUK12xtpml-jidh0ZjQY/edit?usp=sharing&ref=walkscape-index.github.io",
           "date-added": "2026-05-18",
           "slug": "skill-locations-sheet"
@@ -151,7 +162,7 @@
         {
           "title": "CoHA CoFA Sequence",
           "body": "Notion database tracking travel sequence steps.",
-          "tag": "Community / Guide",
+          "tags": ["Guide", "Reference"],
           "url": "https://www.notion.so/2e3c4ff4c1c081c1b8a0e8aa1dc050e7?v=2e3c4ff4c1c0819ea7f3000c628b62ea&ref=walkscape-index.github.io",
           "date-added": "2026-05-18",
           "slug": "coha-cofa-sequence"
@@ -159,58 +170,13 @@
         {
           "title": "Hunting Tailoring Guide",
           "body": "Google doc detailing collector items and updates.",
-          "tag": "Community / Guide",
+          "tags": ["Guide", "Crafting"],
           "url": "https://docs.google.com/document/d/1vKw5cjuR7MQ3rp1lx-YEbpgTAHyZxb62gwhTo5BVHjU/edit?tab=t.0&ref=walkscape-index.github.io",
           "date-added": "2026-05-18",
           "slug": "hunting-tailoring-guide"
         }
       ]
-    },
-    {
-      "title": "Social",
-      "category": "social",
-      "content": [
-        {
-          "title": "Discord Server",
-          "body": "Chat server for community and dev talk.",
-          "tag": "Community / Chat",
-          "url": "https://discord.gg/Kk6VecJFEk?ref=walkscape-index.github.io",
-          "date-added": "2026-05-18",
-          "slug": "discord-server"
-        },
-        {
-          "title": "Email Newsletter",
-          "body": "Substack newsletter for game design deep dives.",
-          "tag": "Official / Newsletter",
-          "url": "https://walkscape.substack.com/?ref=walkscape-index.github.io",
-          "date-added": "2026-05-18",
-          "slug": "email-newsletter"
-        },
-        {
-          "title": "Reddit Community",
-          "body": "Official subreddit for player discussions.",
-          "tag": "Community / Forum",
-          "url": "https://www.reddit.com/r/WalkScape/?ref=walkscape-index.github.io",
-          "date-added": "2026-05-18",
-          "slug": "reddit-community"
-        },
-        {
-          "title": "Twitter / X",
-          "body": "Social feed for quick announcements and news.",
-          "tag": "Community / Feed",
-          "url": "https://twitter.com/walkscape?ref=walkscape-index.github.io",
-          "date-added": "2026-05-18",
-          "slug": "twitter-feed"
-        },
-        {
-          "title": "YouTube Channel",
-          "body": "Official channel for dev logs and gameplay.",
-          "tag": "Official / Videos",
-          "url": "https://www.youtube.com/channel/UCJ_Ihr0k2GAGEtFOnG7nDew?ref=walkscape-index.github.io",
-          "date-added": "2026-05-18",
-          "slug": "youtube-channel"
-        }
-      ]
     }
+    
   ]
 }

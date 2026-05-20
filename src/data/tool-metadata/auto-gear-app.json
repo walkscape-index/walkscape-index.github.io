@@ -1,9 +1,14 @@
 {
-  "title": "WS Gear Optimizer",
+  "title": "WS Gear Optimizer (Auto)",
   "description": "Calculates best gearset using an activity and a target optimization",
   "category": "gears",
-  "url": "https://ws-auto-gear.streamlit.app/?ref=walkscape-index.github.io",
-  "tag": "Community / Tool",
+  "url": "https://ws-auto-gear.streamlit.app/",
+  "tags": [
+    "Tool",
+    "Gear"
+  ],
   "date-added": "2026-05-18",
-  "slug": "auto-gear-app"
+  "slug": "auto-gear-app",
+  "github_url": "https://github.com/KamiTzayig/walkscape_auto_gearset",
+  "open_source": true
 }

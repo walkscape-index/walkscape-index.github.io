@@ -2,8 +2,38 @@
   "title": "WalkScape: The Walking Role-Playing Fitness Game",
   "description": "Walkscape: Grind by Walking!",
   "category": "official",
-  "url": "https://walkscape.app/?ref=walkscape-index.github.io",
-  "tag": "Official / Web",
+  "url": "https://walkscape.app/",
+  "tags": [
+    "Official",
+    "Web"
+  ],
   "date-added": "2026-05-18",
-  "slug": "main-website"
+  "slug": "main-website",
+  "links": [
+    {
+      "title": "Twitter / X",
+      "url": "https://twitter.com/walkscape",
+      "icon": "twitter"
+    },
+    {
+      "title": "Substack Newsletter",
+      "url": "https://walkscape.substack.com",
+      "icon": "web"
+    },
+    {
+      "title": "r/WalkScape",
+      "url": "https://www.reddit.com/r/WalkScape/",
+      "icon": "reddit"
+    },
+    {
+      "title": "Discord",
+      "url": "https://discord.gg/Kk6VecJFEk",
+      "icon": "discord"
+    },
+    {
+      "title": "YouTube",
+      "url": "https://www.youtube.com/channel/UCJ_Ihr0k2GAGEtFOnG7nDew",
+      "icon": "youtube"
+    }
+  ]
 }

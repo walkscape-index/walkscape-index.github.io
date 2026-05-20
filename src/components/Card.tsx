@@ -1,4 +1,4 @@
-import './Card.css';
+
 import BookmarkButton from './BookmarkButton';
 import { isRecentlyAdded } from '../utils/dates';
 
@@ -7,9 +7,15 @@ interface CardProps {
     title: string;
     body: string;
     tag?: string | undefined;
+    tags?: string[] | undefined;
     dateAdded?: string | undefined;
     slug?: string | undefined;
     category?: string | undefined;
+    loading?: 'eager' | 'lazy';
+}
+
+function extractDomain(url: string): string {
+    try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return ''; }
 }
 
 export default function Card({
@@ -17,11 +23,36 @@ export default function Card({
     title,
     body,
     tag,
+    tags,
     dateAdded,
     slug,
+    loading = 'lazy',
 }: CardProps) {
     const linkUrl = slug ? `/tools/${slug}` : href;
     const isNew = isRecentlyAdded(dateAdded, 30);
+
+    const displayTags: string[] = tags && tags.length > 0
+        ? tags
+        : tag ? tag.split(/\s*[/•]\s*/).map(t => t.trim()).filter(Boolean) : [];
+
+    const domain = extractDomain(href);
+    // Local favicon first; Google S2 as fallback
+    const localFavicon = slug ? `/favicons/${slug}.png` : '';
+    const googleFavicon = domain
+        ? `https://www.google.com/s2/favicons?sz=32&domain=${domain}`
+        : '';
+
+    function handleFaviconError(e: React.SyntheticEvent<HTMLImageElement>) {
+        const img = e.currentTarget;
+        if (googleFavicon && img.src !== googleFavicon) {
+            img.src = googleFavicon;
+        } else {
+            const wrap = img.closest('.card-favicon-wrap') as HTMLElement | null;
+            if (wrap) wrap.style.display = 'none';
+        }
+    }
+
+    const hasFavicon = !!(localFavicon || googleFavicon);
 
     return (
         <li className="link-card">
@@ -32,21 +63,37 @@ export default function Card({
                     window.dispatchEvent(new CustomEvent('tools:save-state'));
                 }}
             >
-                <strong className="nu-c-fs-normal nu-u-mt-1 nu-u-mb-1">{title}</strong>
-                <p className="nu-c-helper-text nu-u-mt-1 nu-u-mb-1">{body}</p>
-                <p className="distribution">
-                    {isNew && (
-                        <span
-                            className="tag nu-u-me-2 tag-new"
-                            title="Recently added"
-                            aria-label="New item"
-                        >
-                            🆕
+                <div className="card-header">
+                    {hasFavicon && (
+                        <span className="card-favicon-wrap" aria-hidden="true">
+                            <img
+                                className="card-favicon"
+                                src={localFavicon || googleFavicon}
+                                alt=""
+                                width={20}
+                                height={20}
+                                loading={loading}
+                                onError={handleFaviconError}
+                            />
                         </span>
                     )}
-                    <span className="tag">{tag}</span>
-                </p>
+                    <strong className="card-title">{title}</strong>
+                </div>
+                <p className="card-body-text">{body}</p>
+                {(isNew || displayTags.length > 0) && (
+                    <div className="card-footer">
+                        {isNew && (
+                            <span className="tag tag-new" title="Recently added" aria-label="New">
+                                New
+                            </span>
+                        )}
+                        {displayTags.map((t) => (
+                            <span key={t} className="tag">{t}</span>
+                        ))}
+                    </div>
+                )}
             </a>
+
             {slug && (
                 <div className="card-bookmark">
                     <BookmarkButton slug={slug} title={title} variant="small" />

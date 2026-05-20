@@ -50,15 +50,23 @@ try {
             const meta = metadataMap[tool.slug] || {};
 
             // Create minimal metadata object
-            const toolMetadata = {
+            const toolMetadata: Record<string, any> = {
                 title: meta.title || tool.title,
                 description: meta.description || tool.body,
                 category: category.category,
                 url: tool.url,
-                tag: tool.tag,
+                tags: (tool as any).tags || (tool.tag ? tool.tag.split(/\s*[/•]\s*/).map((t: string) => t.trim()) : []),
                 'date-added': tool['date-added'],
-                slug: tool.slug
+                slug: tool.slug,
             };
+
+            if ((tool as any).github_url) toolMetadata.github_url = (tool as any).github_url;
+            if ((tool as any).open_source) toolMetadata.open_source = (tool as any).open_source;
+            if ((tool as any).links) toolMetadata.links = (tool as any).links;
+            if ((tool as any).author) toolMetadata.author = (tool as any).author;
+            if (meta.githubUrl) toolMetadata.github_url = meta.githubUrl;
+            if (meta.twitterHandle) toolMetadata.twitter_handle = meta.twitterHandle;
+
 
             // Write to individual file
             const outputPath = path.join(outputDir, `${tool.slug}.json`);

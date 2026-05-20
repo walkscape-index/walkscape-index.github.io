@@ -2,24 +2,61 @@
   {
     "title": "Main Website",
     "body": "Main landing page for game news and updates.",
-    "tag": "Official / Web",
-    "url": "https://walkscape.app/?ref=walkscape-index.github.io",
+    "tags": [
+      "Official",
+      "Web"
+    ],
+    "url": "https://walkscape.app/",
     "date-added": "2026-05-18",
-    "slug": "main-website"
+    "slug": "main-website",
+    "links": [
+      {
+        "title": "Twitter / X",
+        "url": "https://twitter.com/walkscape",
+        "icon": "twitter"
+      },
+      {
+        "title": "Substack Newsletter",
+        "url": "https://walkscape.substack.com",
+        "icon": "web"
+      },
+      {
+        "title": "r/WalkScape",
+        "url": "https://www.reddit.com/r/WalkScape/",
+        "icon": "reddit"
+      },
+      {
+        "title": "Discord",
+        "url": "https://discord.gg/Kk6VecJFEk",
+        "icon": "discord"
+      },
+      {
+        "title": "YouTube",
+        "url": "https://www.youtube.com/channel/UCJ_Ihr0k2GAGEtFOnG7nDew",
+        "icon": "youtube"
+      }
+    ]
   },
   {
     "title": "Official Wiki",
     "body": "Official wiki for item stats and game data.",
-    "tag": "Official / Database",
-    "url": "https://wiki.walkscape.app/?ref=walkscape-index.github.io",
+    "tags": [
+      "Official",
+      "Database",
+      "Wiki"
+    ],
+    "url": "https://wiki.walkscape.app/",
     "date-added": "2026-05-18",
     "slug": "official-wiki"
   },
   {
     "title": "Player Portal",
     "body": "Account dashboard for beta applications and keys.",
-    "tag": "Official / App",
-    "url": "https://portal.walkscape.app/?ref=walkscape-index.github.io",
+    "tags": [
+      "Official",
+      "App"
+    ],
+    "url": "https://portal.walkscape.app/",
     "date-added": "2026-05-18",
     "slug": "player-portal"
   }

@@ -2,8 +2,10 @@
   "title": "WalkScape Database | WSDB",
   "description": "WalkScape Database - Game database and tools for WalkScape",
   "category": "tools",
-  "url": "https://walkscapedb.com/?ref=walkscape-index.github.io",
-  "tag": "Utility / Database",
+  "url": "https://walkscapedb.com/",
+  "tags": [
+    "Database"
+  ],
   "date-added": "2026-05-18",
   "slug": "database-hub"
 }

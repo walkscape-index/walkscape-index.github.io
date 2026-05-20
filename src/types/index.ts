@@ -1,10 +1,22 @@
+export interface ToolLink {
+    title: string;
+    url: string;
+    icon?: string; 
+}
+
 export interface Tool {
     title: string;
     body: string;
+    /** @deprecated use tags[] instead */
     tag?: string;
+    tags?: string[];
     url: string;
     "date-added": string;
     slug?: string;
+    github_url?: string;
+    open_source?: boolean;
+    links?: ToolLink[];
+    author?: string;
 }
 
 export interface Category {

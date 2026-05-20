@@ -3,7 +3,10 @@
   "description": "List of training spots and step efficiency data.",
   "category": "sheets",
   "url": "https://docs.google.com/spreadsheets/d/1wkG2LWNi4VvbMvyf6gCnXa8JUK12xtpml-jidh0ZjQY/edit?usp=sharing&ref=walkscape-index.github.io",
-  "tag": "Community / Sheet",
+  "tags": [
+    "Sheet",
+    "Reference"
+  ],
   "date-added": "2026-05-18",
   "slug": "skill-locations-sheet"
 }

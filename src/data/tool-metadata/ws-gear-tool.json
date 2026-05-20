@@ -2,8 +2,11 @@
   "title": "Walkscape Gear Tool",
   "description": "Optimize your activity loadouts and track your progress",
   "category": "gears",
-  "url": "https://gear.walkscape.app/?ref=walkscape-index.github.io",
-  "tag": "Community / Tool",
+  "url": "https://gear.walkscape.app/",
+  "tags": [
+    "Tool",
+    "Gear"
+  ],
   "date-added": "2026-05-18",
   "slug": "ws-gear-tool"
 }

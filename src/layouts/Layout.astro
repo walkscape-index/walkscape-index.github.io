@@ -100,7 +100,7 @@ const {
         }
         {twitterImage && <meta name="twitter:image" content={twitterImage} />}
 
-       <script defer src="https://umami-fra9kd688-do-i-need-one-s-projects.vercel.app/mango_banana.js" data-website-id="7365ec0f-69da-472f-8b7c-a1fe31918735"></script>
+       <script defer src="https://umami-fra9kd688-do-i-need-one-s-projects.vercel.app/mango_banana" data-website-id="7365ec0f-69da-472f-8b7c-a1fe31918735"></script>
         <ClientRouter />
         <WebSiteSchema />
     </head>
@@ -163,6 +163,247 @@ const {
         </div>
     </body>
 </html>
+<style is:global>
+    .link-card {
+        list-style: none;
+        display: flex;
+        background-color: var(--background-secondary);
+        border-radius: var(--spacing-02);
+        border: 1px solid var(--border-muted);
+        position: relative;
+        min-height: 10.5rem;
+        content-visibility: auto;
+        contain-intrinsic-size: 9rem;
+        transition:
+            box-shadow 0.18s ease-out,
+            border-color 0.18s ease-out,
+            transform 0.18s ease-out;
+    }
+
+    .link-card:is(:hover, :focus-within) {
+        border-color: var(--accent);
+        box-shadow: 0 4px 24px color-mix(in srgb, var(--accent) 18%, transparent);
+        transform: translateY(-2px);
+    }
+
+    .link-card > a,
+    .link-card > a:visited,
+    .link-card > a:hover,
+    .link-card > a:active,
+    .link-card > a:focus {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-02);
+        width: 100%;
+        text-decoration: none;
+        color: var(--content-primary);
+        /* uniform padding — bookmark button is absolute, needs no space reservation */
+        padding: 0.8rem 0.9rem 0.75rem;
+    }
+
+    .card-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.45rem;
+        min-width: 0;
+    }
+    .card-favicon-wrap {
+        display: inline-flex;
+        flex: 0 0 20px;
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        max-width: 20px;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--spacing-02);
+        overflow: hidden;
+        /* vertically centred to title's cap-height */
+        align-self: center;
+    }
+
+    .card-favicon {
+        display: block;
+        width:  20px !important;
+        height: 20px !important;
+        max-width:  20px !important;
+        max-height: 20px !important;
+        object-fit: contain;
+    }
+
+    .card-title {
+        font-weight: 500;
+        font-size: var(--desktop-body);          
+        line-height: var(--lh-desktop-body);
+        color: var(--accent);
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        min-width: 0;
+        flex: 1;
+        align-self: center;
+    }
+
+    .card-body-text {
+        margin: 0;
+        font-size: var(--desktop-body-sm);      
+        line-height: 1.45;
+        color: var(--content-secondary);
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;                   
+        overflow: hidden;
+        flex: 1;
+    }
+
+    .card-footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3px;
+        margin-top: 0.55rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid var(--border-muted);
+    }
+
+    .link-card span.tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 1px 5px;
+        border: 1px solid var(--border-muted);
+        border-radius: var(--spacing-02);
+        background-color: var(--background-high-contrast);
+        color: var(--content-secondary);
+        font-family: var(--monospace);
+        font-size: 10px;
+        line-height: 1.6;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+    }
+
+    .link-card span.tag-new {
+        border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+        background-color: color-mix(in srgb, var(--accent) 12%, var(--background-high-contrast));
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    .card-bookmark {
+        position: absolute;
+        top: var(--spacing-02);
+        right: var(--spacing-02);
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.15s;
+    }
+
+    .link-card:hover .card-bookmark,
+    .link-card:focus-within .card-bookmark {
+        opacity: 1;
+    }
+
+    .card-bookmark:has(.bookmarked) {
+        opacity: 1;
+    }
+
+    @media (hover: none) {
+        .card-bookmark { opacity: 1; }
+    }
+
+    .modal-top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.6rem 0.75rem 0.6rem 1rem;
+        border-bottom: 1px solid var(--border-muted);
+        gap: 0.5rem;
+    }
+
+    .share-bar {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .share-btn-sm {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: var(--spacing-02);
+        border: 1px solid transparent;
+        background: transparent;
+        color: var(--content-secondary);
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .share-btn-sm:hover {
+        background: var(--background-hover);
+        border-color: var(--border-muted);
+        color: var(--content-primary);
+    }
+
+    .tool-cta-block {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 1.25rem 0 0.5rem;
+        align-items: stretch;
+    }
+
+    .btn-visit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-02);
+        width: 100%;
+        padding: var(--spacing-04) var(--spacing-05);
+        background: var(--accent);
+        color: var(--background-high-contrast);
+        border: 1px solid transparent; 
+        border-radius: var(--spacing-04);
+        font-family: "ROM-Bold",var(--system-ui);
+        font-size: var(--desktop-body);
+        line-height: var(--lh-desktop-body);
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 25%, transparent);
+    }
+
+    .btn-visit:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+
+    .btn-visit--disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+    .btn-visit--disabled:hover { transform: none; }
+
+    @media (max-width: 600px) {
+        .tool-detail-modal {
+            border-radius: var(--spacing-00);;
+            height: 100dvh;
+            max-height: 100dvh;
+        }
+        .tool-detail-header {
+            flex-direction: column;
+        }
+        .modal-top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: var(--background-secondary);
+        }
+    }
+</style>
 <style is:global>
     @font-face {
         font-family: "ROM-Regular";
@@ -296,6 +537,24 @@ const {
         background-color: var(--background-high-contrast);
         cursor: var(--c-arrow);
         scrollbar-gutter: stable;
+        scrollbar-color: var(--accent) var(--background-secondary);
+        scrollbar-width: thin;
+    }
+
+    html::-webkit-scrollbar { width: 6px; }
+    html::-webkit-scrollbar-track { background: var(--background-secondary); }
+    html::-webkit-scrollbar-thumb {
+        background-color: var(--accent);
+        border-radius: var(--spacing-02);
+    }
+    *::-webkit-scrollbar { width: 6px; }
+    *::-webkit-scrollbar-track { background: var(--background-secondary); }
+    *::-webkit-scrollbar-thumb {
+        background-color: color-mix(in srgb, var(--accent) 60%, transparent);
+        border-radius: var(--spacing-02);
+    }
+    *::-webkit-scrollbar-thumb:hover {
+        background-color: var(--accent);
     }
     body {
         margin: 0;
