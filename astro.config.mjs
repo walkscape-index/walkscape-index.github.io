@@ -11,6 +11,9 @@ export default defineConfig({
     partytown({
       config: {
         forward: ["dataLayer.push"],
+        loadScriptsOnMainThread: [
+          "https://umami-bxq054n88-do-i-need-one-s-projects.vercel.app/mango_banana"
+        ],
       },
     }),
     sitemap(),
