@@ -7,10 +7,7 @@
         {
           "title": "Main Website",
           "body": "Main landing page for game news and updates.",
-          "tags": [
-            "Official",
-            "Web"
-          ],
+          "tags": ["Official", "Web"],
           "url": "https://walkscape.app/",
           "date-added": "2026-05-18",
           "slug": "main-website",
@@ -45,11 +42,7 @@
         {
           "title": "Official Wiki",
           "body": "Official wiki for item stats and game data.",
-          "tags": [
-            "Official",
-            "Database",
-            "Wiki"
-          ],
+          "tags": ["Official", "Database", "Wiki"],
           "url": "https://wiki.walkscape.app/",
           "date-added": "2026-05-18",
           "slug": "official-wiki"
@@ -57,10 +50,7 @@
         {
           "title": "Player Portal",
           "body": "Account dashboard for beta applications and keys.",
-          "tags": [
-            "Official",
-            "App"
-          ],
+          "tags": ["Official", "App"],
           "url": "https://portal.walkscape.app/",
           "date-added": "2026-05-18",
           "slug": "player-portal"
@@ -74,9 +64,7 @@
         {
           "title": "Interactive Map",
           "body": "Interactive world map tracking game locations.",
-          "tags": [
-            "Map"
-          ],
+          "tags": ["Map"],
           "url": "https://map.walkscape.app/",
           "date-added": "2026-05-18",
           "slug": "interactive-map"
@@ -84,9 +72,7 @@
         {
           "title": "Kyoro's  Networth Calculator",
           "body": "An UI version of Bonez565's Bank Value Calculator",
-          "tags": [
-            "Calculator"
-          ],
+          "tags": ["Calculator"],
           "url": "https://networth.walkscape.com.br/",
           "date-added": "2026-05-20",
           "author": "Kyoro",
@@ -95,9 +81,7 @@
         {
           "title": "WalkScape Database | WSDB",
           "body": "Community database for items and crafting.",
-          "tags": [
-            "Database"
-          ],
+          "tags": ["Database"],
           "url": "https://walkscapedb.com/",
           "date-added": "2026-05-18",
           "slug": "database-hub"
@@ -105,11 +89,7 @@
         {
           "title": "WalkScape Wiki Offline (Kiwix)",
           "body": "Offline access to the WalkScape wiki",
-          "tags": [
-            "Wiki",
-            "Offline",
-            "Mobile"
-          ],
+          "tags": ["Wiki", "Offline", "Mobile"],
           "url": "https://github.com/Kyoro93/Walkscape-Wiki-Scrapper",
           "date-added": "2026-05-20",
           "slug": "wiki-offline",
@@ -118,9 +98,7 @@
         {
           "title": "WalkStats",
           "body": "WalkScape Player Statistics, Leaderboards & Skill Tracking",
-          "tags": [
-            "Dashboard"
-          ],
+          "tags": ["Dashboard"],
           "url": "https://walkstats.app/",
           "date-added": "2026-05-18",
           "author": "Spillere",
@@ -135,10 +113,7 @@
         {
           "title": "Walkscape Gear Tool",
           "body": "Optimize your activity loadouts and track your progress",
-          "tags": [
-            "Tool",
-            "Gear"
-          ],
+          "tags": ["Tool", "Gear"],
           "url": "https://gear.walkscape.app/",
           "date-added": "2026-05-18",
           "author": "fala",
@@ -147,10 +122,7 @@
         {
           "title": "WS Gear Optimizer (Auto)",
           "body": "Calculates best gearset using an activity and a target optimization",
-          "tags": [
-            "Tool",
-            "Gear"
-          ],
+          "tags": ["Tool", "Gear"],
           "url": "https://ws-auto-gear.streamlit.app/",
           "date-added": "2026-05-18",
           "slug": "auto-gear-app",
@@ -160,11 +132,7 @@
         {
           "title": "WS Optimizer",
           "body": "Mobile friendly gear set optimizer for activities, recipes, and traveling.",
-          "tags": [
-            "Tool",
-            "Gear",
-            "Mobile"
-          ],
+          "tags": ["Tool", "Gear", "Mobile"],
           "url": "https://walkscape.flamesandvoltiply.com/",
           "date-added": "2026-05-18",
           "slug": "gear-optimizer",
@@ -188,10 +156,7 @@
         {
           "title": "Walkscape Beginner Guide",
           "body": "A guide for new players focusing on leveling skills equally while grinding towards the Feather cape and GDTE Pass.",
-          "tags": [
-            "Doc",
-            "Guide"
-          ],
+          "tags": ["Doc", "Guide"],
           "url": "https://docs.google.com/document/d/1ebiRLJqI79IychfOTOEg5DWWGWB0F9BvzonyF5m3dFc/edit?usp=sharing",
           "date-added": "2026-05-20",
           "slug": "walkscape-beginner-guide",
@@ -206,10 +171,7 @@
         {
           "title": "Arky’s Activity Sheet (Bonez565 Version)",
           "body": "Spreadsheet tracking activity actions and mechanics.",
-          "tags": [
-            "Sheet",
-            "Reference"
-          ],
+          "tags": ["Sheet", "Reference"],
           "url": "https://docs.google.com/spreadsheets/d/12-ea9tfZq0VeQaMMy-Zh1i3BF1h3BpJIg1jgWCS3ftk",
           "date-added": "2026-05-18",
           "slug": "arky-activity-sheet",
@@ -218,10 +180,7 @@
         {
           "title": "Bonez565's Bank Value Calculator",
           "body": "Paste your data export to value your bank items.",
-          "tags": [
-            "Sheet",
-            "Calculator"
-          ],
+          "tags": ["Sheet", "Calculator"],
           "url": "https://docs.google.com/spreadsheets/d/1V1cd25onz4nMAMbTwZKNj6hra8iRZt9otk3g3xfDiqQ/edit?usp=sharing",
           "date-added": "2026-05-18",
           "author": "Bonez565",
@@ -230,10 +189,7 @@
         {
           "title": "Ecto Farming Sheet",
           "body": "Gear set comparisons for ecto gathering grinds.",
-          "tags": [
-            "Sheet",
-            "Farming"
-          ],
+          "tags": ["Sheet", "Farming"],
           "url": "https://docs.google.com/spreadsheets/d/1tf_Da1iT0cjbVr0AVJsuLMGWNNk-RQp7Cm9cgAFvfGs/edit?usp=sharing",
           "date-added": "2026-05-18",
           "slug": "ecto-farming-sheet"
@@ -241,10 +197,7 @@
         {
           "title": "Fala Progress Sheet",
           "body": "Spreadsheet companion to track player skilling.",
-          "tags": [
-            "Sheet",
-            "Progress"
-          ],
+          "tags": ["Sheet", "Progress"],
           "url": "https://docs.google.com/spreadsheets/d/1PNbqzhgTrf_WvOcSyVtT9St8VJigp6Td1D5ssOh68KI/edit?usp=sharing",
           "date-added": "2026-05-18",
           "slug": "fala-progress-sheet",
@@ -253,10 +206,7 @@
         {
           "title": "Skill Locations Sheet",
           "body": "List of training spots and step efficiency data.",
-          "tags": [
-            "Sheet",
-            "Reference"
-          ],
+          "tags": ["Sheet", "Reference"],
           "url": "https://docs.google.com/spreadsheets/d/1wkG2LWNi4VvbMvyf6gCnXa8JUK12xtpml-jidh0ZjQY/edit?usp=sharing",
           "date-added": "2026-05-18",
           "slug": "skill-locations-sheet"
@@ -264,10 +214,7 @@
         {
           "title": "Unique Item Drop Check List",
           "body": "Spreadsheet checklist for collectibles and uniques.",
-          "tags": [
-            "Sheet",
-            "Checklist"
-          ],
+          "tags": ["Sheet", "Checklist"],
           "url": "https://docs.google.com/spreadsheets/d/1UFPwIjPYFOol48GNsKlTRE2Oo4fLZ6PZwDBeQaPB610/edit?usp=sharing",
           "date-added": "2026-05-18",
           "slug": "unique-item-drop-checklist"
@@ -281,10 +228,7 @@
         {
           "title": "CoHA CoFA Sequence",
           "body": "Notion database tracking travel sequence steps.",
-          "tags": [
-            "Guide",
-            "Reference"
-          ],
+          "tags": ["Guide", "Reference"],
           "url": "https://www.notion.so/2e3c4ff4c1c081c1b8a0e8aa1dc050e7?v=2e3c4ff4c1c0819ea7f3000c628b62ea",
           "date-added": "2026-05-18",
           "slug": "coha-cofa-sequence"
@@ -292,10 +236,7 @@
         {
           "title": "Hunting Tailoring Guide",
           "body": "Google doc detailing collector items and updates.",
-          "tags": [
-            "Guide",
-            "Crafting"
-          ],
+          "tags": ["Guide", "Crafting"],
           "url": "https://docs.google.com/document/d/1vKw5cjuR7MQ3rp1lx-YEbpgTAHyZxb62gwhTo5BVHjU/edit?tab=t.0",
           "date-added": "2026-05-18",
           "slug": "hunting-tailoring-guide",

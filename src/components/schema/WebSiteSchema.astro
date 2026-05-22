@@ -1,24 +1,25 @@
 ---
 interface Props {
-    url?: string;
+  url?: string;
 }
 
 const { url = "https://walkscape-index.github.io" } = Astro.props;
 
 const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Walkscape-Index",
-    url: url,
-    description: "The community resource directory for Walkscape tools, databases, and spreadsheets.",
-    potentialAction: {
-        "@type": "SearchAction",
-        target: {
-            "@type": "EntryPoint",
-            urlTemplate: `${url}/?search={search_term_string}`,
-        },
-        "query-input": "required name=search_term_string",
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Walkscape-Index",
+  url: url,
+  description:
+    "The community resource directory for Walkscape tools, databases, and spreadsheets.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${url}/?search={search_term_string}`,
     },
+    "query-input": "required name=search_term_string",
+  },
 };
 ---
 

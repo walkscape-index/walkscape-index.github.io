@@ -1,76 +1,85 @@
-import { useState, useEffect } from 'react';
-import { isBookmarked, toggleBookmark } from '../utils/bookmarks';
-import './BookmarkButton.css';
+import { useState, useEffect } from "react";
+import { isBookmarked, toggleBookmark } from "../utils/bookmarks";
+import "./BookmarkButton.css";
 
 interface BookmarkButtonProps {
-    slug: string;
-    title: string;
-    variant?: 'default' | 'small';
-    className?: string;
-    showLabel?: boolean;
+  slug: string;
+  title: string;
+  variant?: "default" | "small";
+  className?: string;
+  showLabel?: boolean;
 }
 
 export default function BookmarkButton({
-    slug,
-    title,
-    variant = 'default',
-    className = '',
-    showLabel = false,
+  slug,
+  title,
+  variant = "default",
+  className = "",
+  showLabel = false,
 }: BookmarkButtonProps) {
-    const [bookmarked, setBookmarked] = useState(false);
+  const [bookmarked, setBookmarked] = useState(false);
 
-    useEffect(() => {
-        if (slug) {
-            setBookmarked(isBookmarked(slug));
-        }
-    }, [slug]);
+  useEffect(() => {
+    if (slug) {
+      setBookmarked(isBookmarked(slug));
+    }
+  }, [slug]);
 
-    useEffect(() => {
-        const handleBookmarkChange = () => {
-            if (slug) {
-                setBookmarked(isBookmarked(slug));
-            }
-        };
-
-        window.addEventListener('bookmarks:changed', handleBookmarkChange);
-        return () => window.removeEventListener('bookmarks:changed', handleBookmarkChange);
-    }, [slug]);
-
-    const handleClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (!slug) return;
-
-        const newState = toggleBookmark(slug);
-        setBookmarked(newState);
+  useEffect(() => {
+    const handleBookmarkChange = () => {
+      if (slug) {
+        setBookmarked(isBookmarked(slug));
+      }
     };
 
-    const ariaLabel = bookmarked
-        ? `Remove ${title} from saved list`
-        : `Add ${title} to saved list`;
+    window.addEventListener("bookmarks:changed", handleBookmarkChange);
+    return () =>
+      window.removeEventListener("bookmarks:changed", handleBookmarkChange);
+  }, [slug]);
 
-    return (
-        <button
-            className={`bookmark-btn bookmark-btn--${variant} ${bookmarked ? 'bookmarked' : ''} ${className}`}
-            onClick={handleClick}
-            aria-label={ariaLabel}
-            title={ariaLabel}
-            type="button"
-        >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path
-                    d="M15 19L9.80769 17.0435L5 19V1H15V19Z"
-                    stroke="currentColor"
-                    strokeMiterlimit={10}
-                    fill={bookmarked ? 'currentColor' : 'none'}
-                />
-            </svg>
-            {showLabel && (
-                <span className="bookmark-label">
-                    {bookmarked ? `Remove ${title} from saved list` : `Add ${title} to saved list`}
-                </span>
-            )}
-        </button>
-    );
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!slug) return;
+
+    const newState = toggleBookmark(slug);
+    setBookmarked(newState);
+  };
+
+  const ariaLabel = bookmarked
+    ? `Remove ${title} from saved list`
+    : `Add ${title} to saved list`;
+
+  return (
+    <button
+      className={`bookmark-btn bookmark-btn--${variant} ${bookmarked ? "bookmarked" : ""} ${className}`}
+      onClick={handleClick}
+      aria-label={ariaLabel}
+      title={ariaLabel}
+      type="button"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+      >
+        <path
+          d="M15 19L9.80769 17.0435L5 19V1H15V19Z"
+          stroke="currentColor"
+          strokeMiterlimit={10}
+          fill={bookmarked ? "currentColor" : "none"}
+        />
+      </svg>
+      {showLabel && (
+        <span className="bookmark-label">
+          {bookmarked
+            ? `Remove ${title} from saved list`
+            : `Add ${title} to saved list`}
+        </span>
+      )}
+    </button>
+  );
 }

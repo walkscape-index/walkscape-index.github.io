@@ -2,11 +2,7 @@
   {
     "title": "Discord Server",
     "body": "Official community Discord server for player discussions, dev announcements, and support.",
-    "tags": [
-      "Community",
-      "Chat",
-      "Official"
-    ],
+    "tags": ["Community", "Chat", "Official"],
     "url": "https://discord.gg/Kk6VecJFEk?ref=walkscape-index.github.io",
     "date-added": "2026-05-18",
     "slug": "discord-server",
@@ -21,10 +17,7 @@
   {
     "title": "Email Newsletter",
     "body": "Substack newsletter featuring in-depth game design write-ups and development deep dives.",
-    "tags": [
-      "Official",
-      "Newsletter"
-    ],
+    "tags": ["Official", "Newsletter"],
     "url": "https://walkscape.substack.com/?ref=walkscape-index.github.io",
     "date-added": "2026-05-18",
     "slug": "email-newsletter"
@@ -32,10 +25,7 @@
   {
     "title": "Reddit Community",
     "body": "Official subreddit for WalkScape player discussions, news, and community posts.",
-    "tags": [
-      "Community",
-      "Forum"
-    ],
+    "tags": ["Community", "Forum"],
     "url": "https://www.reddit.com/r/WalkScape/?ref=walkscape-index.github.io",
     "date-added": "2026-05-18",
     "slug": "reddit-community",
@@ -50,10 +40,7 @@
   {
     "title": "Twitter / X",
     "body": "Official social feed for quick announcements, teasers, and WalkScape news.",
-    "tags": [
-      "Official",
-      "Social"
-    ],
+    "tags": ["Official", "Social"],
     "url": "https://twitter.com/walkscape?ref=walkscape-index.github.io",
     "date-added": "2026-05-18",
     "slug": "twitter-feed",
@@ -68,10 +55,7 @@
   {
     "title": "YouTube Channel",
     "body": "Official YouTube channel featuring developer logs, gameplay footage, and announcements.",
-    "tags": [
-      "Official",
-      "Video"
-    ],
+    "tags": ["Official", "Video"],
     "url": "https://www.youtube.com/channel/UCJ_Ihr0k2GAGEtFOnG7nDew?ref=walkscape-index.github.io",
     "date-added": "2026-05-18",
     "slug": "youtube-channel",

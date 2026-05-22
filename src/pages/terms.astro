@@ -2,90 +2,79 @@
 import Layout from "../layouts/Layout.astro";
 import BreadcrumbSchema from "../components/schema/BreadcrumbSchema.astro";
 const breadcrumbs = [
-    { name: "Home", url: "https://walkscape-index.github.io" },
-    { name: "Terms & Conditions" },
+  { name: "Home", url: "https://walkscape-index.github.io" },
+  { name: "Terms & Conditions" },
 ];
 ---
 
 <Layout
-    site="Walkscape-Index"
-    title="Terms & Conditions"
-    tagline="The operating manual for using this directory"
-    pageTitle="Terms & Conditions"
-    pageDescription="Terms and Conditions for Walkscape-Index - The community resource index for Walkscape."
-    showLatestFilter={false}
+  site="Walkscape-Index"
+  title="Terms & Conditions"
+  tagline="The operating manual for using this directory"
+  pageTitle="Terms & Conditions"
+  pageDescription="Terms and Conditions for Walkscape-Index - The community resource index for Walkscape."
+  showLatestFilter={false}
 >
-    <BreadcrumbSchema items={breadcrumbs} />
+  <BreadcrumbSchema items={breadcrumbs} />
 
-    <main id="main-content" class="container">
-        <div class="legal-content-wrapper">
-            <header class="legal-header">
-                <p class="last-updated">Last Updated: January 4, 2026</p>
-            </header>
+  <main id="main-content" class="container">
+    <div class="legal-content-wrapper">
+      <header class="legal-header">
+        <p class="last-updated">Last Updated: January 4, 2026</p>
+      </header>
 
-            <article class="nu-u-text--secondary">
-                <p class="nu-c-fs-regular">
-                    By accessing this website, we assume you accept these terms
-                    and conditions. Do not continue to use Walkscape-Index if
-                    you do not agree to all of the terms and conditions stated
-                    on this page.
-                </p>
+      <article class="nu-u-text--secondary">
+        <p class="nu-c-fs-regular">
+          By accessing this website, we assume you accept these terms and
+          conditions. Do not continue to use Walkscape-Index if you do not agree
+          to all of the terms and conditions stated on this page.
+        </p>
 
-                <h2 class="nu-c-h6 nu-u-text--primary">
-                    1. Services
-                </h2>
-                <p>
-                    Walkscape-Index is a community-driven directory that catalogs player-made tools, 
-                    calculators, and community spreadsheets. We provide centralized links and 
-                    descriptions for these third-party resources, but we do not host or maintain 
-                    the external tools ourselves.
-                </p>
-                <h2 class="nu-c-h6 nu-u-text--primary">
-                    2. Intellectual Property
-                </h2>
-                <p>
-                    Unless otherwise stated, Walkscape-Index and/or its
-                    licensors own the intellectual property rights for all
-                    material on Walkscape-Index. All intellectual property
-                    rights are reserved.
-                </p>
-                <ul class="nu-u-pl-6 nu-u-mb-6">
-                    <li>Do not republish material from Walkscape-Index.</li>
-                    <li>
-                        Do not sell, rent or sub-license material from the
-                        directory.
-                    </li>
-                    <li>
-                        Do not reproduce, duplicate or copy material for
-                        commercial gain.
-                    </li>
-                </ul>
+        <h2 class="nu-c-h6 nu-u-text--primary">1. Services</h2>
+        <p>
+          Walkscape-Index is a community-driven directory that catalogs
+          player-made tools, calculators, and community spreadsheets. We provide
+          centralized links and descriptions for these third-party resources,
+          but we do not host or maintain the external tools ourselves.
+        </p>
+        <h2 class="nu-c-h6 nu-u-text--primary">2. Intellectual Property</h2>
+        <p>
+          Unless otherwise stated, Walkscape-Index and/or its licensors own the
+          intellectual property rights for all material on Walkscape-Index. All
+          intellectual property rights are reserved.
+        </p>
+        <ul class="nu-u-pl-6 nu-u-mb-6">
+          <li>Do not republish material from Walkscape-Index.</li>
+          <li>Do not sell, rent or sub-license material from the directory.</li>
+          <li>
+            Do not reproduce, duplicate or copy material for commercial gain.
+          </li>
+        </ul>
 
-                <h2 class="nu-c-h6 nu-u-text--primary">3. Disclaimer</h2>
-                <p>
-                    The information gathered on this website is provided "as is", without
-                    warranty of any kind. Because Walkscape receives periodic game balancing,
-                    mechanic reworks, and content updates, community tools can fall out of date. 
-                    Calculations, feature descriptions, and resource locations are subject to 
-                    change or extraction by their respective community creators at any time.
-                </p>
+        <h2 class="nu-c-h6 nu-u-text--primary">3. Disclaimer</h2>
+        <p>
+          The information gathered on this website is provided "as is", without
+          warranty of any kind. Because Walkscape receives periodic game
+          balancing, mechanic reworks, and content updates, community tools can
+          fall out of date. Calculations, feature descriptions, and resource
+          locations are subject to change or extraction by their respective
+          community creators at any time.
+        </p>
 
-                <h2 class="nu-c-h6 nu-u-text--primary">
-                    4. External Content & Links
-                </h2>
-                <p>
-                    This index contains navigational hyper-links to external community projects, 
-                    spreadsheets, and Discord platforms. Walkscape-Index does not control, endorse, 
-                    or vet the privacy policies, data logging methods, or operational security layouts 
-                    of these external third-party landing nodes.
-                </p>
-                <h2 class="nu-c-h6 nu-u-text--primary">5. Governing Law</h2>
-                <p>
-                    These terms and conditions are governed by and construed in
-                    accordance with the laws of the jurisdiction in which the
-                    founder operates.
-                </p>
-            </article>
-        </div>
-    </main>
+        <h2 class="nu-c-h6 nu-u-text--primary">4. External Content & Links</h2>
+        <p>
+          This index contains navigational hyper-links to external community
+          projects, spreadsheets, and Discord platforms. Walkscape-Index does
+          not control, endorse, or vet the privacy policies, data logging
+          methods, or operational security layouts of these external third-party
+          landing nodes.
+        </p>
+        <h2 class="nu-c-h6 nu-u-text--primary">5. Governing Law</h2>
+        <p>
+          These terms and conditions are governed by and construed in accordance
+          with the laws of the jurisdiction in which the founder operates.
+        </p>
+      </article>
+    </div>
+  </main>
 </Layout>

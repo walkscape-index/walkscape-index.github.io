@@ -6,858 +6,933 @@ import Nav from "../components/Nav.astro";
 import "@new-ui/foundations";
 
 export interface Props {
-    site: string;
-    title: string;
-    tagline: string;
-    pageTitle?: string;
-    pageDescription?: string;
-    canonicalUrl?: string;
-    ogTitle?: string;
-    ogDescription?: string;
-    ogImage?: string;
-    ogUrl?: string;
-    ogType?: string;
-    ogSiteName?: string;
-    twitterCard?: string;
-    twitterTitle?: string;
-    twitterDescription?: string;
-    twitterImage?: string;
-    pageFavicon?: string;
-    showSearch?: boolean;
-    showLatestFilter?: boolean;
-    searchPlaceholder?: string;
+  site: string;
+  title: string;
+  tagline: string;
+  pageTitle?: string;
+  pageDescription?: string;
+  canonicalUrl?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogUrl?: string;
+  ogType?: string;
+  ogSiteName?: string;
+  twitterCard?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+  twitterImageAlt?: string;
+  pageFavicon?: string;
+  showSearch?: boolean;
+  showLatestFilter?: boolean;
+  searchPlaceholder?: string;
 }
 
 const {
-    site,
-    title,
-    tagline,
-    pageTitle,
-    pageDescription,
-    canonicalUrl,
-    ogTitle,
-    ogDescription,
-    ogImage,
-    ogUrl,
-    ogType,
-    ogSiteName,
-    twitterCard,
-    twitterTitle,
-    twitterDescription,
-    twitterImage,
-    pageFavicon,
-    showSearch = false,
-    showLatestFilter = true,
-    searchPlaceholder = "Search by name, category, or feature...",
+  site,
+  title,
+  tagline,
+  pageTitle,
+  pageDescription,
+  canonicalUrl,
+  ogTitle,
+  ogDescription,
+  ogImage,
+  ogImageAlt,
+  ogUrl,
+  ogType,
+  ogSiteName,
+  twitterCard,
+  twitterTitle,
+  twitterDescription,
+  twitterImage,
+  twitterImageAlt,
+  pageFavicon,
+  showSearch = false,
+  showLatestFilter = true,
+  searchPlaceholder = "Search by name, category, or feature...",
 } = Astro.props;
+
+const computedTitle = pageTitle
+  ? `${pageTitle} | Walkscape-Index`
+  : `${site} — The community resource directory for Walkscape tools, databases, and spreadsheets.`;
+
+const computedDescription = pageDescription || "The community resource directory for Walkscape tools, databases, and spreadsheets.";
+
+const fallbackOgImage = new URL("/og.png", Astro.site || "https://walkscape-index.github.io").href;
+
+// Function to resolve relative URL to absolute URL using Astro.site
+const resolveAbsoluteUrl = (urlStr?: string, fallback?: string): string => {
+  if (!urlStr) return fallback || "";
+  try {
+    new URL(urlStr);
+    return urlStr;
+  } catch {
+    // Treat as relative path
+    const siteUrl = Astro.site || new URL("https://walkscape-index.github.io");
+    return new URL(urlStr, siteUrl).href;
+  }
+};
+
+// Open Graph
+const og_title = ogTitle || pageTitle || "Walkscape Index";
+const og_description = ogDescription || computedDescription;
+const og_image = resolveAbsoluteUrl(ogImage, fallbackOgImage);
+const og_url = ogUrl || canonicalUrl || Astro.url.href;
+const og_type = ogType || "website";
+const og_site_name = ogSiteName || "Walkscape Index";
+const og_image_alt = ogImageAlt || og_title || "Walkscape Index - Community Resource Directory";
+
+// Twitter
+const twitter_card = twitterCard || (og_image === fallbackOgImage ? "summary_large_image" : "summary");
+const twitter_title = twitterTitle || og_title;
+const twitter_description = twitterDescription || og_description;
+const twitter_image = resolveAbsoluteUrl(twitterImage, og_image);
+const twitter_image_alt = twitterImageAlt || og_image_alt;
 ---
 
 <!doctype html>
 <html lang="en" data-new-ui-theme="dark--warm">
-    <head>
-        <script is:inline>
-            (function(){try{var t=localStorage.getItem('rom_theme');if(t==='dark--warm'||t==='dark--cold')document.documentElement.setAttribute('data-new-ui-theme',t);}catch(e){}})();
-        </script>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-            rel="icon"
-            type="image/svg+xml"
-            href={pageFavicon || "/walkscape-index.svg"}
-        />
-        <meta name="generator" content={Astro.generator} />
-        <title>
-            {
-                pageTitle
-                    ? `${pageTitle} | Walkscape-Index`
-                    : `${site} — The community resource directory for Walkscape tools, databases, and spreadsheets.`
-            }
-        </title>
-        <meta name="author" content="@WalkScapeIndex" />
-        <meta
-            name="description"
-            content={pageDescription ||
-                "The community resource directory for Walkscape tools, databases, and spreadsheets."}
-        />
-        <link rel="sitemap" href="/sitemap-index.xml" />
-        {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-        {ogTitle && <meta property="og:title" content={ogTitle} />}
-        {ogType && <meta property="og:type" content={ogType} />}
-        {
-            ogDescription && (
-                <meta property="og:description" content={ogDescription} />
-            )
-        }
-        {ogImage && <meta property="og:image" content={ogImage} />}
-        {ogUrl && <meta property="og:url" content={ogUrl} />}
-        {ogSiteName && <meta property="og:site_name" content={ogSiteName} />}
-        {twitterCard && <meta name="twitter:card" content={twitterCard} />}
-        {twitterTitle && <meta name="twitter:title" content={twitterTitle} />}
-        {
-            twitterDescription && (
-                <meta name="twitter:description" content={twitterDescription} />
-            )
-        }
-        {twitterImage && <meta name="twitter:image" content={twitterImage} />}
+  <head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-       <script defer src="https://umami-fra9kd688-do-i-need-one-s-projects.vercel.app/mango_banana" data-website-id="7365ec0f-69da-472f-8b7c-a1fe31918735"></script>
-        <ClientRouter />
-        <WebSiteSchema />
-    </head>
+    <!-- Theme Script (Inline to prevent FOUC) -->
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem("rom_theme");
+          if (t === "dark--warm" || t === "dark--cold")
+            document.documentElement.setAttribute("data-new-ui-theme", t);
+        } catch (e) {}
+      })();
+    </script>
 
-    <body>
-        <a href="#main-content" class="skip-link">Skip to main content</a>
-        <Nav showLatestFilter={showLatestFilter} />
-        <script is:inline>
-            (function () {
-                try {
-                    var t = localStorage.getItem("rom_theme");
-                    var isCold = t === "dark--cold";
-                    var btn = document.getElementById("theme-toggle");
-                    if (btn) {
-                        btn.setAttribute("aria-pressed", String(isCold));
-                        btn.setAttribute(
-                            "aria-label",
-                            isCold ? "Switch to warm theme" : "Switch to cold theme",
-                        );
-                    }
-                    var raw = localStorage.getItem("rom_bookmarks");
-                    var count = 0;
-                    if (raw) {
-                        try {
-                            count = JSON.parse(raw).length || 0;
-                        } catch (e) {}
-                    }
-                    var link = document.getElementById("favoritesLink");
-                    var countEl = document.getElementById("favoritesCount");
-                    if (link && count > 0) {
-                        link.style.display = "inline-flex";
-                        if (countEl) countEl.textContent = count;
-                    }
-                } catch (e) {}
-            })();
-        </script>
+    <!-- SEO Meta Tags -->
+    <title>{computedTitle}</title>
+    <meta name="description" content={computedDescription} />
+    <meta name="author" content="@WalkScapeIndex" />
+    <meta name="robots" content="index, follow" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalUrl || Astro.url.href} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="google-site-verification" content="96M9M-h06qrEXb3O5c1Vdc73S3rAxBBm3VqOfEc_xxM" />
 
-        <Hero
-            title={title}
-            tagline={tagline}
-            showSearch={showSearch}
-            searchPlaceholder={searchPlaceholder}
-        />
-        <slot />
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href={pageFavicon || "/walkscape-index.svg"} />
 
-        <div class="footer">
-            <p>
-                <strong>Walkscape Index</strong> © 2026 <br />
-                <a
-                    href="https://walkscape-index.github.io"
-                    class="nu-u-link--subtle"
-                    target="_blank"
-                    rel="noopener noreferrer">@walkscape-index</a
-                >
-                <span class="footer-separator">·</span>
-                <a href="/privacy" class="nu-u-link--subtle">Privacy</a>
-                <span class="footer-separator">·</span>
-                <a href="/terms" class="nu-u-link--subtle">Terms</a>
-            </p>
-        </div>
-    </body>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={og_type} />
+    <meta property="og:url" content={og_url} />
+    <meta property="og:title" content={og_title} />
+    <meta property="og:description" content={og_description} />
+    <meta property="og:image" content={og_image} />
+    <meta property="og:image:alt" content={og_image_alt} />
+    <meta property="og:site_name" content={og_site_name} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content={twitter_card} />
+    <meta name="twitter:url" content={og_url} />
+    <meta name="twitter:title" content={twitter_title} />
+    <meta name="twitter:description" content={twitter_description} />
+    <meta name="twitter:image" content={twitter_image} />
+    <meta name="twitter:image:alt" content={twitter_image_alt} />
+    <meta name="twitter:site" content="@WalkScapeIndex" />
+    <meta name="twitter:creator" content="@WalkScapeIndex" />
+
+    <!-- Analytics -->
+    <script
+      defer
+      src="https://umami-fra9kd688-do-i-need-one-s-projects.vercel.app/mango_banana"
+      data-website-id="7365ec0f-69da-472f-8b7c-a1fe31918735"></script>
+    <ClientRouter />
+    <WebSiteSchema />
+  </head>
+
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <Nav showLatestFilter={showLatestFilter} />
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem("rom_theme");
+          var isCold = t === "dark--cold";
+          var btn = document.getElementById("theme-toggle");
+          if (btn) {
+            btn.setAttribute("aria-pressed", String(isCold));
+            btn.setAttribute(
+              "aria-label",
+              isCold ? "Switch to warm theme" : "Switch to cold theme",
+            );
+          }
+          var raw = localStorage.getItem("rom_bookmarks");
+          var count = 0;
+          if (raw) {
+            try {
+              count = JSON.parse(raw).length || 0;
+            } catch (e) {}
+          }
+          var link = document.getElementById("favoritesLink");
+          var countEl = document.getElementById("favoritesCount");
+          if (link && count > 0) {
+            link.style.display = "inline-flex";
+            if (countEl) countEl.textContent = count;
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <Hero
+      title={title}
+      tagline={tagline}
+      showSearch={showSearch}
+      searchPlaceholder={searchPlaceholder}
+    />
+    <slot />
+
+    <div class="footer">
+      <p>
+        <strong>Walkscape Index</strong> © 2026 <br />
+        <a
+          href="https://walkscape-index.github.io"
+          class="nu-u-link--subtle"
+          target="_blank"
+          rel="noopener noreferrer">@walkscape-index</a
+        >
+        <span class="footer-separator">·</span>
+        <a href="/privacy" class="nu-u-link--subtle">Privacy</a>
+        <span class="footer-separator">·</span>
+        <a href="/terms" class="nu-u-link--subtle">Terms</a>
+      </p>
+    </div>
+  </body>
 </html>
 <style is:global>
-    .link-card {
-        list-style: none;
-        display: flex;
-        background-color: var(--background-secondary);
-        border-radius: var(--spacing-02);
-        border: 1px solid var(--border-muted);
-        position: relative;
-        min-height: 10.5rem;
-        content-visibility: auto;
-        contain-intrinsic-size: 9rem;
-        transition:
-            box-shadow 0.18s ease-out,
-            border-color 0.18s ease-out,
-            transform 0.18s ease-out;
-    }
+  .link-card {
+    list-style: none;
+    display: flex;
+    background-color: var(--background-secondary);
+    border-radius: var(--spacing-02);
+    border: 1px solid var(--border-muted);
+    position: relative;
+    min-height: 10.5rem;
+    content-visibility: auto;
+    contain-intrinsic-size: 9rem;
+    transition:
+      box-shadow 0.18s ease-out,
+      border-color 0.18s ease-out,
+      transform 0.18s ease-out;
+  }
 
-    .link-card:is(:hover, :focus-within) {
-        border-color: var(--accent);
-        box-shadow: 0 4px 24px color-mix(in srgb, var(--accent) 18%, transparent);
-        transform: translateY(-2px);
-    }
+  .link-card:is(:hover, :focus-within) {
+    border-color: var(--accent);
+    box-shadow: 0 4px 24px color-mix(in srgb, var(--accent) 18%, transparent);
+    transform: translateY(-2px);
+  }
 
-    .link-card > a,
-    .link-card > a:visited,
-    .link-card > a:hover,
-    .link-card > a:active,
-    .link-card > a:focus {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-02);
-        width: 100%;
-        text-decoration: none;
-        color: var(--content-primary);
-        /* uniform padding — bookmark button is absolute, needs no space reservation */
-        padding: 0.8rem 0.9rem 0.75rem;
-    }
+  .link-card > a,
+  .link-card > a:visited,
+  .link-card > a:hover,
+  .link-card > a:active,
+  .link-card > a:focus {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-02);
+    width: 100%;
+    text-decoration: none;
+    color: var(--content-primary);
+    /* uniform padding — bookmark button is absolute, needs no space reservation */
+    padding: 0.8rem 0.9rem 0.75rem;
+  }
 
-    .card-header {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.45rem;
-        min-width: 0;
-    }
-    .card-favicon-wrap {
-        display: inline-flex;
-        flex: 0 0 20px;
-        width: 20px;
-        height: 20px;
-        min-width: 20px;
-        max-width: 20px;
-        align-items: center;
-        justify-content: center;
-        border-radius: var(--spacing-02);
-        overflow: hidden;
-        /* vertically centred to title's cap-height */
-        align-self: center;
-    }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.45rem;
+    min-width: 0;
+  }
+  .card-favicon-wrap {
+    display: inline-flex;
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    max-width: 20px;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--spacing-02);
+    overflow: hidden;
+    /* vertically centred to title's cap-height */
+    align-self: center;
+  }
 
-    .card-favicon {
-        display: block;
-        width:  20px !important;
-        height: 20px !important;
-        max-width:  20px !important;
-        max-height: 20px !important;
-        object-fit: contain;
-    }
+  .card-favicon {
+    display: block;
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    object-fit: contain;
+  }
 
-    .card-title {
-        font-weight: 500;
-        font-size: var(--desktop-body);          
-        line-height: var(--lh-desktop-body);
-        color: var(--accent);
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
-        min-width: 0;
-        flex: 1;
-        align-self: center;
-    }
+  .card-title {
+    font-weight: 500;
+    font-size: var(--desktop-body);
+    line-height: var(--lh-desktop-body);
+    color: var(--accent);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    min-width: 0;
+    flex: 1;
+    align-self: center;
+  }
 
-    .card-body-text {
-        margin: 0;
-        font-size: var(--desktop-body-sm);      
-        line-height: 1.45;
-        color: var(--content-secondary);
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 4;                   
-        overflow: hidden;
-        flex: 1;
-    }
+  .card-body-text {
+    margin: 0;
+    font-size: var(--desktop-body-sm);
+    line-height: 1.45;
+    color: var(--content-secondary);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    flex: 1;
+  }
 
-    .card-footer {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 3px;
-        margin-top: 0.55rem;
-        padding-top: 0.5rem;
-        border-top: 1px solid var(--border-muted);
-    }
+  .card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-top: 0.55rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-muted);
+  }
 
-    .link-card span.tag {
-        display: inline-flex;
-        align-items: center;
-        padding: 1px 5px;
-        border: 1px solid var(--border-muted);
-        border-radius: var(--spacing-02);
-        background-color: var(--background-high-contrast);
-        color: var(--content-secondary);
-        font-family: var(--monospace);
-        font-size: 10px;
-        line-height: 1.6;
-        letter-spacing: 0.02em;
-        white-space: nowrap;
-    }
+  .link-card span.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 5px;
+    border: 1px solid var(--border-muted);
+    border-radius: var(--spacing-02);
+    background-color: var(--background-high-contrast);
+    color: var(--content-secondary);
+    font-family: var(--monospace);
+    font-size: 10px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
 
-    .link-card span.tag-new {
-        border-color: color-mix(in srgb, var(--accent) 55%, transparent);
-        background-color: color-mix(in srgb, var(--accent) 12%, var(--background-high-contrast));
-        color: var(--accent);
-        font-weight: 600;
-    }
+  .link-card span.tag-new {
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+    background-color: color-mix(
+      in srgb,
+      var(--accent) 12%,
+      var(--background-high-contrast)
+    );
+    color: var(--accent);
+    font-weight: 600;
+  }
 
+  .card-bookmark {
+    position: absolute;
+    top: var(--spacing-02);
+    right: var(--spacing-02);
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  .link-card:hover .card-bookmark,
+  .link-card:focus-within .card-bookmark {
+    opacity: 1;
+  }
+
+  .card-bookmark:has(.bookmarked) {
+    opacity: 1;
+  }
+
+  @media (hover: none) {
     .card-bookmark {
-        position: absolute;
-        top: var(--spacing-02);
-        right: var(--spacing-02);
-        z-index: 10;
-        opacity: 0;
-        transition: opacity 0.15s;
+      opacity: 1;
     }
+  }
 
-    .link-card:hover .card-bookmark,
-    .link-card:focus-within .card-bookmark {
-        opacity: 1;
+  .modal-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.75rem 0.6rem 1rem;
+    border-bottom: 1px solid var(--border-muted);
+    gap: 0.5rem;
+  }
+
+  .share-bar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .share-btn-sm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: var(--spacing-02);
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--content-secondary);
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+      background 0.15s,
+      color 0.15s,
+      border-color 0.15s;
+  }
+
+  .share-btn-sm:hover {
+    background: var(--background-hover);
+    border-color: var(--border-muted);
+    color: var(--content-primary);
+  }
+
+  .tool-cta-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1.25rem 0 0.5rem;
+    align-items: stretch;
+  }
+
+  .btn-visit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-02);
+    width: 100%;
+    padding: var(--spacing-04) var(--spacing-05);
+    background: var(--accent);
+    color: var(--background-high-contrast);
+    border: 1px solid transparent;
+    border-radius: var(--spacing-04);
+    font-family: "ROM-Bold", var(--system-ui);
+    font-size: var(--desktop-body);
+    line-height: var(--lh-desktop-body);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+
+  .btn-visit:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+
+  .btn-visit--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .btn-visit--disabled:hover {
+    transform: none;
+  }
+
+  @media (max-width: 600px) {
+    .tool-detail-modal {
+      border-radius: var(--spacing-00);
+      height: 100dvh;
+      max-height: 100dvh;
     }
-
-    .card-bookmark:has(.bookmarked) {
-        opacity: 1;
+    .tool-detail-header {
+      flex-direction: column;
     }
-
-    @media (hover: none) {
-        .card-bookmark { opacity: 1; }
-    }
-
     .modal-top-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.6rem 0.75rem 0.6rem 1rem;
-        border-bottom: 1px solid var(--border-muted);
-        gap: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--background-secondary);
     }
-
-    .share-bar {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-    }
-
-    .share-btn-sm {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        border-radius: var(--spacing-02);
-        border: 1px solid transparent;
-        background: transparent;
-        color: var(--content-secondary);
-        cursor: pointer;
-        text-decoration: none;
-        transition: background 0.15s, color 0.15s, border-color 0.15s;
-    }
-
-    .share-btn-sm:hover {
-        background: var(--background-hover);
-        border-color: var(--border-muted);
-        color: var(--content-primary);
-    }
-
-    .tool-cta-block {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        margin: 1.25rem 0 0.5rem;
-        align-items: stretch;
-    }
-
-    .btn-visit {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--spacing-02);
-        width: 100%;
-        padding: var(--spacing-04) var(--spacing-05);
-        background: var(--accent);
-        color: var(--background-high-contrast);
-        border: 1px solid transparent; 
-        border-radius: var(--spacing-04);
-        font-family: "ROM-Bold",var(--system-ui);
-        font-size: var(--desktop-body);
-        line-height: var(--lh-desktop-body);
-        font-weight: 600;
-        text-decoration: none;
-        cursor: pointer;
-        transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-        box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 25%, transparent);
-    }
-
-    .btn-visit:hover {
-        opacity: 0.9;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 35%, transparent);
-    }
-
-    .btn-visit--disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-    }
-    .btn-visit--disabled:hover { transform: none; }
-
-    @media (max-width: 600px) {
-        .tool-detail-modal {
-            border-radius: var(--spacing-00);;
-            height: 100dvh;
-            max-height: 100dvh;
-        }
-        .tool-detail-header {
-            flex-direction: column;
-        }
-        .modal-top-bar {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            background: var(--background-secondary);
-        }
-    }
+  }
 </style>
 <style is:global>
-    @font-face {
-        font-family: "ROM-Regular";
-        src: url("/woffs/ROM-Regular.woff2") format("woff2");
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-    }
-    @font-face {
-        font-family: "ROM-Bold";
-        src: url("/woffs/ROM-Bold.woff2") format("woff2");
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-    }
-    @font-face {
-        font-family: "ROM-Mono";
-        src: url("/woffs/ROM-Mono.woff2") format("woff2");
-        font-weight: normal;
-        font-style: normal;
-        font-display: swap;
-    }
-    :root {
-        --accent: var(--link);
-        --body-copy: "ROM-Regular", var(--system-ui);
-        --monospace: "ROM-Mono", var(--monospace-code);
-        --body-strong: "ROM-Bold", var(--system-ui);
-        font-synthesis: none;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+  @font-face {
+    font-family: "ROM-Regular";
+    src: url("/woffs/ROM-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "ROM-Bold";
+    src: url("/woffs/ROM-Bold.woff2") format("woff2");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "ROM-Mono";
+    src: url("/woffs/ROM-Mono.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  :root {
+    --accent: var(--link);
+    --body-copy: "ROM-Regular", var(--system-ui);
+    --monospace: "ROM-Mono", var(--monospace-code);
+    --body-strong: "ROM-Bold", var(--system-ui);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
-        --c-text:
-            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' height='24' width='24'%3E%3Cpath fill='black' d='M9 4H11V5H9V4ZM12 6H11V5H12V6ZM13 6H12V18H11V19H9V20H11V19H12V18H13V19H14V20H16V19H14V18H13V6ZM14 5V6H13V5H14ZM14 5V4H16V5H14Z' clip-rule='evenodd' fill-rule='evenodd'/%3E%3Cpath fill='white' d='M15 3H16V4H15H14V3H15ZM14 5V4H13V5H12V4H11V3H10H9V4H8V5H9V6H10H11V18H10H9V19H8V20H9V21H10H11V20H12V19H13V20H14V21H15H16V20H17V19H16V18H15H14V6H15H16V5H17V4H16V5H15H14ZM13 6V5H14V6H13ZM13 18V6H12V5H11V4H10H9V5H10H11V6H12V18H11V19H10H9V20H10H11V19H12V18H13ZM13 18V19H14V20H15H16V19H15H14V18H13Z' clip-rule='evenodd' fill-rule='evenodd'/%3E%3C/svg%3E")
-                16 16,
-            auto;
-        --c-pointer:
-            url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9 4H11V5H9V4ZM9 10V8V5H8V8V10H6V11H5V13H6V14H7V16H8V17H9V18H10V20H11H12H13H14V19H15H16V20H17V19H18V17H19V15H20V10H19V9H18H17V8H15H14V7H12V5H11V8V10H12V8H14V10H15V9H17V11H18V10H19V15H18V17H17V13H16V17H17V18V19H16V18H14V19H13H12H11V18H10V17H9V16H8V13H7H6V11H8V12H9V13H10V12V10H9ZM9 10H8V11H9V10ZM14 13H15V17H14V13ZM13 13H12V17H13V13Z' fill='black'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9 5H11V8V10H12V8H14V10H15V9H17V10V11H18V10H19V15H18V17H17V13H16V17H17V18V19H16V18H14V19H13H12H11V18H10V17H9V16H8V13H6V11H8V12H9V13H10V12V10H9V8V5ZM12 13V17H13V13H12ZM14 13V17H15V13H14Z' fill='white'/%3E%3C/svg%3E")
-                10 5,
-            pointer;
-        --c-arrow:
-            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' height='24' width='24'%3E%3Cpath fill='black' d='M9 5H8V16H9V15H10V14H11V15H12V17H13V19H14H15V17H14V15H13V13H14H15H16V12H15V11H14V10H13V9H12V8H11V7H10V6H9V5Z' clip-rule='evenodd' fill-rule='evenodd'/%3E%3Cpath fill='white' d='M8 4H9V5H8V4ZM8 16H7V5H8V16ZM9 16V17H8V16H9ZM10 15V16H9V15H10ZM11 15H10V14H11V15ZM12 17H11V16V15H12V16V17ZM13 19H12V18V17H13V18V19ZM15 19V20H14H13V19H14H15ZM15 17H16V18V19H15V18V17ZM14 15H15V16V17H14V16V15ZM13 14V15H14V14H16V13H17V12H16V11H15V10H14V9H13V8H12V7H11V6H10V5H9V6H10V7H11V8H12V9H13V10H14V11H15V12H16V13H13V14Z' clip-rule='evenodd' fill-rule='evenodd'/%3E%3C/svg%3E")
-                12 12,
-            text;
-        --c-grab:
-            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' height='24' width='24'%3E%3Cpath fill='black' d='M13 4H11V5H10V6H9V5H7V6H6V8H7V10H5V11H4V13H5V14H6V16H7V17H8V18H9V20H10H11H12H13V19H14H15V20H16V19H17V17H18V15H19V12H20V8H19V7H18V8H17V6H16V5H14H13V4ZM13 5V10H14V6H16V11H17V9H18V8H19V12H18V15H17V17H16V13H15V17H16V19H15V18H14H13V19H12H11H10V18H9V17H8V16H7V14H6V13H5V11H7V12H8V13H9V10H8V8H7V6H9V8H10V10H11V5H13ZM8 10V11H7V10H8ZM14 13H13V17H14V13ZM11 13H12V17H11V13Z' clip-rule='evenodd' fill-rule='evenodd'/%3E%3Cpath fill='white' d='M13 5H11V10H10V8H9V6H7V8H8V10H9V12V13H8V12H7V11H5V13H6V14H7V16H8V17H9V18H10V19H11H12H13V18H15V19H16V18V17H17V15H18V12H19V8H18V9H17V11H16V10V6H14V10H13V5ZM14 13H13V17H14V13ZM12 13H11V17H12V13ZM16 13H15V17H16V13Z' clip-rule='evenodd' fill-rule='evenodd'/%3E%3C/svg%3E")
-                12 12,
-            grab;
-    }
+    --c-text:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' height='24' width='24'%3E%3Cpath fill='black' d='M9 4H11V5H9V4ZM12 6H11V5H12V6ZM13 6H12V18H11V19H9V20H11V19H12V18H13V19H14V20H16V19H14V18H13V6ZM14 5V6H13V5H14ZM14 5V4H16V5H14Z' clip-rule='evenodd' fill-rule='evenodd'/%3E%3Cpath fill='white' d='M15 3H16V4H15H14V3H15ZM14 5V4H13V5H12V4H11V3H10H9V4H8V5H9V6H10H11V18H10H9V19H8V20H9V21H10H11V20H12V19H13V20H14V21H15H16V20H17V19H16V18H15H14V6H15H16V5H17V4H16V5H15H14ZM13 6V5H14V6H13ZM13 18V6H12V5H11V4H10H9V5H10H11V6H12V18H11V19H10H9V20H10H11V19H12V18H13ZM13 18V19H14V20H15H16V19H15H14V18H13Z' clip-rule='evenodd' fill-rule='evenodd'/%3E%3C/svg%3E")
+        16 16,
+      auto;
+    --c-pointer:
+      url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9 4H11V5H9V4ZM9 10V8V5H8V8V10H6V11H5V13H6V14H7V16H8V17H9V18H10V20H11H12H13H14V19H15H16V20H17V19H18V17H19V15H20V10H19V9H18H17V8H15H14V7H12V5H11V8V10H12V8H14V10H15V9H17V11H18V10H19V15H18V17H17V13H16V17H17V18V19H16V18H14V19H13H12H11V18H10V17H9V16H8V13H7H6V11H8V12H9V13H10V12V10H9ZM9 10H8V11H9V10ZM14 13H15V17H14V13ZM13 13H12V17H13V13Z' fill='black'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9 5H11V8V10H12V8H14V10H15V9H17V10V11H18V10H19V15H18V17H17V13H16V17H17V18V19H16V18H14V19H13H12H11V18H10V17H9V16H8V13H6V11H8V12H9V13H10V12V10H9V8V5ZM12 13V17H13V13H12ZM14 13V17H15V13H14Z' fill='white'/%3E%3C/svg%3E")
+        10 5,
+      pointer;
+    --c-arrow:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' height='24' width='24'%3E%3Cpath fill='black' d='M9 5H8V16H9V15H10V14H11V15H12V17H13V19H14H15V17H14V15H13V13H14H15H16V12H15V11H14V10H13V9H12V8H11V7H10V6H9V5Z' clip-rule='evenodd' fill-rule='evenodd'/%3E%3Cpath fill='white' d='M8 4H9V5H8V4ZM8 16H7V5H8V16ZM9 16V17H8V16H9ZM10 15V16H9V15H10ZM11 15H10V14H11V15ZM12 17H11V16V15H12V16V17ZM13 19H12V18V17H13V18V19ZM15 19V20H14H13V19H14H15ZM15 17H16V18V19H15V18V17ZM14 15H15V16V17H14V16V15ZM13 14V15H14V14H16V13H17V12H16V11H15V10H14V9H13V8H12V7H11V6H10V5H9V6H10V7H11V8H12V9H13V10H14V11H15V12H16V13H13V14Z' clip-rule='evenodd' fill-rule='evenodd'/%3E%3C/svg%3E")
+        12 12,
+      text;
+    --c-grab:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' height='24' width='24'%3E%3Cpath fill='black' d='M13 4H11V5H10V6H9V5H7V6H6V8H7V10H5V11H4V13H5V14H6V16H7V17H8V18H9V20H10H11H12H13V19H14H15V20H16V19H17V17H18V15H19V12H20V8H19V7H18V8H17V6H16V5H14H13V4ZM13 5V10H14V6H16V11H17V9H18V8H19V12H18V15H17V17H16V13H15V17H16V19H15V18H14H13V19H12H11H10V18H9V17H8V16H7V14H6V13H5V11H7V12H8V13H9V10H8V8H7V6H9V8H10V10H11V5H13ZM8 10V11H7V10H8ZM14 13H13V17H14V13ZM11 13H12V17H11V13Z' clip-rule='evenodd' fill-rule='evenodd'/%3E%3Cpath fill='white' d='M13 5H11V10H10V8H9V6H7V8H8V10H9V12V13H8V12H7V11H5V13H6V14H7V16H8V17H9V18H10V19H11H12H13V18H15V19H16V18V17H17V15H18V12H19V8H18V9H17V11H16V10V6H14V10H13V5ZM14 13H13V17H14V13ZM12 13H11V17H12V13ZM16 13H15V17H16V13Z' clip-rule='evenodd' fill-rule='evenodd'/%3E%3C/svg%3E")
+        12 12,
+      grab;
+  }
 
-    :root, html[data-new-ui-theme="dark--warm"] {
-        --cat-background: oklch(0.2046 0 0);
-        --cat-foreground: oklch(0.9219 0 0);
-        --cat-card: oklch(0.2686 0 0);
-        --cat-card-foreground: oklch(0.9219 0 0);
-        --cat-popover: oklch(0.2686 0 0);
-        --cat-popover-foreground: oklch(0.9219 0 0);
-        --cat-primary: oklch(0.7686 0.1647 70.0804);
-        --cat-primary-foreground: oklch(0 0 0);
-        --cat-secondary: oklch(0.2686 0 0);
-        --cat-secondary-foreground: oklch(0.9219 0 0);
-        --cat-muted: oklch(0.2686 0 0);
-        --cat-muted-foreground: oklch(0.7155 0 0);
-        --cat-accent: oklch(0.4732 0.1247 46.2007);
-        --cat-accent-foreground: oklch(0.9243 0.1151 95.7459);
-        --cat-destructive: oklch(0.6368 0.2078 25.3313);
-        --cat-border: oklch(0.3715 0 0);
-        --cat-input: oklch(0.3715 0 0);
-        --cat-ring: oklch(0.7686 0.1647 70.0804);
-        --cat-sidebar: oklch(0.1684 0 0);
-        --cat-sidebar-foreground: oklch(0.9219 0 0);
-        --cat-sidebar-primary: oklch(0.7686 0.1647 70.0804);
-        --cat-sidebar-primary-foreground: oklch(1.0000 0 0);
-        --cat-sidebar-accent: oklch(0.4732 0.1247 46.2007);
-        --cat-sidebar-accent-foreground: oklch(0.9243 0.1151 95.7459);
-        --cat-sidebar-border: oklch(0.3715 0 0);
-        --cat-sidebar-ring: oklch(0.7686 0.1647 70.0804);
-    }
+  :root,
+  html[data-new-ui-theme="dark--warm"] {
+    --cat-background: oklch(0.2046 0 0);
+    --cat-foreground: oklch(0.9219 0 0);
+    --cat-card: oklch(0.2686 0 0);
+    --cat-card-foreground: oklch(0.9219 0 0);
+    --cat-popover: oklch(0.2686 0 0);
+    --cat-popover-foreground: oklch(0.9219 0 0);
+    --cat-primary: oklch(0.7686 0.1647 70.0804);
+    --cat-primary-foreground: oklch(0 0 0);
+    --cat-secondary: oklch(0.2686 0 0);
+    --cat-secondary-foreground: oklch(0.9219 0 0);
+    --cat-muted: oklch(0.2686 0 0);
+    --cat-muted-foreground: oklch(0.7155 0 0);
+    --cat-accent: oklch(0.4732 0.1247 46.2007);
+    --cat-accent-foreground: oklch(0.9243 0.1151 95.7459);
+    --cat-destructive: oklch(0.6368 0.2078 25.3313);
+    --cat-border: oklch(0.3715 0 0);
+    --cat-input: oklch(0.3715 0 0);
+    --cat-ring: oklch(0.7686 0.1647 70.0804);
+    --cat-sidebar: oklch(0.1684 0 0);
+    --cat-sidebar-foreground: oklch(0.9219 0 0);
+    --cat-sidebar-primary: oklch(0.7686 0.1647 70.0804);
+    --cat-sidebar-primary-foreground: oklch(1 0 0);
+    --cat-sidebar-accent: oklch(0.4732 0.1247 46.2007);
+    --cat-sidebar-accent-foreground: oklch(0.9243 0.1151 95.7459);
+    --cat-sidebar-border: oklch(0.3715 0 0);
+    --cat-sidebar-ring: oklch(0.7686 0.1647 70.0804);
+  }
 
-    html[data-new-ui-theme="dark--cold"] {
-        --cat-background: #1e1e2e;
-        --cat-foreground: #cdd6f4;
-        --cat-card: #181825;
-        --cat-card-foreground: #cdd6f4;
-        --cat-popover: #181825;
-        --cat-popover-foreground: #cdd6f4;
-        --cat-primary: #89b4fa;
-        --cat-primary-foreground: #11111b;
-        --cat-secondary: #313244;
-        --cat-secondary-foreground: #cdd6f4;
-        --cat-muted: #45475a;
-        --cat-muted-foreground: #a6adc8;
-        --cat-accent: #b4befe;
-        --cat-accent-foreground: #11111b;
-        --cat-destructive: #f38ba8;
-        --cat-border: #45475a;
-        --cat-input: #45475a;
-        --cat-ring: #89b4fa;
-        --cat-sidebar: #11111b;
-        --cat-sidebar-foreground: #cdd6f4;
-        --cat-sidebar-primary: #89b4fa;
-        --cat-sidebar-primary-foreground: #11111b;
-        --cat-sidebar-accent: #b4befe;
-        --cat-sidebar-accent-foreground: #11111b;
-        --cat-sidebar-border: #45475a;
-        --cat-sidebar-ring: #89b4fa;
-    }
+  html[data-new-ui-theme="dark--cold"] {
+    --cat-background: #1e1e2e;
+    --cat-foreground: #cdd6f4;
+    --cat-card: #181825;
+    --cat-card-foreground: #cdd6f4;
+    --cat-popover: #181825;
+    --cat-popover-foreground: #cdd6f4;
+    --cat-primary: #89b4fa;
+    --cat-primary-foreground: #11111b;
+    --cat-secondary: #313244;
+    --cat-secondary-foreground: #cdd6f4;
+    --cat-muted: #45475a;
+    --cat-muted-foreground: #a6adc8;
+    --cat-accent: #b4befe;
+    --cat-accent-foreground: #11111b;
+    --cat-destructive: #f38ba8;
+    --cat-border: #45475a;
+    --cat-input: #45475a;
+    --cat-ring: #89b4fa;
+    --cat-sidebar: #11111b;
+    --cat-sidebar-foreground: #cdd6f4;
+    --cat-sidebar-primary: #89b4fa;
+    --cat-sidebar-primary-foreground: #11111b;
+    --cat-sidebar-accent: #b4befe;
+    --cat-sidebar-accent-foreground: #11111b;
+    --cat-sidebar-border: #45475a;
+    --cat-sidebar-ring: #89b4fa;
+  }
 
-    :root, html[data-new-ui-theme] {
-        --radius: 0.375rem;
+  :root,
+  html[data-new-ui-theme] {
+    --radius: 0.375rem;
 
-        --background-high-contrast: var(--cat-background);
-        --background: var(--cat-background);
-        --background-secondary: var(--cat-secondary);
-        --background-hover: var(--cat-muted);
-        --background-selected: var(--cat-accent);
-        --content-primary: var(--cat-foreground);
-        --content-secondary: var(--cat-muted-foreground);
-        --content-secondary-alt: var(--cat-muted-foreground);
-        --border-muted: var(--cat-border);
-        --border-focus: var(--cat-ring);
-        --button-primary: var(--cat-primary);
-        --accent: var(--cat-primary);
-        --link: var(--cat-primary);
-        --link-hover: var(--cat-primary);
-        --link-visited: var(--cat-primary);
-    }
+    --background-high-contrast: var(--cat-background);
+    --background: var(--cat-background);
+    --background-secondary: var(--cat-secondary);
+    --background-hover: var(--cat-muted);
+    --background-selected: var(--cat-accent);
+    --content-primary: var(--cat-foreground);
+    --content-secondary: var(--cat-muted-foreground);
+    --content-secondary-alt: var(--cat-muted-foreground);
+    --border-muted: var(--cat-border);
+    --border-focus: var(--cat-ring);
+    --button-primary: var(--cat-primary);
+    --accent: var(--cat-primary);
+    --link: var(--cat-primary);
+    --link-hover: var(--cat-primary);
+    --link-visited: var(--cat-primary);
+  }
 
-    html {
-        font-family: var(--body-copy);
-        background-color: var(--background-high-contrast);
-        cursor: var(--c-arrow);
-        scrollbar-gutter: stable;
-        scrollbar-color: var(--accent) var(--background-secondary);
-        scrollbar-width: thin;
-    }
+  html {
+    font-family: var(--body-copy);
+    background-color: var(--background-high-contrast);
+    cursor: var(--c-arrow);
+    scrollbar-gutter: stable;
+    scrollbar-color: var(--accent) var(--background-secondary);
+    scrollbar-width: thin;
+  }
 
-    html::-webkit-scrollbar { width: 6px; }
-    html::-webkit-scrollbar-track { background: var(--background-secondary); }
-    html::-webkit-scrollbar-thumb {
-        background-color: var(--accent);
-        border-radius: var(--spacing-02);
-    }
-    *::-webkit-scrollbar { width: 6px; }
-    *::-webkit-scrollbar-track { background: var(--background-secondary); }
-    *::-webkit-scrollbar-thumb {
-        background-color: color-mix(in srgb, var(--accent) 60%, transparent);
-        border-radius: var(--spacing-02);
-    }
-    *::-webkit-scrollbar-thumb:hover {
-        background-color: var(--accent);
-    }
-    body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        overflow-x: hidden;
-    }
-    
-    /* Skip link for accessibility */
-    .skip-link {
-        position: absolute;
-        top: -100px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: var(--spacing-01) var(--spacing-02);
-        background-color: var(--background-high-contrast);
-        color: var(--content-secondary-alt);
-        text-decoration: none;
-        font-weight: 600;
-        border-radius: var(--spacing-00);
-        z-index: 9999999;
-        transition: top 0.2s ease;
-        font-size: var(--desktop-caption);
-        line-height: var(--lh-desktop-caption);
-    }
-    
-    .skip-link:focus {
-        top: var(--spacing-03);
-    }
-    p,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    li,
-    pre,
-    code,
-    strong,
-    dl,
-    dt {
-        cursor: var(--c-text);
-    }
+  html::-webkit-scrollbar {
+    width: 6px;
+  }
+  html::-webkit-scrollbar-track {
+    background: var(--background-secondary);
+  }
+  html::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    border-radius: var(--spacing-02);
+  }
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+  *::-webkit-scrollbar-track {
+    background: var(--background-secondary);
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, var(--accent) 60%, transparent);
+    border-radius: var(--spacing-02);
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent);
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
 
-    a,
-    a * {
-        cursor: var(--c-pointer);
-    }
+  /* Skip link for accessibility */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--spacing-01) var(--spacing-02);
+    background-color: var(--background-high-contrast);
+    color: var(--content-secondary-alt);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: var(--spacing-00);
+    z-index: 9999999;
+    transition: top 0.2s ease;
+    font-size: var(--desktop-caption);
+    line-height: var(--lh-desktop-caption);
+  }
 
+  .skip-link:focus {
+    top: var(--spacing-03);
+  }
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li,
+  pre,
+  code,
+  strong,
+  dl,
+  dt {
+    cursor: var(--c-text);
+  }
+
+  a,
+  a * {
+    cursor: var(--c-pointer);
+  }
+
+  main {
+    margin: var(--spacing-09);
+  }
+  .container {
+    margin: var(--spacing-06);
+  }
+  section {
+    margin-bottom: var(--spacing-10);
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "ROM-Bold", var(--system-ui);
+    font-weight: 500;
+  }
+  p {
+    margin-top: var(--spacing-00);
+  }
+  .nu-u-link--subtle {
+    color: var(--content-secondary) !important;
+  }
+
+  .footer p {
+    padding-bottom: var(--spacing-10);
+    text-align: center;
+    font-weight: normal;
+    font-style: normal;
+    color: var(--content-secondary);
+    font-size: var(--desktop-caption);
+    line-height: var(--lh-desktop-caption);
+    font-family: var(--monospace);
+  }
+
+  /* Empty state styles */
+  .empty-state {
+    text-align: center;
+    padding: var(--spacing-15) var(--spacing-06);
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  .empty-state h2 {
+    margin-top: var(--spacing-04);
+    margin-bottom: var(--spacing-03);
+  }
+
+  .back-home-btn {
+    padding: var(--spacing-03) var(--spacing-06);
+    background-color: var(--accent);
+    color: var(--background);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: var(--spacing-00);
+    transition: filter 0.2s ease;
+  }
+
+  .back-home-btn:hover {
+    filter: brightness(1.1);
+  }
+
+  /* Favorites page styles */
+  .favorites-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-06);
+    flex-wrap: wrap;
+    gap: var(--spacing-04);
+  }
+
+  .sort-select {
+    padding: var(--spacing-02) var(--spacing-04);
+    border: 0.5px solid var(--border-muted);
+    background-color: var(--background);
+    color: var(--content-secondary);
+    font-size: var(--desktop-body-sm);
+    line-height: var(--lh-desktop-body-sm);
+    border-radius: var(--spacing-00);
+    cursor: var(--c-pointer);
+  }
+
+  .sort-select:hover {
+    background-color: var(--background-secondary);
+    border-color: var(--border);
+  }
+
+  .sort-select:focus {
+    outline: 2px solid var(--border-focus);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 30rem) {
     main {
-        margin: var(--spacing-09);
+      margin: auto var(--spacing-06);
     }
     .container {
-        margin: var(--spacing-06);
+      margin: var(--spacing-06);
     }
-    section {
-        margin-bottom: var(--spacing-10);
-    }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: "ROM-Bold", var(--system-ui);
-        font-weight: 500;
-    }
-    p {
-        margin-top: var(--spacing-00);
-    }
-    .nu-u-link--subtle {
-        color: var(--content-secondary) !important;
-    }
+  }
 
+  .legal-content-wrapper {
+    max-width: 45rem;
+    margin: 0 auto;
+    padding: var(--spacing-09);
+    border: 0.5px solid var(--border-muted);
+    border-radius: var(--spacing-02);
+  }
 
-    .footer p {
-        padding-bottom: var(--spacing-10);
-        text-align: center;
-        font-weight: normal;
-        font-style: normal;
-        color: var(--content-secondary);
-        font-size: var(--desktop-caption);
-        line-height: var(--lh-desktop-caption);
-        font-family: var(--monospace);
-    }
+  .legal-header {
+    margin-bottom: var(--spacing-08);
+    border-bottom: 0.5px solid var(--border-muted);
+    padding-bottom: var(--spacing-04);
+  }
 
-    /* Empty state styles */
-    .empty-state {
-        text-align: center;
-        padding: var(--spacing-15) var(--spacing-06);
-        max-width: 40rem;
-        margin: 0 auto;
-    }
+  .last-updated {
+    font-family: var(--monospace);
+    font-size: var(--desktop-caption);
+    color: var(--content-secondary-alt);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
 
-    .empty-state h2 {
-        margin-top: var(--spacing-04);
-        margin-bottom: var(--spacing-03);
-    }
+  .legal-content-wrapper h2 {
+    margin: var(--spacing-08) 0 var(--spacing-04) 0;
+    font-weight: 600;
+  }
 
-    .back-home-btn {
-        padding: var(--spacing-03) var(--spacing-06);
-        background-color: var(--accent);
-        color: var(--background);
-        text-decoration: none;
-        font-weight: 600;
-        border-radius: var(--spacing-00);
-        transition: filter 0.2s ease;
-    }
+  .legal-content-wrapper p,
+  .legal-content-wrapper li {
+    margin-bottom: var(--spacing-05);
+    line-height: var(--lh-desktop-body);
+  }
 
-    .back-home-btn:hover {
-        filter: brightness(1.1);
-    }
-
-    /* Favorites page styles */
-    .favorites-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: var(--spacing-06);
-        flex-wrap: wrap;
-        gap: var(--spacing-04);
-    }
-
-    .sort-select {
-        padding: var(--spacing-02) var(--spacing-04);
-        border: 0.5px solid var(--border-muted);
-        background-color: var(--background);
-        color: var(--content-secondary);
-        font-size: var(--desktop-body-sm);
-        line-height: var(--lh-desktop-body-sm);
-        border-radius: var(--spacing-00);
-        cursor: var(--c-pointer);
-    }
-
-    .sort-select:hover {
-        background-color: var(--background-secondary);
-        border-color: var(--border);
-    }
-
-    .sort-select:focus {
-        outline: 2px solid var(--border-focus);
-        outline-offset: 2px;
-    }
-
-    @media (max-width: 30rem) {
-        main {
-            margin: auto var(--spacing-06);
-        }
-        .container {
-            margin: var(--spacing-06);
-        }
-    }
-
+  @media (max-width: 768px) {
     .legal-content-wrapper {
-        max-width: 45rem;
-        margin: 0 auto;
-        padding: var(--spacing-09);
-        border: 0.5px solid var(--border-muted);
-        border-radius: var(--spacing-02);
+      padding: var(--spacing-06);
+      margin: 0 var(--spacing-04);
     }
-
-    .legal-header {
-        margin-bottom: var(--spacing-08);
-        border-bottom: 0.5px solid var(--border-muted);
-        padding-bottom: var(--spacing-04);
-    }
-
-    .last-updated {
-        font-family: var(--monospace);
-        font-size: var(--desktop-caption);
-        color: var(--content-secondary-alt);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    .legal-content-wrapper h2 {
-        margin: var(--spacing-08) 0 var(--spacing-04) 0;
-        font-weight: 600;
-    }
-
-    .legal-content-wrapper p,
-    .legal-content-wrapper li {
-        margin-bottom: var(--spacing-05);
-        line-height: var(--lh-desktop-body);
-    }
-
-    @media (max-width: 768px) {
-        .legal-content-wrapper {
-            padding: var(--spacing-06);
-            margin: 0 var(--spacing-04);
-        }
-    }
+  }
 </style>
 
 <script is:inline>
-    (function () {
-        const updateFavoritesLink = () => {
-            try {
-                const linkEl = document.getElementById("favoritesLink");
-                const countEl = document.getElementById("favoritesCount");
-                if (!linkEl || !countEl) return;
+  (function () {
+    const updateFavoritesLink = () => {
+      try {
+        const linkEl = document.getElementById("favoritesLink");
+        const countEl = document.getElementById("favoritesCount");
+        if (!linkEl || !countEl) return;
 
-                const bookmarksString = localStorage.getItem("rom_bookmarks");
-                const count = bookmarksString
-                    ? JSON.parse(bookmarksString).length
-                    : 0;
+        const bookmarksString = localStorage.getItem("rom_bookmarks");
+        const count = bookmarksString ? JSON.parse(bookmarksString).length : 0;
 
-                if (count > 0) {
-                    linkEl.style.display = "inline-flex";
-                    countEl.textContent = count;
-                } else {
-                    linkEl.style.display = "none";
-                    countEl.textContent = "";
-                }
-            } catch (e) {}
-        };
-
-        // Core Initialization (Runs on every page load including initial)
-        const init = () => {
-            // New Tools Filter Toggle - Idempotent listener
-            const newFilterToggle =
-                document.querySelector("#new-filter-toggle");
-            if (newFilterToggle) {
-                if (!newFilterToggle._hasFilterListener) {
-                    newFilterToggle.addEventListener("click", () => {
-                        const isPressed =
-                            newFilterToggle.getAttribute("aria-pressed") ===
-                            "true";
-                        newFilterToggle.setAttribute(
-                            "aria-pressed",
-                            !isPressed,
-                        );
-                        window.dispatchEvent(
-                            new CustomEvent("tools:filter-new", {
-                                detail: { filterNew: !isPressed },
-                            }),
-                        );
-                    });
-                    newFilterToggle._hasFilterListener = true;
-                }
-            }
-
-            updateFavoritesLink();
-        };
-
-        // Theme toggle
-        const VALID_THEMES = ['dark--warm', 'dark--cold'];
-        const DEFAULT_THEME = 'dark--warm';
-
-        const getSavedTheme = () => {
-            try {
-                const t = localStorage.getItem('rom_theme');
-                return VALID_THEMES.includes(t) ? t : DEFAULT_THEME;
-            } catch (e) {
-                return DEFAULT_THEME;
-            }
-        };
-
-        const applyTheme = (theme) => {
-            document.documentElement.setAttribute('data-new-ui-theme', theme);
-            const btn = document.getElementById('theme-toggle');
-            if (btn) {
-                const isCold = theme === 'dark--cold';
-                btn.setAttribute('aria-pressed', String(isCold));
-                btn.setAttribute('aria-label',
-                    isCold ? 'Switch to warm theme' : 'Switch to cold theme');
-            }
-        };
-
-        const initTheme = () => {
-            applyTheme(getSavedTheme());
-
-            const themeToggle = document.getElementById('theme-toggle');
-            if (themeToggle && !themeToggle._hasThemeListener) {
-                themeToggle.addEventListener('click', () => {
-                    const current = document.documentElement.getAttribute('data-new-ui-theme');
-                    const next = current === 'dark--warm' ? 'dark--cold' : 'dark--warm';
-                    try { localStorage.setItem('rom_theme', next); } catch (e) {}
-                    applyTheme(next);
-                });
-                themeToggle._hasThemeListener = true;
-            }
-        };
-
-        // Global Event Listeners (ensure single attachment)
-        if (!window.__rom_initialized) {
-            window.addEventListener("bookmarks:changed", updateFavoritesLink);
-            window.addEventListener("pageshow", updateFavoritesLink);
-            document.addEventListener("astro:before-swap", (e) => {
-                const theme = getSavedTheme();
-                e.newDocument.documentElement.setAttribute('data-new-ui-theme', theme);
-            });
-            document.addEventListener("astro:page-load", () => { init(); initTheme(); });
-            window.__rom_initialized = true;
-        }
-
-        // Initial run for the current page
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", () => { init(); initTheme(); });
+        if (count > 0) {
+          linkEl.style.display = "inline-flex";
+          countEl.textContent = count;
         } else {
-            init();
-            initTheme();
+          linkEl.style.display = "none";
+          countEl.textContent = "";
         }
-    })();
+      } catch (e) {}
+    };
+
+    // Core Initialization (Runs on every page load including initial)
+    const init = () => {
+      // New Tools Filter Toggle - Idempotent listener
+      const newFilterToggle = document.querySelector("#new-filter-toggle");
+      if (newFilterToggle) {
+        if (!newFilterToggle._hasFilterListener) {
+          newFilterToggle.addEventListener("click", () => {
+            const isPressed =
+              newFilterToggle.getAttribute("aria-pressed") === "true";
+            newFilterToggle.setAttribute("aria-pressed", !isPressed);
+            window.dispatchEvent(
+              new CustomEvent("tools:filter-new", {
+                detail: { filterNew: !isPressed },
+              }),
+            );
+          });
+          newFilterToggle._hasFilterListener = true;
+        }
+      }
+
+      updateFavoritesLink();
+    };
+
+    // Theme toggle
+    const VALID_THEMES = ["dark--warm", "dark--cold"];
+    const DEFAULT_THEME = "dark--warm";
+
+    const getSavedTheme = () => {
+      try {
+        const t = localStorage.getItem("rom_theme");
+        return VALID_THEMES.includes(t) ? t : DEFAULT_THEME;
+      } catch (e) {
+        return DEFAULT_THEME;
+      }
+    };
+
+    const applyTheme = (theme) => {
+      document.documentElement.setAttribute("data-new-ui-theme", theme);
+      const btn = document.getElementById("theme-toggle");
+      if (btn) {
+        const isCold = theme === "dark--cold";
+        btn.setAttribute("aria-pressed", String(isCold));
+        btn.setAttribute(
+          "aria-label",
+          isCold ? "Switch to warm theme" : "Switch to cold theme",
+        );
+      }
+    };
+
+    const initTheme = () => {
+      applyTheme(getSavedTheme());
+
+      const themeToggle = document.getElementById("theme-toggle");
+      if (themeToggle && !themeToggle._hasThemeListener) {
+        themeToggle.addEventListener("click", () => {
+          const current =
+            document.documentElement.getAttribute("data-new-ui-theme");
+          const next = current === "dark--warm" ? "dark--cold" : "dark--warm";
+          try {
+            localStorage.setItem("rom_theme", next);
+          } catch (e) {}
+          applyTheme(next);
+        });
+        themeToggle._hasThemeListener = true;
+      }
+    };
+
+    // Global Event Listeners (ensure single attachment)
+    if (!window.__rom_initialized) {
+      window.addEventListener("bookmarks:changed", updateFavoritesLink);
+      window.addEventListener("pageshow", updateFavoritesLink);
+      document.addEventListener("astro:before-swap", (e) => {
+        const theme = getSavedTheme();
+        e.newDocument.documentElement.setAttribute("data-new-ui-theme", theme);
+      });
+      document.addEventListener("astro:page-load", () => {
+        init();
+        initTheme();
+      });
+      window.__rom_initialized = true;
+    }
+
+    // Initial run for the current page
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => {
+        init();
+        initTheme();
+      });
+    } else {
+      init();
+      initTheme();
+    }
+  })();
 </script>

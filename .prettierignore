@@ -1,0 +1,11 @@
+# Build outputs and cache
+dist/
+.astro/
+node_modules/
+
+# Generated data files
+src/data/slug-map.json
+src/data/tool-metadata/
+src/data/tools/
+bun.lock
+pnpm-lock.yaml

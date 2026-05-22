@@ -2,97 +2,102 @@
 import Layout from "../layouts/Layout.astro";
 import BreadcrumbSchema from "../components/schema/BreadcrumbSchema.astro";
 const breadcrumbs = [
-    { name: "Home", url: "https://walkscape-index.github.io" },
-    { name: "Privacy Policy" },
+  { name: "Home", url: "https://walkscape-index.github.io" },
+  { name: "Privacy Policy" },
 ];
 ---
 
 <Layout
-    site="WalkScape Index"
-    title="Privacy Policy"
-    tagline="How we handle your data and respect your privacy"
-    pageTitle="Privacy Policy"
-    pageDescription="Privacy Policy for WalkScape Index - The community resource directory for Walkscape tools, databases, and spreadsheets."
-    showLatestFilter={false}
+  site="WalkScape Index"
+  title="Privacy Policy"
+  tagline="How we handle your data and respect your privacy"
+  pageTitle="Privacy Policy"
+  pageDescription="Privacy Policy for WalkScape Index - The community resource directory for Walkscape tools, databases, and spreadsheets."
+  showLatestFilter={false}
 >
-    <BreadcrumbSchema items={breadcrumbs} />
+  <BreadcrumbSchema items={breadcrumbs} />
 
-    <main id="main-content" class="container">
-        <div class="legal-content-wrapper">
-            <header class="legal-header">
-                <p class="last-updated">Last Updated: May 17, 2026</p>
-            </header>
+  <main id="main-content" class="container">
+    <div class="legal-content-wrapper">
+      <header class="legal-header">
+        <p class="last-updated">Last Updated: May 17, 2026</p>
+      </header>
 
-            <article class="nu-u-text--secondary">
-                <p class="nu-c-fs-regular">
-                    At WalkScape Index, accessible from
-                    https://walkscape-index.github.io, one of our main priorities is the
-                    privacy of our visitors. This Privacy Policy document
-                    contains types of information that is collected and recorded
-                    by WalkScape Index and how we use it.
-                </p>
+      <article class="nu-u-text--secondary">
+        <p class="nu-c-fs-regular">
+          At WalkScape Index, accessible from https://walkscape-index.github.io,
+          one of our main priorities is the privacy of our visitors. This
+          Privacy Policy document contains types of information that is
+          collected and recorded by WalkScape Index and how we use it.
+        </p>
 
-                <h2 class="nu-c-h6 nu-u-text--primary">1. Data Collection</h2>
-                <p>
-                    WalkScape Index is a static website designed to provide
-                    a curated directory of Walkscape tools, databases, calculators, and spreadsheets. 
-                    We do not require user registration and do not collect any personally identifiable
-                    information (PII) directly from you unless you choose to
-                    contact us through external open-source channels (e.g., GitHub).
-                </p>
+        <h2 class="nu-c-h6 nu-u-text--primary">1. Data Collection</h2>
+        <p>
+          WalkScape Index is a static website designed to provide a curated
+          directory of Walkscape tools, databases, calculators, and
+          spreadsheets. We do not require user registration and do not collect
+          any personally identifiable information (PII) directly from you unless
+          you choose to contact us through external open-source channels (e.g.,
+          GitHub).
+        </p>
 
-                <h2 class="nu-c-h6 nu-u-text--primary">
-                    2. Local Storage (Saved Resources)
-                </h2>
-                <p>
-                    Our "Saved Tools" feature uses your browser's <strong
-                        class="nu-u-text--primary">localStorage</strong>
-                    to store the unique IDs of the resources you have bookmarked. This data is
-                    stored locally on your physical device and is never transmitted to an external server.
-                    You can wipe this data at any time by clearing your browser's
-                    cache or using the untag/remove options in the UI grid.
-                </p>
+        <h2 class="nu-c-h6 nu-u-text--primary">
+          2. Local Storage (Saved Resources)
+        </h2>
+        <p>
+          Our "Saved Tools" feature uses your browser's <strong
+            class="nu-u-text--primary">localStorage</strong
+          >
+          to store the unique IDs of the resources you have bookmarked. This data
+          is stored locally on your physical device and is never transmitted to an
+          external server. You can wipe this data at any time by clearing your browser's
+          cache or using the untag/remove options in the UI grid.
+        </p>
 
-                <h2 class="nu-c-h6 nu-u-text--primary">3. Analytics</h2>
-                <p>
-                    We use Google Analytics to understand how visitors interact
-                    with our index. Google Analytics uses cookies to track
-                    anonymized usage telemetry (e.g., page views, session duration, filter usage).
-                    This helps us optimize the layout grid for active users. You can opt-out
-                    by installing the official Google Analytics Opt-out Browser Add-on.
-                </p>
+        <h2 class="nu-c-h6 nu-u-text--primary">3. Analytics</h2>
+        <p>
+          We use Google Analytics to understand how visitors interact with our
+          index. Google Analytics uses cookies to track anonymized usage
+          telemetry (e.g., page views, session duration, filter usage). This
+          helps us optimize the layout grid for active users. You can opt-out by
+          installing the official Google Analytics Opt-out Browser Add-on.
+        </p>
 
-                <h2 class="nu-c-h6 nu-u-text--primary">4. Cookies</h2>
-                <p>
-                    Like most modern web directories, we use essential cookies to optimize your
-                    experience. These are small text files stored on your
-                    device that help us remember your configuration states (such as dark theme
-                    toggles or active category filter selections).
-                </p>
+        <h2 class="nu-c-h6 nu-u-text--primary">4. Cookies</h2>
+        <p>
+          Like most modern web directories, we use essential cookies to optimize
+          your experience. These are small text files stored on your device that
+          help us remember your configuration states (such as dark theme toggles
+          or active category filter selections).
+        </p>
 
-                <h2 class="nu-c-h6 nu-u-text--primary">5. Third-Party Links</h2>
-                <p>
-                    Our directory indexes and links directly to external Walkscape utilities, 
-                    hosted spreadsheets, and community platforms. We do not control and are 
-                    not responsible for the data privacy frameworks or accurate content states 
-                    of these external entities. We encourage you to check their individual source code 
-                    or terms separately.
-                </p>
+        <h2 class="nu-c-h6 nu-u-text--primary">5. Third-Party Links</h2>
+        <p>
+          Our directory indexes and links directly to external Walkscape
+          utilities, hosted spreadsheets, and community platforms. We do not
+          control and are not responsible for the data privacy frameworks or
+          accurate content states of these external entities. We encourage you
+          to check their individual source code or terms separately.
+        </p>
 
-                <h2 class="nu-c-h6 nu-u-text--primary">6. Consent</h2>
-                <p>
-                    By using our index directory, you hereby consent to our Privacy
-                    Policy and agree to its terms.
-                </p>
+        <h2 class="nu-c-h6 nu-u-text--primary">6. Consent</h2>
+        <p>
+          By using our index directory, you hereby consent to our Privacy Policy
+          and agree to its terms.
+        </p>
 
-                <h2 class="nu-c-h6 nu-u-text--primary">7. Contact & Contributions</h2>
-                <p>
-                    If you have any questions regarding this privacy notice, or want to report/update 
-                    an outdated community link tag, feel free to open an issue or reach out via the official
-                    <a href="https://github.com/walkscape-index" class="nu-u-text--primary">walkscape-index</a> 
-                    GitHub repository organization page.
-                </p>
-            </article>
-        </div>
-    </main>
+        <h2 class="nu-c-h6 nu-u-text--primary">7. Contact & Contributions</h2>
+        <p>
+          If you have any questions regarding this privacy notice, or want to
+          report/update an outdated community link tag, feel free to open an
+          issue or reach out via the official
+          <a
+            href="https://github.com/walkscape-index"
+            class="nu-u-text--primary">walkscape-index</a
+          >
+          GitHub repository organization page.
+        </p>
+      </article>
+    </div>
+  </main>
 </Layout>

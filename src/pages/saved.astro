@@ -4,21 +4,21 @@ import FavoritesView from "../components/FavoritesView";
 import BreadcrumbSchema from "../components/schema/BreadcrumbSchema.astro";
 
 const breadcrumbs = [
-    { name: "Home", url: "https://walkscape-index.github.io" },
-    { name: "Saved tools" },
+  { name: "Home", url: "https://walkscape-index.github.io" },
+  { name: "Saved tools" },
 ];
 ---
 
 <Layout
-    site="Walkscape-Index - Saved tools"
-    title="Saved tools"
-    tagline="Tools/site you've saved for quick access"
-    pageTitle="Saved tools"
-    pageDescription="Your saved tools/site collection"
-    showLatestFilter={false}
+  site="Walkscape-Index - Saved tools"
+  title="Saved tools"
+  tagline="Tools/site you've saved for quick access"
+  pageTitle="Saved tools"
+  pageDescription="Your saved tools/site collection"
+  showLatestFilter={false}
 >
-    <BreadcrumbSchema items={breadcrumbs} />
-    <main id="main-content">
-        <FavoritesView client:load />
-    </main>
+  <BreadcrumbSchema items={breadcrumbs} />
+  <main id="main-content">
+    <FavoritesView client:load />
+  </main>
 </Layout>

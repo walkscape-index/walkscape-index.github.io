@@ -1,71 +1,71 @@
 ---
 interface Props {
-    name: string;
-    description: string;
-    url: string;
-    tag?: string;
-    dateAdded?: string;
-    category?: string;
+  name: string;
+  description: string;
+  url: string;
+  tag?: string;
+  dateAdded?: string;
+  category?: string;
 }
 
 const { name, description, url, tag, dateAdded, category } = Astro.props;
 
 // Map tool categories to Schema.org ApplicationCategory values
 const getCategoryMapping = (toolCategory?: string): string => {
-    const categoryMap: Record<string, string> = {
-        gaming: "GameApplication",
-        official: "GameApplication",
-        education: "EducationalApplication",
-        wiki: "EducationalApplication",
-        code: "DeveloperApplication",
-        utility: "UtilityApplication",
-        calculator: "UtilityApplication",
-        map: "MapApplication"
-    };
+  const categoryMap: Record<string, string> = {
+    gaming: "GameApplication",
+    official: "GameApplication",
+    education: "EducationalApplication",
+    wiki: "EducationalApplication",
+    code: "DeveloperApplication",
+    utility: "UtilityApplication",
+    calculator: "UtilityApplication",
+    map: "MapApplication",
+  };
 
-    if (!toolCategory) return "GameApplication";
+  if (!toolCategory) return "GameApplication";
 
-    return categoryMap[toolCategory.toLowerCase()] || "GameApplication";
+  return categoryMap[toolCategory.toLowerCase()] || "GameApplication";
 };
 
 // Parse pricing from tag
 const getPricing = (tag?: string) => {
-    if (!tag) return { price: "0", priceCurrency: "USD" };
+  if (!tag) return { price: "0", priceCurrency: "USD" };
 
-    if (tag === "Free" || tag === "Freemium") {
-        return { price: "0", priceCurrency: "USD" };
-    }
-
-    // Extract price from tags like "From $9/mo" or "$12/mo"
-    const priceMatch = tag.match(/\$(\d+\.?\d*)/);
-    if (priceMatch) {
-        return { price: priceMatch[1], priceCurrency: "USD" };
-    }
-
+  if (tag === "Free" || tag === "Freemium") {
     return { price: "0", priceCurrency: "USD" };
+  }
+
+  // Extract price from tags like "From $9/mo" or "$12/mo"
+  const priceMatch = tag.match(/\$(\d+\.?\d*)/);
+  if (priceMatch) {
+    return { price: priceMatch[1], priceCurrency: "USD" };
+  }
+
+  return { price: "0", priceCurrency: "USD" };
 };
 
 const pricing = getPricing(tag);
 const applicationCategory = getCategoryMapping(category);
 
 const schema: any = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: name,
-    url: url,
-    description: description,
-    applicationCategory: applicationCategory,
-    operatingSystem: "Web",
-    offers: {
-        "@type": "Offer",
-        price: pricing.price,
-        priceCurrency: pricing.priceCurrency,
-    },
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: name,
+  url: url,
+  description: description,
+  applicationCategory: applicationCategory,
+  operatingSystem: "Web",
+  offers: {
+    "@type": "Offer",
+    price: pricing.price,
+    priceCurrency: pricing.priceCurrency,
+  },
 };
 
 // Add datePublished if available
 if (dateAdded) {
-    schema.datePublished = dateAdded;
+  schema.datePublished = dateAdded;
 }
 ---
 

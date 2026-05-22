@@ -1,0 +1,51 @@
+name: 🚀 New Tool or Feature Request
+description: Propose a new tool, database link, calculator, or feature for WalkScape Index.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggest a new resource or tool to add to the directory, or propose a new feature for the index itself.
+  - type: dropdown
+    id: category
+    attributes:
+      label: Proposal Category
+      description: What are you suggesting?
+      options:
+        - "New WalkScape Tool / Calculator / Spreadsheet"
+        - "Official / Database / Wiki Link"
+        - "Site Feature / Design Improvement"
+        - "Other"
+    validations:
+      required: true
+  - type: input
+    id: tool-title
+    attributes:
+      label: Tool/Resource Title
+      placeholder: "E.g., Kyoro's Networth Calculator"
+    validations:
+      required: false
+  - type: input
+    id: tool-url
+    attributes:
+      label: Tool/Resource URL
+      placeholder: "https://networth.walkscape.com.br/"
+    validations:
+      required: false
+  - type: textarea
+    id: description
+    attributes:
+      label: Description / Details
+      description: Explain what this tool/feature is and why it should be added.
+      placeholder: "E.g., This calculator parses user bank value data to display total net worth and details."
+    validations:
+      required: true
+  - type: textarea
+    id: metadata
+    attributes:
+      label: Additional Metadata
+      description: Author name, social links, GitHub repo, tags, etc.
+      placeholder: "E.g., Author: @Kyoro, GitHub: github.com/kyoro/networth, Tags: Calculator, Bank."
+    validations:
+      required: false

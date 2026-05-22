@@ -10,19 +10,23 @@ const MS_PER_DAY = 1000 * 60 * 60 * 24;
  * @param days - Number of days to check (default: 30)
  * @returns true if the date is within the specified days
  */
-export function isRecentlyAdded(dateAdded: string | Date | undefined, days: number = 30): boolean {
-    if (!dateAdded) return false;
+export function isRecentlyAdded(
+  dateAdded: string | Date | undefined,
+  days: number = 30,
+): boolean {
+  if (!dateAdded) return false;
 
-    const addedDate = typeof dateAdded === 'string' ? new Date(dateAdded) : dateAdded;
-    const today = new Date();
-    const differenceInTime = today.getTime() - addedDate.getTime();
-    
-    // Return false for future dates (negative difference means date is in the future)
-    if (differenceInTime < 0) return false;
-    
-    const differenceInDays = differenceInTime / MS_PER_DAY;
+  const addedDate =
+    typeof dateAdded === "string" ? new Date(dateAdded) : dateAdded;
+  const today = new Date();
+  const differenceInTime = today.getTime() - addedDate.getTime();
 
-    return differenceInDays <= days;
+  // Return false for future dates (negative difference means date is in the future)
+  if (differenceInTime < 0) return false;
+
+  const differenceInDays = differenceInTime / MS_PER_DAY;
+
+  return differenceInDays <= days;
 }
 
 /**
@@ -31,7 +35,7 @@ export function isRecentlyAdded(dateAdded: string | Date | undefined, days: numb
  * @returns Date object or null if invalid
  */
 export function parseDate(dateString: string | undefined): Date | null {
-    if (!dateString) return null;
-    const date = new Date(dateString);
-    return isNaN(date.getTime()) ? null : date;
+  if (!dateString) return null;
+  const date = new Date(dateString);
+  return isNaN(date.getTime()) ? null : date;
 }

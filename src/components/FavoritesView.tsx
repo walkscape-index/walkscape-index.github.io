@@ -1,92 +1,98 @@
-import { useState, useEffect } from 'react';
-import { getBookmarkedTools, type BookmarkedTool } from '../utils/bookmarks';
-import { toolComparators, type SortKey } from '../utils/sorting';
-import Card from './Card';
-import EmptyState, { BookmarkIcon } from './EmptyState';
-import './CardsContainer.css';
-import data from '../data/tools.json';
-import type { Category } from '../types';
+import { useState, useEffect } from "react";
+import { getBookmarkedTools, type BookmarkedTool } from "../utils/bookmarks";
+import { toolComparators, type SortKey } from "../utils/sorting";
+import Card from "./Card";
+import EmptyState, { BookmarkIcon } from "./EmptyState";
+import "./CardsContainer.css";
+import data from "../data/tools.json";
+import type { Category } from "../types";
 
-type FavoritesSortKey = Exclude<SortKey, 'random'>;
+type FavoritesSortKey = Exclude<SortKey, "random">;
 
 export default function FavoritesView() {
-    const [bookmarkedTools, setBookmarkedTools] = useState<BookmarkedTool[]>([]);
-    const [sortBy, setSortBy] = useState<FavoritesSortKey>('nameAsc');
+  const [bookmarkedTools, setBookmarkedTools] = useState<BookmarkedTool[]>([]);
+  const [sortBy, setSortBy] = useState<FavoritesSortKey>("nameAsc");
 
-    const loadBookmarks = () => {
-        const tools = getBookmarkedTools(data.tools as Category[]);
-        setBookmarkedTools(tools);
+  const loadBookmarks = () => {
+    const tools = getBookmarkedTools(data.tools as Category[]);
+    setBookmarkedTools(tools);
+  };
+
+  useEffect(() => {
+    loadBookmarks();
+  }, []);
+
+  useEffect(() => {
+    const handleBookmarkChange = () => {
+      loadBookmarks();
     };
 
-    useEffect(() => {
-        loadBookmarks();
-    }, []);
+    window.addEventListener("bookmarks:changed", handleBookmarkChange);
+    return () => {
+      window.removeEventListener("bookmarks:changed", handleBookmarkChange);
+    };
+  }, []);
 
-    useEffect(() => {
-        const handleBookmarkChange = () => {
-            loadBookmarks();
-        };
+  const sortedTools = [...bookmarkedTools].sort(toolComparators[sortBy]);
 
-        window.addEventListener('bookmarks:changed', handleBookmarkChange);
-        return () => {
-            window.removeEventListener('bookmarks:changed', handleBookmarkChange);
-        };
-    }, []);
-
-    const sortedTools = [...bookmarkedTools].sort(toolComparators[sortBy]);
-
-    if (bookmarkedTools.length === 0) {
-        return (
-            <section>
-                <EmptyState
-                    icon={<BookmarkIcon />}
-                    message="Start bookmarking resources by clicking the save icon on any tool or sheet. Your favorites will appear here for quick access."
-                    actionText="Browse Community Resources"
-                    actionHref="/"
-                />
-            </section>
-        );
-    }
-
+  if (bookmarkedTools.length === 0) {
     return (
-        <section>
-            <div className="favorites-header">
-                <div className="favorites-info">
-                    <p className="nu-c-fs-small nu-u-text--secondary">
-                        {bookmarkedTools.length} {bookmarkedTools.length === 1 ? 'tool' : 'tools'} saved
-                    </p>
-                </div>
-
-                <div className="favorites-controls">
-                    <select
-                        value={sortBy}
-                        onChange={(e) => setSortBy(e.target.value as FavoritesSortKey)}
-                        className="sort-select"
-                        aria-label="Sort saved tools by"
-                    >
-                        <option value="nameAsc">Name (A-Z)</option>
-                        <option value="nameDesc">Name (Z-A)</option>
-                        <option value="dateNewest">Newest First</option>
-                        <option value="dateOldest">Oldest First</option>
-                    </select>
-                </div>
-            </div>
-
-            <ul role="list" className="link-card-grid">
-                {sortedTools.map(({ url, title, body, tag, 'date-added': dateAdded, slug, category }, i) => (
-                    <Card
-                        key={`${slug}-${i}`}
-                        href={url}
-                        title={title}
-                        body={body}
-                        tag={tag}
-                        dateAdded={dateAdded}
-                        slug={slug}
-                        category={category}
-                        loading={i < 12 ? 'eager' : 'lazy'}
-                    />
-                ))}
-            </ul>
-        </section>
+      <section>
+        <EmptyState
+          icon={<BookmarkIcon />}
+          message="Start bookmarking resources by clicking the save icon on any tool or sheet. Your favorites will appear here for quick access."
+          actionText="Browse Community Resources"
+          actionHref="/"
+        />
+      </section>
     );
+  }
+
+  return (
+    <section>
+      <div className="favorites-header">
+        <div className="favorites-info">
+          <p className="nu-c-fs-small nu-u-text--secondary">
+            {bookmarkedTools.length}{" "}
+            {bookmarkedTools.length === 1 ? "tool" : "tools"} saved
+          </p>
+        </div>
+
+        <div className="favorites-controls">
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as FavoritesSortKey)}
+            className="sort-select"
+            aria-label="Sort saved tools by"
+          >
+            <option value="nameAsc">Name (A-Z)</option>
+            <option value="nameDesc">Name (Z-A)</option>
+            <option value="dateNewest">Newest First</option>
+            <option value="dateOldest">Oldest First</option>
+          </select>
+        </div>
+      </div>
+
+      <ul role="list" className="link-card-grid">
+        {sortedTools.map(
+          (
+            { url, title, body, tag, "date-added": dateAdded, slug, category },
+            i,
+          ) => (
+            <Card
+              key={`${slug}-${i}`}
+              href={url}
+              title={title}
+              body={body}
+              tag={tag}
+              dateAdded={dateAdded}
+              slug={slug}
+              category={category}
+              loading={i < 12 ? "eager" : "lazy"}
+            />
+          ),
+        )}
+      </ul>
+    </section>
+  );
 }

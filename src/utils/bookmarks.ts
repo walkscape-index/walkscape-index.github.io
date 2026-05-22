@@ -1,19 +1,19 @@
-import type { Category, Tool } from '../types';
+import type { Category, Tool } from "../types";
 
-const STORAGE_KEY = 'rom_bookmarks';
+const STORAGE_KEY = "rom_bookmarks";
 
 /**
  * Get all bookmarked tool slugs from localStorage
  * @returns Array of bookmarked tool slugs
  */
 export function getBookmarks(): string[] {
-    try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        return stored ? JSON.parse(stored) : [];
-    } catch (error) {
-        console.warn('Failed to read bookmarks from localStorage:', error);
-        return [];
-    }
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
+  } catch (error) {
+    console.warn("Failed to read bookmarks from localStorage:", error);
+    return [];
+  }
 }
 
 /**
@@ -21,14 +21,16 @@ export function getBookmarks(): string[] {
  * @param bookmarks - Array of tool slugs
  */
 function saveBookmarks(bookmarks: string[]): void {
-    try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
-        window.dispatchEvent(new CustomEvent('bookmarks:changed', {
-            detail: { bookmarks }
-        }));
-    } catch (error) {
-        console.warn('Failed to save bookmarks to localStorage:', error);
-    }
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(bookmarks));
+    window.dispatchEvent(
+      new CustomEvent("bookmarks:changed", {
+        detail: { bookmarks },
+      }),
+    );
+  } catch (error) {
+    console.warn("Failed to save bookmarks to localStorage:", error);
+  }
 }
 
 /**
@@ -37,8 +39,8 @@ function saveBookmarks(bookmarks: string[]): void {
  * @returns true if bookmarked
  */
 export function isBookmarked(slug: string): boolean {
-    const bookmarks = getBookmarks();
-    return bookmarks.includes(slug);
+  const bookmarks = getBookmarks();
+  return bookmarks.includes(slug);
 }
 
 /**
@@ -47,15 +49,15 @@ export function isBookmarked(slug: string): boolean {
  * @returns true if successfully added
  */
 export function addBookmark(slug: string): boolean {
-    if (!slug) return false;
+  if (!slug) return false;
 
-    const bookmarks = getBookmarks();
-    if (!bookmarks.includes(slug)) {
-        bookmarks.push(slug);
-        saveBookmarks(bookmarks);
-        return true;
-    }
-    return false;
+  const bookmarks = getBookmarks();
+  if (!bookmarks.includes(slug)) {
+    bookmarks.push(slug);
+    saveBookmarks(bookmarks);
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -64,16 +66,16 @@ export function addBookmark(slug: string): boolean {
  * @returns true if successfully removed
  */
 export function removeBookmark(slug: string): boolean {
-    if (!slug) return false;
+  if (!slug) return false;
 
-    const bookmarks = getBookmarks();
-    const index = bookmarks.indexOf(slug);
-    if (index > -1) {
-        bookmarks.splice(index, 1);
-        saveBookmarks(bookmarks);
-        return true;
-    }
-    return false;
+  const bookmarks = getBookmarks();
+  const index = bookmarks.indexOf(slug);
+  if (index > -1) {
+    bookmarks.splice(index, 1);
+    saveBookmarks(bookmarks);
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -82,20 +84,20 @@ export function removeBookmark(slug: string): boolean {
  * @returns New bookmark state (true = bookmarked, false = not bookmarked)
  */
 export function toggleBookmark(slug: string): boolean {
-    if (isBookmarked(slug)) {
-        removeBookmark(slug);
-        return false;
-    } else {
-        addBookmark(slug);
-        return true;
-    }
+  if (isBookmarked(slug)) {
+    removeBookmark(slug);
+    return false;
+  } else {
+    addBookmark(slug);
+    return true;
+  }
 }
 
 /**
  * Tool with category information
  */
 export interface BookmarkedTool extends Tool {
-    category: string;
+  category: string;
 }
 
 /**
@@ -103,22 +105,24 @@ export interface BookmarkedTool extends Tool {
  * @param allCategories - Array of all categories from tools.json
  * @returns Array of bookmarked tool objects with category
  */
-export function getBookmarkedTools(allCategories: Category[]): BookmarkedTool[] {
-    const bookmarks = getBookmarks();
-    const bookmarkedTools: BookmarkedTool[] = [];
+export function getBookmarkedTools(
+  allCategories: Category[],
+): BookmarkedTool[] {
+  const bookmarks = getBookmarks();
+  const bookmarkedTools: BookmarkedTool[] = [];
 
-    allCategories.forEach(category => {
-        category.content.forEach(tool => {
-            if (tool.slug && bookmarks.includes(tool.slug)) {
-                bookmarkedTools.push({
-                    ...tool,
-                    category: category.category
-                });
-            }
+  allCategories.forEach((category) => {
+    category.content.forEach((tool) => {
+      if (tool.slug && bookmarks.includes(tool.slug)) {
+        bookmarkedTools.push({
+          ...tool,
+          category: category.category,
         });
+      }
     });
+  });
 
-    return bookmarkedTools;
+  return bookmarkedTools;
 }
 
 /**
@@ -126,5 +130,5 @@ export function getBookmarkedTools(allCategories: Category[]): BookmarkedTool[] 
  * @returns Number of bookmarked tools
  */
 export function getBookmarkCount(): number {
-    return getBookmarks().length;
+  return getBookmarks().length;
 }

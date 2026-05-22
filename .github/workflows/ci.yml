@@ -1,0 +1,48 @@
+name: CI Gatekeeper
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    name: Lint, Type Check & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Step 1 (Formatting Check)
+        run: pnpm exec prettier --check .
+
+      - name: Step 2 (Type Check)
+        run: pnpm run astro check
+
+      - name: Step 3 (Production Build)
+        run: pnpm run build
+
+      - name: Step 4 (Run Tests)
+        run: pnpm run test:run
