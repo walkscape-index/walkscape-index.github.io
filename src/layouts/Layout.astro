@@ -59,9 +59,14 @@ const computedTitle = pageTitle
   ? `${pageTitle} | Walkscape-Index`
   : `${site} — The community resource directory for Walkscape tools, databases, and spreadsheets.`;
 
-const computedDescription = pageDescription || "The community resource directory for Walkscape tools, databases, and spreadsheets.";
+const computedDescription =
+  pageDescription ||
+  "The community resource directory for Walkscape tools, databases, and spreadsheets.";
 
-const fallbackOgImage = new URL("/og.png", Astro.site || "https://walkscape-index.github.io").href;
+const fallbackOgImage = new URL(
+  "/og.png",
+  Astro.site || "https://walkscape-index.github.io",
+).href;
 
 // Function to resolve relative URL to absolute URL using Astro.site
 const resolveAbsoluteUrl = (urlStr?: string, fallback?: string): string => {
@@ -83,10 +88,13 @@ const og_image = resolveAbsoluteUrl(ogImage, fallbackOgImage);
 const og_url = ogUrl || canonicalUrl || Astro.url.href;
 const og_type = ogType || "website";
 const og_site_name = ogSiteName || "Walkscape Index";
-const og_image_alt = ogImageAlt || og_title || "Walkscape Index - Community Resource Directory";
+const og_image_alt =
+  ogImageAlt || og_title || "Walkscape Index - Community Resource Directory";
 
 // Twitter
-const twitter_card = twitterCard || (og_image === fallbackOgImage ? "summary_large_image" : "summary");
+const twitter_card =
+  twitterCard ||
+  (og_image === fallbackOgImage ? "summary_large_image" : "summary");
 const twitter_title = twitterTitle || og_title;
 const twitter_description = twitterDescription || og_description;
 const twitter_image = resolveAbsoluteUrl(twitterImage, og_image);
@@ -119,10 +127,17 @@ const twitter_image_alt = twitterImageAlt || og_image_alt;
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl || Astro.url.href} />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta name="google-site-verification" content="96M9M-h06qrEXb3O5c1Vdc73S3rAxBBm3VqOfEc_xxM" />
+    <meta
+      name="google-site-verification"
+      content="96M9M-h06qrEXb3O5c1Vdc73S3rAxBBm3VqOfEc_xxM"
+    />
 
     <!-- Favicons -->
-    <link rel="icon" type="image/svg+xml" href={pageFavicon || "/walkscape-index.svg"} />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href={pageFavicon || "/walkscape-index.svg"}
+    />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={og_type} />
