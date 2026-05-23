@@ -40,6 +40,9 @@ jobs:
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
 
+      - name: Pull Remote Changes
+        run: git pull origin ${{ github.head_ref || github.ref_name }} --rebase --autostash
+
       - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
