@@ -2,11 +2,11 @@ name: Update Google Drive Metadata
 
 on:
   schedule:
-    - cron: "0 */12 * * *" # Run every 12 hours
-  workflow_dispatch: # Allow manual triggers
+    - cron: "0 */12 * * *" 
+  workflow_dispatch:
 
 permissions:
-  contents: write # Needed to commit and push changes
+  contents: write 
 
 jobs:
   sync-metadata:
@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.ADMIN_PAT }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
