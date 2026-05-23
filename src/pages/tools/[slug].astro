@@ -459,6 +459,24 @@ const iconMap: Record<string, string> = {
                 }
               </div>
 
+              {
+                lastModifiedDate && (
+                  <div class="cache-notice-banner">
+                    <span class="cache-pulse-dot" />
+                    <span class="cache-notice-text">
+                      Info cached. Next scheduled sync{" "}
+                      <span
+                        id="next-sync-countdown"
+                        data-last-sync={lastSyncTime}
+                      >
+                        in ~12 hours
+                      </span>{" "}
+                      (refreshed every 12h).
+                    </span>
+                  </div>
+                )
+              }
+
               <!-- Visit + GitHub CTA block -->
               <div class="tool-cta-block">
                 {
