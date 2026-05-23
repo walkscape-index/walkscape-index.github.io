@@ -108,6 +108,11 @@ async function main() {
         try {
           const response = await fetch(
             `https://www.googleapis.com/drive/v3/files/${fileId}?fields=modifiedTime&key=${GOOGLE_API_KEY}`,
+            {
+              headers: {
+                Referer: "https://walkscape-index.github.io/",
+              },
+            },
           );
           if (!response.ok) {
             throw new Error(`HTTP ${response.status}`);
