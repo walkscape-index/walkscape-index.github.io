@@ -209,15 +209,7 @@ export default function CardsContainer({
       <ul role="list" className="link-card-grid">
         {displayedCards.map(
           (
-            {
-              url,
-              title,
-              body,
-              tags,
-              "date-added": dateAdded,
-              slug,
-              category,
-            },
+            { url, title, body, tags, "date-added": dateAdded, slug, category },
             i,
           ) => (
             <Card
