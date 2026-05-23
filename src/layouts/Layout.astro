@@ -106,8 +106,16 @@ const twitter_image_alt = twitterImageAlt || og_image_alt;
   <head>
     <!-- Essential Meta Tags -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#11111b" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="format-detection"
+      content="telephone=no, date=no, email=no, address=no"
+    />
     <!-- Theme Script (Inline to prevent FOUC) -->
     <script is:inline>
       (function () {
@@ -124,6 +132,10 @@ const twitter_image_alt = twitterImageAlt || og_image_alt;
     <meta name="description" content={computedDescription} />
     <meta name="author" content="@WalkScapeIndex" />
     <meta name="robots" content="index, follow" />
+    <meta
+      name="content-signal"
+      content="ai-train=no, search=yes, ai-input=no"
+    />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl || Astro.url.href} />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -161,6 +173,7 @@ const twitter_image_alt = twitterImageAlt || og_image_alt;
 
     <!-- Analytics -->
     <script
+      is:inline
       defer
       src="https://umami-fra9kd688-do-i-need-one-s-projects.vercel.app/mango_banana"
       data-website-id="7365ec0f-69da-472f-8b7c-a1fe31918735"></script>

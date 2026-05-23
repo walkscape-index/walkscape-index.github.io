@@ -31,6 +31,27 @@
 # different data collection practices.
 
 User-agent: *
-Content-Signal: ai-train=no, search=yes, ai-input=no
 Allow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
 Sitemap: https://walkscape-index.github.io/sitemap-index.xml

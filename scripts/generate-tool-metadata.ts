@@ -59,11 +59,7 @@ try {
         description: meta.description || tool.body,
         category: category.category,
         url: tool.url,
-        tags:
-          (tool as any).tags ||
-          (tool.tag
-            ? tool.tag.split(/\s*[/•]\s*/).map((t: string) => t.trim())
-            : []),
+        tags: tool.tags || [],
         "date-added": tool["date-added"],
         slug: tool.slug,
       };

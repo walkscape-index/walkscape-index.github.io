@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import slugMap from "../../data/slug-map.json";
+import lastModifiedData from "../../data/last_modified.json";
 import SoftwareApplicationSchema from "../../components/schema/SoftwareApplicationSchema.astro";
 import BreadcrumbSchema from "../../components/schema/BreadcrumbSchema.astro";
 import BookmarkButton from "../../components/BookmarkButton";
@@ -68,6 +69,43 @@ const formatDate = (dateStr: string) => {
 const domain = extractDomain(tool.url || "");
 const formattedDate = formatDate(tool["date-added"]);
 const canonicalUrl = `https://walkscape-index.github.io/tools/${tool.slug}`;
+
+const lastSyncTime =
+  (lastModifiedData as any)._metadata?.lastAttempt || new Date().toISOString();
+const toolUrl = tool.url || "";
+const lastModifiedDate = (lastModifiedData as any).data?.[toolUrl] || null;
+
+const getRelativeTime = (dateStr: string): string => {
+  if (!dateStr) return "";
+  try {
+    const date = new Date(dateStr);
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffSecs = Math.floor(diffMs / 1000);
+    const diffMins = Math.floor(diffSecs / 60);
+    const diffHours = Math.floor(diffMins / 60);
+    const diffDays = Math.floor(diffHours / 24);
+    const diffMonths = Math.floor(diffDays / 30);
+    const diffYears = Math.floor(diffDays / 365);
+
+    if (diffSecs < 60) {
+      return "Just now.";
+    } else if (diffMins < 60) {
+      return `${diffMins} Minute${diffMins > 1 ? "s" : ""} ago.`;
+    } else if (diffHours < 24) {
+      return `${diffHours} Hour${diffHours > 1 ? "s" : ""} ago.`;
+    } else if (diffDays < 30) {
+      return `${diffDays} Day${diffDays > 1 ? "s" : ""} ago.`;
+    } else if (diffMonths < 12) {
+      return `${diffMonths} Month${diffMonths > 1 ? "s" : ""} ago.`;
+    } else {
+      return `${diffYears} Year${diffYears > 1 ? "s" : ""} ago.`;
+    }
+  } catch {
+    return "";
+  }
+};
+const formattedLastModified = getRelativeTime(lastModifiedDate || "");
 
 const localFaviconUrl = `/favicons/${slug}.png`;
 const googleFaviconUrl = domain
@@ -374,6 +412,32 @@ const iconMap: Record<string, string> = {
                   }
                 </article>
                 {
+                  lastModifiedDate && (
+                    <article class="snapshot-card tooltip-container">
+                      <p class="snapshot-label">
+                        Last Modified
+                        <span
+                          class="info-icon"
+                          aria-label="This date is cached from Google Drive"
+                        >
+                          *
+                        </span>
+                      </p>
+                      <p
+                        class="snapshot-value last-modified-value"
+                        data-updated={lastModifiedDate}
+                        title="This date is cached from Google Drive. Refreshed every 12 hours."
+                      >
+                        {formattedLastModified}
+                      </p>
+                      <span class="tooltip-text">
+                        Cached from Google Drive. Automatically refreshed every
+                        12 hours.
+                      </span>
+                    </article>
+                  )
+                }
+                {
                   githubUrl && (
                     <article class="snapshot-card">
                       <p class="snapshot-label">Source Code</p>
@@ -392,6 +456,24 @@ const iconMap: Record<string, string> = {
                   )
                 }
               </div>
+
+              {
+                lastModifiedDate && (
+                  <div class="cache-notice-banner">
+                    <span class="cache-pulse-dot" />
+                    <span class="cache-notice-text">
+                      Info cached. Next scheduled sync{" "}
+                      <span
+                        id="next-sync-countdown"
+                        data-last-sync={lastSyncTime}
+                      >
+                        in ~12 hours
+                      </span>{" "}
+                      (refreshed every 12h).
+                    </span>
+                  </div>
+                )
+              }
 
               <!-- Visit + GitHub CTA block -->
               <div class="tool-cta-block">
@@ -570,7 +652,7 @@ const iconMap: Record<string, string> = {
       </div>
     </div>
 
-    <script type="module">
+    <script is:inline type="module">
       function getGiscusTheme() {
         const theme =
           document.documentElement.getAttribute("data-new-ui-theme");
@@ -676,6 +758,74 @@ const iconMap: Record<string, string> = {
         }
       }
 
+      function updateRelativeDates() {
+        const els = document.querySelectorAll(".last-modified-value");
+        els.forEach((el) => {
+          const dateStr = el.getAttribute("data-updated");
+          if (!dateStr) return;
+          try {
+            const date = new Date(dateStr);
+            const now = new Date();
+            const diffMs = now.getTime() - date.getTime();
+            const diffSecs = Math.floor(diffMs / 1000);
+            const diffMins = Math.floor(diffSecs / 60);
+            const diffHours = Math.floor(diffMins / 60);
+            const diffDays = Math.floor(diffHours / 24);
+            const diffMonths = Math.floor(diffHours / 24 / 30);
+            const diffYears = Math.floor(diffHours / 24 / 365);
+
+            let relativeStr = "";
+            if (diffSecs < 60) {
+              relativeStr = "Just now.";
+            } else if (diffMins < 60) {
+              relativeStr = `${diffMins} Minute${diffMins > 1 ? "s" : ""} ago.`;
+            } else if (diffHours < 24) {
+              relativeStr = `${diffHours} Hour${diffHours > 1 ? "s" : ""} ago.`;
+            } else if (diffDays < 30) {
+              relativeStr = `${diffDays} Day${diffDays > 1 ? "s" : ""} ago.`;
+            } else if (diffMonths < 12) {
+              relativeStr = `${diffMonths} Month${diffMonths > 1 ? "s" : ""} ago.`;
+            } else {
+              relativeStr = `${diffYears} Year${diffYears > 1 ? "s" : ""} ago.`;
+            }
+            el.textContent = relativeStr;
+          } catch (e) {}
+        });
+      }
+
+      function updateSyncCountdown() {
+        const countdownEl = document.getElementById("next-sync-countdown");
+        if (!countdownEl) return;
+        const lastSyncStr = countdownEl.getAttribute("data-last-sync");
+        if (!lastSyncStr) return;
+
+        const update = () => {
+          try {
+            const lastSyncTime = new Date(lastSyncStr).getTime();
+            const nextSyncTime = lastSyncTime + 12 * 60 * 60 * 1000;
+            const remaining = nextSyncTime - Date.now();
+
+            if (remaining <= 0) {
+              countdownEl.textContent = "soon";
+              return;
+            }
+
+            const h = Math.floor(remaining / (1000 * 60 * 60));
+            const m = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+
+            let countdownStr = "";
+            if (h > 0) {
+              countdownStr += `${h}h `;
+            }
+            countdownStr += `${m}m`;
+            countdownEl.textContent = `in ${countdownStr}`;
+          } catch (e) {}
+        };
+
+        update();
+        return setInterval(update, 60000);
+      }
+
       function handleKeydown(e) {
         if (e.key === "Escape") closeModal();
       }
@@ -685,6 +835,10 @@ const iconMap: Record<string, string> = {
         document.removeEventListener("keydown", handleKeydown);
         document.body.removeAttribute("data-modal-open");
         document.body.style.overflow = "";
+        if (window._syncInterval) {
+          clearInterval(window._syncInterval);
+          window._syncInterval = null;
+        }
       }
 
       function init() {
@@ -705,6 +859,9 @@ const iconMap: Record<string, string> = {
         document.addEventListener("keydown", handleKeydown);
 
         loadGiscus();
+
+        updateRelativeDates();
+        window._syncInterval = updateSyncCountdown();
       }
 
       init();
@@ -1048,6 +1205,106 @@ const iconMap: Record<string, string> = {
 
       .snapshot-value--muted {
         color: var(--content-primary);
+      }
+
+      /* Tooltip Styles */
+      .tooltip-container {
+        position: relative;
+      }
+
+      .info-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 14px;
+        height: 14px;
+        font-size: 10px;
+        background-color: var(--background-secondary);
+        color: var(--content-secondary);
+        border: 1px solid var(--border-muted);
+        border-radius: 50%;
+        margin-left: 4px;
+        cursor: help;
+        font-weight: bold;
+      }
+
+      .tooltip-text {
+        visibility: hidden;
+        width: 220px;
+        background-color: var(--background-secondary);
+        color: var(--content-primary);
+        text-align: center;
+        border-radius: var(--spacing-02);
+        padding: var(--spacing-02) var(--spacing-03);
+        border: 1px solid var(--border-muted);
+        box-shadow: var(--shadow-sm);
+        font-size: var(--desktop-caption);
+        font-family: var(--system-ui);
+        text-transform: none;
+        letter-spacing: normal;
+
+        /* Position */
+        position: absolute;
+        z-index: 1000;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition:
+          opacity 0.2s,
+          visibility 0.2s;
+        pointer-events: none;
+      }
+
+      .tooltip-container:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      /* Cache Notice Banner Styles */
+      .cache-notice-banner {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-02);
+        margin-top: var(--spacing-03);
+        padding: var(--spacing-02) var(--spacing-03);
+        background-color: var(--background-secondary);
+        border: 1px solid var(--border-muted);
+        border-radius: var(--spacing-02);
+        width: fit-content;
+      }
+
+      .cache-pulse-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: var(--accent);
+        box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 40%, transparent);
+        animation: pulse-dot 2s infinite;
+        flex-shrink: 0;
+      }
+
+      .cache-notice-text {
+        font-size: var(--desktop-caption);
+        color: var(--content-secondary);
+        font-family: var(--monospace);
+        line-height: 1.2;
+      }
+
+      @keyframes pulse-dot {
+        0% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 70%, transparent);
+        }
+        70% {
+          transform: scale(1);
+          box-shadow: 0 0 0 4px
+            color-mix(in srgb, var(--accent) 0%, transparent);
+        }
+        100% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
+        }
       }
 
       .category-link {
