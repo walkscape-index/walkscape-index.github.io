@@ -76,7 +76,7 @@ export default function FavoritesView() {
       <ul role="list" className="link-card-grid">
         {sortedTools.map(
           (
-            { url, title, body, tag, "date-added": dateAdded, slug, category },
+            { url, title, body, tags, "date-added": dateAdded, slug, category },
             i,
           ) => (
             <Card
@@ -84,7 +84,7 @@ export default function FavoritesView() {
               href={url}
               title={title}
               body={body}
-              tag={tag}
+              tags={tags}
               dateAdded={dateAdded}
               slug={slug}
               category={category}

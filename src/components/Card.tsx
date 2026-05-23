@@ -5,7 +5,6 @@ interface CardProps {
   href: string;
   title: string;
   body: string;
-  tag?: string | undefined;
   tags?: string[] | undefined;
   dateAdded?: string | undefined;
   slug?: string | undefined;
@@ -25,7 +24,6 @@ export default function Card({
   href,
   title,
   body,
-  tag,
   tags,
   dateAdded,
   slug,
@@ -34,15 +32,7 @@ export default function Card({
   const linkUrl = slug ? `/tools/${slug}` : href;
   const isNew = isRecentlyAdded(dateAdded, 30);
 
-  const displayTags: string[] =
-    tags && tags.length > 0
-      ? tags
-      : tag
-        ? tag
-            .split(/\s*[/•]\s*/)
-            .map((t) => t.trim())
-            .filter(Boolean)
-        : [];
+  const displayTags: string[] = tags || [];
 
   const domain = extractDomain(href);
   // Local favicon first; Google S2 as fallback

@@ -7,8 +7,6 @@ export interface ToolLink {
 export interface Tool {
   title: string;
   body: string;
-  /** @deprecated use tags[] instead */
-  tag?: string;
   tags?: string[];
   url: string;
   "date-added": string;

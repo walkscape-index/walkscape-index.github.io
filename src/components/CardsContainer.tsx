@@ -18,8 +18,7 @@ const fuseOptions = {
   keys: [
     { name: "title", weight: 0.4 },
     { name: "body", weight: 0.25 },
-    { name: "tags", weight: 0.2 },
-    { name: "tag", weight: 0.1 },
+    { name: "tags", weight: 0.3 },
     { name: "category", weight: 0.05 },
   ],
   threshold: 0.3,
@@ -214,7 +213,6 @@ export default function CardsContainer({
               url,
               title,
               body,
-              tag,
               tags,
               "date-added": dateAdded,
               slug,
@@ -227,7 +225,6 @@ export default function CardsContainer({
               href={url}
               title={title}
               body={body}
-              tag={tag}
               tags={tags as string[] | undefined}
               dateAdded={dateAdded}
               slug={slug}
